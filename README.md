@@ -32,4 +32,4 @@ __What's included:__
 Modified from [LaravelDaily](https://github.com/LaravelDaily/Laravel-Vue-SPA-Vuetify).
 Basically, feel free to use and re-use any way you want.
 
----
+---# new-world-backend
