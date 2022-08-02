@@ -1,4 +1,7 @@
-# Vue.js + Laravel SPA + Vuetify + CrudBooster
+# New World
+Japanese Company Profile's Website
+
+---------------------
 
 Designed is powered by [Vuetify framework](https://vuetifyjs.com/en/) based on Material Design.
 
