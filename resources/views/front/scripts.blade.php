@@ -1,13 +1,9 @@
 <!-- Vendor JS Files -->
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-<script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-
-<!-- Template Main JS File -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+<!-- load JS files -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+<!-- Tether for Bootstrap (http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h) -->
+<script src="{{ asset('assets/vendor/js/bootstrap.min.js') }}"></script>
+<!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->
 
 @stack('scripts')

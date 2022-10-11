@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-{!! SEO::generate() !!}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Favicons -->
-<link href="{{ asset(CRUDBooster::getSetting('favicon')) }}" rel="icon">
-<link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+<title>新世界 - New World</title>
+<!-- load stylesheets -->
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400">
+<!-- Google web font "Open Sans" -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome-4.5.0/css/font-awesome.min.css') }}">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/css/bootstrap.min.css') }}">
+<!-- Bootstrap style -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/css/magnific-popup.css') }}">
+<!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/css/style.css') }}">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
-<!-- Template Main CSS File -->
-<link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 @stack('styles')
 </head>
 
 <body>
-@include('front.navbar')
-@if(Request::segment(1) == null || Request::segment(1) == 'package')
-<section class="tagline">
-    <div>Home services are included *TnC</div>
-</section>
-@endif
-@yield('content')
-@include('front.footer')
+<!-- Header gallery -->
+<div class="container-fluid">
+    <!-- navbar -->
+    @include('front.navbar')
+
+    <!-- content -->
+    @yield('content')
+
+    <!-- footer -->
+    @include('front.footer')
+</div>
 <!-- Placed at the end of the document so the pages load faster -->
-<!-- <script src="js/jquery-1.7.2.min.js"></script>  -->
 @include('front.scripts')
 </body>
 </html>

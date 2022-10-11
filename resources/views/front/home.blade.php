@@ -4,130 +4,165 @@
 @endpush
 
 @section('content')
-<main>
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="hero parallax-window" data-speed="0.3" data-bleed="10" data-parallax="scroll" data-image-src="{{ asset('assets/img/beach.jpg') }}">
-    <div class="container position-relative">
-        <div class="row gy-5 parallax-slider" data-aos="fade-in">
-            <div
-                class="banner-beranda offset-lg-3 col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-lg-start" style="margin-bottom: 30px;">
-                <img src="{{ asset('assets/img/drip_logo_no-text.png') }}" class="front-logo" alt="" data-aos="zoom-out" data-aos-delay="100">
-                <h3>Welcome to</h3>
-                <h2>Drip Wellness Bali</h2>
-                <p>Mobile IV Infusions ~ Vitamins | Electrolytes ~ Home Care</p>
-                <div class="d-flex justify-content-center justify-content-lg-start">
-                    <a href="#services" class="btn-get-started">Our Packages</a>
-                </div>
-            </div>
-            
-        </div>
+<div class="row tm-row-margin-b tm-content-boxes-row">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 img-logo">
+        <img src="img/new-world.png" alt="new-world-logo">
     </div>
 
-
-
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 offset-md-6">
+        
+        <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <p>Please choose keywords from the circle to start!</p>
+        
     </div>
-</section>
-<!-- End Hero Section -->
 
-<!-- <main id="main"> -->
+</div>
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-        <div class="container" data-aos="fade-up">
+<div class="row tm-row-margin-b tm-content-boxes-row">
+    <div class="col-md-12 bunderan">
+        <div class="icon"><img src="img/new_world_center.png" alt="">
+            <ul class="menu">
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">森 - 土地<br>Forest/land</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">森<br>Water</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">草<br>Herbs</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">協同組合<br>Cooperative</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">食<br>Food</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">手芸<br>Handicraft</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">伝統文化<br>Traditional Culture</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">畑<br>Field</span>
+                    </a>
+                </li>
+                
+                <li class="spread">
+                    <a class="unit" href="list.html">
+                        <span class="text-bunder">田んぼ<br>Rice Field</span>
+                    </a>
+                </li>
 
-            <div class="row gy-4">
-                <div class="col-lg-8">
-                    <div class="content ps-0 ps-lg-5">
-                        <h3>What we do?</h3>
-                        <p>
-                        We offer on-demand iv drip blends with vitamins to defense, boosting and recovery immunity. Ours iv drip treatment blends with fluids & vitamins delivered through right into your bloodstream for highest level of supplementation and fastest absorptions. Farewell to low energy, hangovers, food poisoning, diarrhea, migraines, cold and dehydration. Say hay to health and energy like you’ve never imagined before. </p>
-                        <p>The best part, we can give this to you without you have to leave you comport place. Prices have been included it all, without hidden fees. 
-                        </p>
-
-                        <!-- <div class="position-relative mt-4">
-                            <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-4"> 
-                    <img style="width:50%" src="{{ asset('assets/img/patients.png') }}" class="img-fluid rounded-4 mb-4" alt="">
-                </div>
-            </div>
-
+                
+            </ul>
         </div>
-    </section><!-- End About Us Section -->
+    </div>
+    <!-- .col-md-12 -->
 
-    <!-- ======= Our Service Section ======= -->
-    <section id="services" class="team image parallax-window" data-speed="0.3" data-bleed="10" data-parallax="scroll" data-image-src="{{ asset('assets/img/packages.jpg') }}">
-        <div class="container" data-aos="fade-up">
+</div>
 
-            <div class="section-header">
-                <h2>Our Drip Packages</h2>
-                <p>This is all of our packages. Experience all the benefits of IV therapy in the comfort of your own home. <br>Select from one of the following options:</p>
-            </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
+        <h3 class="text-xs-center">
+            <span>Actions</span>
+        </h3>
+    </div>
+</div>
+<ul class="row">
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab2" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-object-group tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                ワークショップ
+                <br>Workshop
+            </span>
+        </a>
+    </li>
 
-            <div class="row justify-content-center gy-4">
-            @foreach($data['packages'] as $item)
-                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                    <div class="member">
-                        <img src="assets/img/drip-package.png" class="img-fluid" alt="">
-                        <h4>{{ $item->title }}</h4>
-                        <span>Rp {{ shortNumber($item->price) }}</span>
-                        <div>
-                            <a class="btn-info" href="/package/{{ $item->slug }}">More Info</a>
-                        </div>
-                    </div>
-                </div><!-- End item -->
-            @endforeach
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab3" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-gamepad tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                学び
+                <br>Learn/Game
+            </span>
+        </a>
+    </li>
 
-            </div>
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab4" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-suitcase tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                ツアー
+                <br>Tour
+            </span>
+        </a>
+    </li>
 
-        </div>
-    </section><!-- End Our Team Section -->
-
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-posts" class="recent-posts sections-bg">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-header">
-                <h2>Blog</h2>
-                <p>Our recent blog posts</p>
-            </div>
-
-            <div class="row gy-4">
-                @foreach($data['blog'] as $item)
-                <div class="col-xl-4 col-md-6">
-                    <article>
-
-                        <div class="post-img">
-                            <img src="{{ asset($item->img) }}" alt="Image of {{ $item->title }}" class="img-fluid">
-                        </div>
-
-                        <p class="post-category">{{ $item->cat }}</p>
-
-                        <h2 class="title">
-                            <a href="{{ url('post').'/'.$item->slug }}">{{ $item->title }}</a>
-                        </h2>
-
-                        <div class="d-flex align-items-center">
-                            <div class="post-meta">
-                                <p class="post-date">
-                                    <time datetime="2022-01-01">{{ $item->created_at }}</time>
-                                </p>
-                            </div>
-                        </div>
-
-                    </article>
-                </div><!-- End post list item -->
-                @endforeach
-
-            </div><!-- End recent posts list -->
-
-        </div>
-    </section><!-- End Recent Blog Posts Section -->
-
-</main>
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab5" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-lightbulb-o tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                アイデア
+                <br>Idea
+            </span>
+        </a>
+    </li>
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab6" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-shopping-bag tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                買物
+                <br>Shopping
+            </span>
+        </a>
+    </li>
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab7" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-users tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                起業家サポート
+                <br>Entrepreneur Support
+            </span>
+        </a>
+    </li>
+    <li class="tm-tab-link-item col-md-3">
+        <a id="tab8" href="actions.html" class="tm-tab-link">
+            <i class="fa fa-user-plus tm-tab-icon"></i>
+            <span class="tm-tab-link-label">
+                アバターとして参加する
+                <br>Join as Avatar
+            </span>
+        </a>
+    </li>
+</ul>
 @endsection
 
 @push('scripts')
