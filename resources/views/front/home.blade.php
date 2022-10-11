@@ -7,7 +7,7 @@
 <div class="row tm-row-margin-b tm-content-boxes-row">
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 img-logo">
-        <img src="img/new-world.png" alt="new-world-logo">
+        <img src="{{ asset('vendor/img/new-world.png') }}" alt="new-world-logo">
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 offset-md-6">
@@ -23,7 +23,7 @@
 
 <div class="row tm-row-margin-b tm-content-boxes-row">
     <div class="col-md-12 bunderan">
-        <div class="icon"><img src="img/new_world_center.png" alt="">
+        <div class="icon"><img src="{{ asset('vendor/img/new_world_center.png') }}" alt="">
             <ul class="menu">
                 
                 <li class="spread">
@@ -166,9 +166,6 @@
 @endsection
 
 @push('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="{{ asset('assets/vendor/parallax/parallax.min.js') }}"></script>
-
 <script type="text/javascript">
     
 </script>

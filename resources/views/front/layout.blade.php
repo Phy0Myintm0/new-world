@@ -9,13 +9,13 @@
 <!-- load stylesheets -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400">
 <!-- Google web font "Open Sans" -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome-4.5.0/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.5.0/css/font-awesome.min.css') }}">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/css/bootstrap.min.css') }}">
 <!-- Bootstrap style -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/css/magnific-popup.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/css/magnific-popup.css') }}">
 <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
-<link rel="stylesheet" href="{{ asset('assets/vendor/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/css/style.css') }}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
