@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
-use Artesaos\SEOTools\Facades\SEOTools;
+// use Artesaos\SEOTools\Facades\SEOTools;
 
 class HomeController extends Controller
 {
@@ -22,61 +22,25 @@ class HomeController extends Controller
         // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
         // --------------------------
 
-        $data['footer_menu'] = DB::table('packages')
-            ->select('id', 'slug', 'title', 'price')
-            ->limit(6)
-            ->orderBy('id', 'asc')
-            ->get();
+        // $data['packages'] = DB::table('packages')
+        //     ->select('title', 'id', 'slug', 'price')
+        //     // ->limit(4)
+        //     ->orderBy('id', 'asc')
+        //     ->get();
 
-        $data['packages'] = DB::table('packages')
-            ->select('title', 'id', 'slug', 'price')
-            // ->limit(4)
-            ->orderBy('id', 'asc')
-            ->get();
-
-        $data['blog'] = DB::table('posts')
-            ->join(
-                'categories',
-                'posts.cat_id',
-                '=',
-                'categories.id'
-            )
-            ->select('posts.title', 'posts.id', 'slug', 'img', 'created_at', 'categories.title as cat')
-            ->limit(3)
-            ->orderBy('id', 'desc')
-            ->get();
+        // $data['blog'] = DB::table('posts')
+        //     ->join(
+        //         'categories',
+        //         'posts.cat_id',
+        //         '=',
+        //         'categories.id'
+        //     )
+        //     ->select('posts.title', 'posts.id', 'slug', 'img', 'created_at', 'categories.title as cat')
+        //     ->limit(3)
+        //     ->orderBy('id', 'desc')
+        //     ->get();
 
         return view('front.home')
-        ->with('data', $data);
-    }
-
-    public function faq()
-    {
-        $data['test'] = 'test';
-        // --------- seo ------------
-        SEOTools::setTitle('FAQ');
-        // SEOTools::setDescription('This is my page description');
-        // SEOTools::opengraph()->setUrl('http://current.url.com');
-        // SEOTools::setCanonical('https://codecasts.com.br/lesson');
-        // SEOTools::opengraph()->addProperty('type', 'articles');
-        // SEOTools::twitter()->setSite('@zeneight');
-        // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
-        // --------------------------
-        
-        $data['footer_menu'] = DB::table('packages')
-            ->select('id', 'slug', 'title', 'price')
-            ->limit(6)
-            ->orderBy('id', 'asc')
-            ->get();
-            
-
-        $data['data'] = DB::table('packages')
-            ->select('title', 'price')
-            // ->limit(4)
-            ->orderBy('id', 'asc')
-            ->get();
-
-        return view('front.faq')
         ->with('data', $data);
     }
 
@@ -113,7 +77,7 @@ class HomeController extends Controller
             ->get();
             
         // --------- seo ------------
-        SEOTools::setTitle($data['data']->title);
+        // SEOTools::setTitle($data['data']->title);
         // --------------------------
 
         return view('front.package')
@@ -141,7 +105,7 @@ class HomeController extends Controller
             ->get();
         
         // --------- seo ------------
-        SEOTools::setTitle('Blog');
+        // SEOTools::setTitle('Blog');
         // --------------------------
 
         return view('front.blog')
@@ -181,7 +145,7 @@ class HomeController extends Controller
             ->get();
 
         // --------- seo ------------
-        SEOTools::setTitle($data['data']->title);
+        // SEOTools::setTitle($data['data']->title);
         // --------------------------
 
         return view('front.post')
