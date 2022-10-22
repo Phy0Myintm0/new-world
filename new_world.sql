@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2022 at 06:05 AM
+-- Generation Time: Oct 22, 2022 at 06:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -211,7 +211,30 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (20, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/menu_management/edit-save/5', 'Update data Activities at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>sorting</td><td>2</td><td></td></tr></tbody></table>', 1, '2022-10-21 19:55:53', NULL),
 (21, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/statistic_builder/add-save', 'Add New Data default at Statistic Builder', '', 1, '2022-10-21 19:58:24', NULL),
 (22, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/menu_management/add-save', 'Add New Data Dashboard at Menu Management', '', 1, '2022-10-21 20:03:23', NULL),
-(23, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/statistic_builder/edit-save/1', 'Update data Dashboard at Statistic Builder', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>default</td><td>Dashboard</td></tr><tr><td>slug</td><td>default</td><td></td></tr></tbody></table>', 1, '2022-10-21 20:03:48', NULL);
+(23, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/statistic_builder/edit-save/1', 'Update data Dashboard at Statistic Builder', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>default</td><td>Dashboard</td></tr><tr><td>slug</td><td>default</td><td></td></tr></tbody></table>', 1, '2022-10-21 20:03:48', NULL),
+(24, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Indonesia at Countries', '', 1, '2022-10-21 20:08:38', NULL),
+(25, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Cambodia at Countries', '', 1, '2022-10-21 20:08:51', NULL),
+(26, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Brunei at Countries', '', 1, '2022-10-21 20:09:27', NULL),
+(27, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data East Timor at Countries', '', 1, '2022-10-21 20:09:37', NULL),
+(28, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Laos at Countries', '', 1, '2022-10-21 20:09:46', NULL),
+(29, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Malaysia at Countries', '', 1, '2022-10-21 20:09:56', NULL),
+(30, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Myanmar at Countries', '', 1, '2022-10-21 20:10:03', NULL),
+(31, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Philippines at Countries', '', 1, '2022-10-21 20:10:12', NULL),
+(32, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Singapore at Countries', '', 1, '2022-10-21 20:10:18', NULL),
+(33, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Thailand at Countries', '', 1, '2022-10-21 20:10:25', NULL),
+(34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Vietnam at Countries', '', 1, '2022-10-21 20:10:31', NULL),
+(35, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/add-save', 'Add New Data Japan at Countries', '', 1, '2022-10-21 20:10:39', NULL),
+(36, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/edit-save/5', 'Update data Laos at Countries', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>desc</td><td></td><td><p><a href=\"https://en.wikipedia.org/wiki/Laos\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Laos</a><br></p></td></tr></tbody></table>', 1, '2022-10-21 20:10:55', NULL),
+(37, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/countries/edit-save/4', 'Update data East Timor at Countries', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>desc</td><td></td><td><p><a href=\"https://en.wikipedia.org/wiki/East_Timor\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">East Timor</a><br></p></td></tr></tbody></table>', 1, '2022-10-21 20:11:04', NULL),
+(38, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Rice Field at Keywords', '', 1, '2022-10-21 20:12:30', NULL),
+(39, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Forest - Land at Keywords', '', 1, '2022-10-21 20:13:06', NULL),
+(40, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Water at Keywords', '', 1, '2022-10-21 20:14:45', NULL),
+(41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Herbs at Keywords', '', 1, '2022-10-21 20:15:45', NULL),
+(42, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Cooperative at Keywords', '', 1, '2022-10-21 20:17:10', NULL),
+(43, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Food at Keywords', '', 1, '2022-10-21 20:17:58', NULL),
+(44, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Handicraft at Keywords', '', 1, '2022-10-21 20:18:46', NULL),
+(45, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Traditional Culture at Keywords', '', 1, '2022-10-21 20:20:20', NULL),
+(46, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Field at Keywords', '', 1, '2022-10-21 20:21:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -528,6 +551,24 @@ CREATE TABLE `countries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `title`, `desc`, `created_at`, `updated_at`) VALUES
+(1, 'Indonesia', '<p>indonesia</p>', '2022-10-21 20:08:38', NULL),
+(2, 'Cambodia', '<p>Cambodia<br></p>', '2022-10-21 20:08:50', NULL),
+(3, 'Brunei', 'Brunei', '2022-10-21 20:09:27', NULL),
+(4, 'East Timor', '<p><a href=\"https://en.wikipedia.org/wiki/East_Timor\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">East Timor</a><br></p>', '2022-10-21 20:09:37', '2022-10-21 20:11:04'),
+(5, 'Laos', '<p><a href=\"https://en.wikipedia.org/wiki/Laos\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Laos</a><br></p>', '2022-10-21 20:09:46', '2022-10-21 20:10:55'),
+(6, 'Malaysia', '<p><a href=\"https://en.wikipedia.org/wiki/Malaysia\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Malaysia</a><br></p>', '2022-10-21 20:09:56', NULL),
+(7, 'Myanmar', '<p><a href=\"https://en.wikipedia.org/wiki/Myanmar\" title=\"\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Myanmar</a><br></p>', '2022-10-21 20:10:03', NULL),
+(8, 'Philippines', '<table class=\"sortable wikitable jquery-tablesorter\" style=\"background-color: rgb(248, 249, 250); color: rgb(32, 33, 34); margin: 1em 0px; border: 1px solid rgb(162, 169, 177); font-family: sans-serif; text-align: right;\"><tbody><tr><th scope=\"row\" style=\"border: 1px solid rgb(162, 169, 177); padding: 0.2em 0.4em; background-color: rgb(234, 236, 240);\"><a href=\"https://en.wikipedia.org/wiki/Philippines\" title=\"Philippines\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">Philippines</a><br></th></tr></tbody></table>', '2022-10-21 20:10:12', NULL),
+(9, 'Singapore', '<p><a href=\"https://en.wikipedia.org/wiki/Singapore\" title=\"Singapore\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Singapore</a><br></p>', '2022-10-21 20:10:18', NULL),
+(10, 'Thailand', '<p><a href=\"https://en.wikipedia.org/wiki/Thailand\" title=\"Thailand\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Thailand</a><br></p>', '2022-10-21 20:10:25', NULL),
+(11, 'Vietnam', '<p><a href=\"https://en.wikipedia.org/wiki/Vietnam\" title=\"Vietnam\" style=\"color: rgb(6, 69, 173); background-image: none; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; font-family: sans-serif; font-weight: 700;\">Vietnam</a><br></p>', '2022-10-21 20:10:31', NULL),
+(12, 'Japan', '<p>Japan</p>', '2022-10-21 20:10:39', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -558,6 +599,21 @@ CREATE TABLE `keywords` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `keywords`
+--
+
+INSERT INTO `keywords` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `created_at`, `updated_at`) VALUES
+(1, 'Rice Field', '田んぼ', '<p>Rice Field<br></p>', '<p>田んぼ<br></p>', '2022-10-21 20:12:30', NULL),
+(2, 'Forest - Land', '森 - 土地', '<p>Forest - Land<br></p>', '<p>森 - 土地<br></p>', '2022-10-21 20:13:06', NULL),
+(3, 'Water', '森', '<p>Water<br></p>', '水の説明です', '2022-10-21 20:14:45', NULL),
+(4, 'Herbs', '草', '<p>Herbs<br></p>', 'これはハーブの説明です', '2022-10-21 20:15:45', NULL),
+(5, 'Cooperative', '協同組合', '<p>Cooperative<br></p>', 'これは協力的な説明です', '2022-10-21 20:17:10', NULL),
+(6, 'Food', '食', '<p>Food<br></p>', 'これは食べ物の説明です', '2022-10-21 20:17:58', NULL),
+(7, 'Handicraft', '手芸', '<p>Handicraft<br></p>', 'これは手作りの説明です', '2022-10-21 20:18:46', NULL),
+(8, 'Traditional Culture', '伝統文化', '<p>Traditional Culture<br></p>', '伝統文化の説明', '2022-10-21 20:20:20', NULL),
+(9, 'Field', '畑', '<p>Field<br></p>', '空のフィールドの説明', '2022-10-21 20:21:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -921,7 +977,7 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
@@ -987,7 +1043,7 @@ ALTER TABLE `cms_users`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -999,7 +1055,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `keyword_activities`
