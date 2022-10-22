@@ -339,9 +339,37 @@
 
 	    }
 
-
-
 	    //By the way, you can still create your own method in here... :) 
+		public function getAdd(){
+			$data['page_title'] = "Activity";
+
+			// populate dropdown
+			$data['countries'] = DB::table('countries')
+				->select('title as val', 'id')
+            	->get();
+            
+			$data['actions'] = DB::table('actions')
+				->select('title_en as val', 'id')
+				->get();
+
+			return $this->view('admin/activity/add', $data);
+		}
+
+		// pangan
+		public function getFillSelectPangan($id){
+			$data = DB::table('pedagang_pangans')
+			->join(
+				'pangans',
+				'pedagang_pangans.pangan_id',
+				'=',
+				'pangans.id'
+			)
+			->where('pedagang_pangans.pedagang_id', $id)
+			->select("pangans.nama_pangan as label")
+			->get();
+	
+			return $data;
+		}
 
 
 	}
