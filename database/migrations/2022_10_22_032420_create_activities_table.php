@@ -20,6 +20,11 @@ class CreateActivitiesTable extends Migration
             $table->foreign('id_country')
                     ->references('id')
                     ->on('countries');
+            
+            $table->integer('id_action')->unsigned();
+            $table->foreign('id_action')
+                    ->references('id')
+                    ->on('actions');
 
             $table->string('title_en');
             $table->string('title_jp');
