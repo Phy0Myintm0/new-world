@@ -20,12 +20,12 @@
     }
 </style>
 
-<p><a title='Return' href="{{ crudbooster::adminPath('pedagang_pangans') }}"><i class='fa fa-chevron-circle-left '></i>
+<p><a title='Return' href="{{ crudbooster::adminPath('activities') }}"><i class='fa fa-chevron-circle-left '></i>
         &nbsp; Kembali</a></p>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong><i class="fa fa-road"></i> Tambah Pedagang Pangan</strong>
+        <strong><i class="fa fa-tasks"></i> Add Activity</strong>
     </div>
 
     <form class="form-horizontal" method="post" id="form" enctype="multipart/form-data"
@@ -33,34 +33,58 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="panel-body">
-            {{ form_start_combobox("Pedagang", "pedagang_id", 6, "", "required", "select2") }}
-            
-            {{ form_end_combobox() }}
+            {{ form_input("Title EN", "title_en", "text", 10, "", "required") }}
+            {{ form_input("Title JP", "title_jp", "text", 10, "", "required") }}
+
+            {{ form_textarea("Desc EN", "desc_en", "textarea", "required", "") }}
+            {{ form_textarea("Desc JP", "desc_jp", "textarea", "required", "") }}
+
+            {{ form_input("Youtube URL", "youtube", "text", 10, "", "") }}
+
             <hr>
 
-            <div class="form-group">
-                <label for="pedagang_id" class="col-sm-2 control-label"></label>
-                <div class="col-md-10">
-                    <ul id="pedagang_pangan"></ul>
-                </div>
-            </div>
-
-            {{ form_start_combobox("Tambah Pangan", "pangan_id[]", 6, "", "required multiple='multiple'", "select2", false) }}
-            
+            {{ form_start_combobox("Country", "id_country", 6, "", "required", "select2") }}
+                @foreach ($countries as $item)
+                <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                @endforeach
             {{ form_end_combobox() }}
+
+            {{ form_start_combobox("Action", "id_action", 6, "", "required", "select2") }}
+                @foreach ($actions as $item)
+                <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                @endforeach
+            {{ form_end_combobox() }}
+
+            <hr>
+
+            {{ form_start_combobox("Keywords", "id_keyword[]", 6, "", "required multiple='multiple'", "select2", false) }}
+                @foreach ($keywords as $item)
+                    <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                @endforeach
+            {{ form_end_combobox() }}
+
+            <!-- <div class="form-group">
+                <label for="id_keyword" class="col-sm-2 control-label"></label>
+                <div class="col-md-10">
+                    <ul id="keyword_activities"></ul>
+                </div>
+            </div> -->
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-6">
-                    <div class="callout callout-primary">
-                        <h4><i class="fa fa-exclamation-circle"></i> Catatan</h4>
-                        <p>Anda dapat memilih lebih dari satu jenis pangan.</p>
+                    <div class="callout callout-info">
+                        <h4><i class="fa fa-exclamation-circle"></i> Note:</h4>
+                        <p>You could add more than one keyword.</p>
                     </div>
                     <br>
                 </div>
             </div>
 
+            {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
+
         </div>
         <div class="panel-footer">
-            <input type="submit" name="submit" value="{{trans('crudbooster.button_save_more')}}"
+            <input type="submit" name="submit" value="Save & Add More"
                 class='btn btn-success'>
             <input type="submit" name="submit" class="btn btn-primary" value="Save Data">
         </div>

@@ -224,7 +224,9 @@ function form_input($label, $name, $type="text", $width="5", $class="", $attr=""
         echo 
         '</label>
         <div class="col-sm-'.$width.'">
-            <input type="'.$type.'" class="form-control '.$class.'" id="'.$name.'" name="'.$name.'" autocomplete="off" placeholder="Masukkan Data" '.$attr.'>
+            <input type="'.$type.'" class="form-control '.$class.'" id="'.$name.'" name="'.$name.'" autocomplete="off" placeholder="Input Data" '.$attr.'>
+            <p class="help-block"></p>
+            <div class="text-danger"></div>
         </div>';
 
         if($belakang!=""){
@@ -256,7 +258,7 @@ function form_start_combobox($label, $name, $width='5', $class="", $attr="requir
             <div class="col-sm-'.$width.'">
                 <select class="form-control '.$class.' '.$tipe.'" id="'.$name.'" name="'.$name.'" '.$attr.'>';
                 if($placeholder==true){
-                    echo '<option value="" selected>** Silahkan Pilih '.$label.' -</option>';
+                    echo '<option value="" selected>** Please choose '.$label.' -</option>';
                 }
 }
 function form_end_combobox($spinner=0) {
@@ -309,13 +311,15 @@ function form_radio($label, $nama) {
     </div>
     ';
 }
-function form_mediapicker($label, $nama, $lebar='4', $tipe='0', $modal_id='') {
+function form_mediapicker($label, $nama, $lebar='10', $tipe='0', $modal_id='') {
     echo '
     <div class="form-group">
         <label for="'.$nama.'" class="col-sm-2 control-label">'.$label.'</label>
         <div class="col-sm-'.$lebar.'">
             <div id="file-'.$nama.'"></div>
-            <input id="'.$nama.'" type="file" name="'.$nama.'">
+            <input id="'.$nama.'" class="form-control" type="file" name="'.$nama.'">
+            <p class="help-block"></p>
+            <div class="text-danger"></div>
         </div>
     </div>
     ';
@@ -394,9 +398,16 @@ function emptyObj($obj) {
 function form_textarea($label, $name, $class="", $attr="", $val="") {
     echo '
     <div class="form-group">
-        <label for="'.$name.'" class="col-sm-2 control-label">'.$label.'</label>
+        <label for="'.$name.'" class="col-sm-2 control-label">'.$label;
+        if (strpos($attr, 'required') !== false) {
+            echo '<span class="text-danger" title="This field is required">*</span>';
+        }
+        echo
+        '</label>
         <div class="col-sm-10">
-            <textarea class="form-control compose-textarea '.$class.'" rows="8" name="'.$name.'" id="tes" '.$attr.'>'.$val.'</textarea>
+            <textarea class="form-control compose-textarea '.$class.'" rows="3" name="'.$name.'" id="tes" '.$attr.'>'.$val.'</textarea>
+            <p class="help-block"></p>
+            <div class="text-danger"></div>
         </div>
     </div>
     ';

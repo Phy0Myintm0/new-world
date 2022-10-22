@@ -38,16 +38,16 @@
 			$this->form = [];
 			$this->form[] = ['label'=>'Activity','name'=>'id_activity','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'activities,title_jp'];
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'textarea','validation'=>'required|string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'File','name'=>'file','type'=>'textarea','validation'=>'required|string','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'string','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Activity","name"=>"id_activity","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"activity,id"];
-			//$this->form[] = ["label"=>"Title","name"=>"title","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
-			//$this->form[] = ["label"=>"Url","name"=>"url","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"File","name"=>"file","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+			//$this->form[] = ['label'=>'Activity','name'=>'id_activity','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'activities,title_jp'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Url','name'=>'url','type'=>'textarea','validation'=>'required|string','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'File','name'=>'file','type'=>'textarea','validation'=>'required|string','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

@@ -50,6 +50,7 @@
 			$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','validation'=>'','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -166,6 +167,40 @@
 	        |
 	        */
 	        $this->script_js = NULL;
+			$this->script_js .= "
+				// input
+				$('.select2').select2();
+
+				// summernote
+				$('.textarea').summernote({
+					height: ($(window).height() - 600),
+					callbacks: {
+						onImageUpload: function (image) {
+							uploadImagedesc_en(image[0]);
+						}
+					}
+				});
+	
+				function uploadImagedesc_en(image) {
+					var data = new FormData();
+					data.append(\"userfile\", image);
+					$.ajax({
+						url: '".CRUDBooster::mainpath('upload-summernote')."',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: data,
+						type: \"post\",
+						success: function (url) {
+							var image = $('<img>').attr('src', url);
+							$('#desc_en').summernote(\"insertNode\", image[0]);
+						},
+						error: function (data) {
+							console.log(data);
+						}
+					});
+				}
+			";
 
 
             /*
@@ -201,6 +236,8 @@
 	        |
 	        */
 	        $this->load_js = array();
+			$this->load_js[] = asset("vendor/crudbooster/assets/select2/dist/js/select2.full.min.js");
+			$this->load_js[] = asset("vendor/crudbooster/assets/summernote/summernote.min.js");
 	        
 	        
 	        
@@ -213,6 +250,26 @@
 	        |
 	        */
 	        $this->style_css = NULL;
+			$this->style_css = "
+
+				.select2-container--default .select2-selection--single {
+					border-radius: 0px !important
+				}
+				.select2-container .select2-selection--single {
+					height: 35px !important
+				}
+				.select2-container--default .select2-selection--multiple .select2-selection__choice {
+					background-color: #3c8dbc !important;
+					border-color: #367fa9 !important;
+					color: #fff !important;
+				}
+				.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+					color: #fff !important;
+				}
+				.select2-container {
+					width:100%;
+				}
+			";
 	        
 	        
 	        
@@ -225,6 +282,8 @@
 	        |
 	        */
 	        $this->load_css = array();
+			$this->load_css[] = asset("vendor/crudbooster/assets/select2/dist/css/select2.min.css");
+			$this->load_css[] = asset("vendor/crudbooster/assets/summernote/summernote.css");
 	        
 	        
 	    }
@@ -275,6 +334,51 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
+			// dd($postdata);
+
+			$numItems = count($postdata['id_keyword']);
+			$i = 0;
+			foreach($postdata['id_keyword'] as $item) {
+				if(++$i<$numItems){
+					try {
+						$result = DB::table('keyword_activities')->insert(
+							[
+								'id_activity' => 99, 
+								'id_keyword' => $item,
+								'created_at' => $postdata["created_at"]
+							]
+						);
+					} catch (\Illuminate\Database\QueryException $e){
+						$errorCode = $e->errorInfo[1];
+
+						// dd($e->errorInfo);
+						if($errorCode == 1062){
+							// houston, we have a duplicate entry problem
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+							exit;
+						}else{
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+							exit;
+						}
+						// dd('test!');
+					}
+				}else{
+					$check = DB::table('keyword_activities')
+					->where([
+						'id_activity' => 99,
+						'id_keyword' => $item,
+					])->count();
+
+					if($check==0){
+						$data = $item;
+					} else {
+						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+						exit();
+					}
+				}
+			}
+			
+			$postdata['id_keyword'] = $data;
 
 	    }
 
@@ -287,6 +391,7 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			
 
 	    }
 
@@ -349,6 +454,10 @@
             	->get();
             
 			$data['actions'] = DB::table('actions')
+				->select('title_en as val', 'id')
+				->get();
+
+			$data['keywords'] = DB::table('keywords')
 				->select('title_en as val', 'id')
 				->get();
 
