@@ -405,7 +405,7 @@ function form_textarea($label, $name, $class="", $attr="", $val="") {
         echo
         '</label>
         <div class="col-sm-10">
-            <textarea class="form-control compose-textarea '.$class.'" rows="3" name="'.$name.'" id="tes" '.$attr.'>'.$val.'</textarea>
+            <textarea class="form-control compose-textarea '.$class.'" rows="3" name="'.$name.'" id="'.$name.'" '.$attr.'>'.$val.'</textarea>
             <p class="help-block"></p>
             <div class="text-danger"></div>
         </div>

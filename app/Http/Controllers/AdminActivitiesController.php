@@ -173,8 +173,8 @@
 				$('.select2').select2();
 
 				// summernote
-				$('.textarea').summernote({
-					height: ($(window).height() - 600),
+				$('#desc_en').summernote({
+					height: ($(window).height() - 800),
 					callbacks: {
 						onImageUpload: function (image) {
 							uploadImagedesc_en(image[0]);
@@ -195,6 +195,35 @@
 						success: function (url) {
 							var image = $('<img>').attr('src', url);
 							$('#desc_en').summernote(\"insertNode\", image[0]);
+						},
+						error: function (data) {
+							console.log(data);
+						}
+					});
+				}
+
+				$('#desc_jp').summernote({
+					height: ($(window).height() - 800),
+					callbacks: {
+						onImageUpload: function (image) {
+							uploadImagedesc_jp(image[0]);
+						}
+					}
+				});
+	
+				function uploadImagedesc_jp(image) {
+					var data = new FormData();
+					data.append(\"userfile\", image);
+					$.ajax({
+						url: '".CRUDBooster::mainpath('upload-summernote')."',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: data,
+						type: \"post\",
+						success: function (url) {
+							var image = $('<img>').attr('src', url);
+							$('#desc_jp').summernote(\"insertNode\", image[0]);
 						},
 						error: function (data) {
 							console.log(data);
@@ -436,6 +465,8 @@
 	    */
 	    public function hook_before_delete($id) {
 	        //Your code here
+			// delete pivot data
+			DB::table('keyword_activities')->where('id_activity', $id)->delete();
 
 	    }
 
