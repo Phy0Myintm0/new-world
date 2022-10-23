@@ -336,49 +336,7 @@
 	        //Your code here
 			// dd($postdata);
 
-			$numItems = count($postdata['id_keyword']);
-			$i = 0;
-			foreach($postdata['id_keyword'] as $item) {
-				if(++$i<$numItems){
-					try {
-						$result = DB::table('keyword_activities')->insert(
-							[
-								'id_activity' => 99, 
-								'id_keyword' => $item,
-								'created_at' => $postdata["created_at"]
-							]
-						);
-					} catch (\Illuminate\Database\QueryException $e){
-						$errorCode = $e->errorInfo[1];
-
-						// dd($e->errorInfo);
-						if($errorCode == 1062){
-							// houston, we have a duplicate entry problem
-							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
-							exit;
-						}else{
-							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
-							exit;
-						}
-						// dd('test!');
-					}
-				}else{
-					$check = DB::table('keyword_activities')
-					->where([
-						'id_activity' => 99,
-						'id_keyword' => $item,
-					])->count();
-
-					if($check==0){
-						$data = $item;
-					} else {
-						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
-						exit();
-					}
-				}
-			}
-			
-			$postdata['id_keyword'] = $data;
+			$postdata['id_keyword'] = serialize($postdata['id_keyword']);
 
 	    }
 
@@ -389,8 +347,55 @@
 	    | @id = last insert id
 	    | 
 	    */
-	    public function hook_after_add($id) {        
+	    public function hook_after_add($id) {
 	        //Your code here
+			// $activity = DB::table('activities')
+			// 	->where('id', $id)
+			// 	->get();
+
+			// $numItems = count($activity['id_keyword']);
+			// $i = 0;
+			// foreach($activity['id_keyword'] as $item) {
+			// 	if(++$i<$numItems){
+			// 		try {
+			// 			$result = DB::table('keyword_activities')->insert(
+			// 				[
+			// 					'id_activity' => 99, 
+			// 					'id_keyword' => $item,
+			// 					'created_at' => $postdata["created_at"]
+			// 				]
+			// 			);
+			// 		} catch (\Illuminate\Database\QueryException $e){
+			// 			$errorCode = $e->errorInfo[1];
+
+			// 			// dd($e->errorInfo);
+			// 			if($errorCode == 1062){
+			// 				// houston, we have a duplicate entry problem
+			// 				CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+			// 				exit;
+			// 			}else{
+			// 				CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+			// 				exit;
+			// 			}
+			// 			// dd('test!');
+			// 		}
+			// 	}else{
+			// 		$check = DB::table('keyword_activities')
+			// 		->where([
+			// 			'id_activity' => 99,
+			// 			'id_keyword' => $item,
+			// 		])->count();
+
+			// 		if($check==0){
+			// 			$data = $item;
+			// 		} else {
+			// 			CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+			// 			exit();
+			// 		}
+			// 	}
+			// }
+			
+			// $postdata['id_keyword'] = $data;
 			
 
 	    }
@@ -478,6 +483,21 @@
 			->get();
 	
 			return $data;
+		}
+
+		// test
+		public function getTest(){
+			$data['page_title'] = "Test";
+
+			// populate dropdown
+			$data['activity'] = DB::table('activities')
+				->select('*')
+				->where('id', 3)
+				->first();
+
+			dd(unserialize($data['activity']->id_keyword));
+
+			// return $this->view('admin/activity/add', $data);
 		}
 
 
