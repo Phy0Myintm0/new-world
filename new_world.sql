@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2022 at 06:22 AM
+-- Generation Time: Oct 24, 2022 at 12:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -39,6 +39,19 @@ CREATE TABLE `actions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `actions`
+--
+
+INSERT INTO `actions` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `img`, `bg`, `created_at`, `updated_at`) VALUES
+(1, 'Workshop', 'ワークショップ', '<p>Workshop description</p>', 'ワークショップ', 'object-group', NULL, '2022-10-22 00:11:19', NULL),
+(2, 'Learn/Game', '学び', 'Learn/Game', 'Descriptiion of 学び', 'gamepad', NULL, '2022-10-22 00:12:28', NULL),
+(3, 'Tour', 'ツアー', 'ツアー\r\nTour', 'ツアー\r\nTour', 'suitcase', NULL, '2022-10-22 00:13:16', NULL),
+(4, 'Idea', 'アイデア', '<p>Idea<br></p>', '<p>アイデア<br></p>', 'lightbulb-o', NULL, '2022-10-22 00:14:54', NULL),
+(5, 'Shopping', '買物', '<p>Shopping</p>', 'Description of 買物', 'shopping-bag', NULL, '2022-10-22 02:21:39', NULL),
+(6, 'Entrepreneur Support', '起業家サポート', '起業家サポート\r\nEntrepreneur Support', '起業家サポート Entrepreneur Support', 'users', NULL, '2022-10-22 02:22:40', NULL),
+(7, 'Join as Avatar', 'アバターとして参加する', 'アバターとして参加する\r\nJoin as Avatar', 'アバターとして参加する\r\nJoin as Avatar', 'user-plus', NULL, '2022-10-22 02:23:36', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -53,15 +66,24 @@ CREATE TABLE `activities` (
   `title_jp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc_jp` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `youtube` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo_cover` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo3` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo4` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`id`, `id_country`, `id_action`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `youtube`, `photo_cover`, `photo1`, `photo2`, `photo3`, `photo4`, `id_keyword`, `created_at`, `updated_at`) VALUES
+(7, 3, 2, 'Hebatnya', 'Hebatnya', '<p>Hebatnya<br></p>', '<p>Hebatnya<br></p>', NULL, NULL, NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"3\";i:1;s:1:\"4\";i:2;s:1:\"7\";}', '2022-10-22 23:11:22', NULL),
+(8, 1, 2, 'Coba Muahaha Laper bangett', 'Coba Muahaha', '<p>coba banyakda ta<br></p>', '<p>coba banyakda ta<br></p>', NULL, 'uploads/1/2022-10/kotasawah.jpg', NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"2\";i:1;s:1:\"3\";i:2;s:1:\"8\";}', '2022-10-23 00:22:57', '2022-10-23 00:35:35');
 
 -- --------------------------------------------------------
 
@@ -164,7 +186,7 @@ CREATE TABLE `cms_email_templates` (
 --
 
 INSERT INTO `cms_email_templates` (`id`, `name`, `slug`, `subject`, `content`, `description`, `from_name`, `from_email`, `cc_email`, `created_at`, `updated_at`) VALUES
-(1, 'Email Template Forgot Password Backend', 'forgot_password_backend', NULL, '<p>Hi,</p><p>Someone requested forgot password, here is your new password : </p><p>[password]</p><p><br></p><p>--</p><p>Regards,</p><p>Admin</p>', '[password]', 'System', 'system@crudbooster.com', NULL, '2022-08-02 05:21:45', NULL);
+(1, 'Email Template Forgot Password Backend', 'forgot_password_backend', 'Setting', '<p>Hi,</p><p>Someone requested forgot password, here is your new password : </p><p>[password]</p><p><br></p><p>--</p><p>Regards,</p><p>Admin</p>', '[password]', 'System', 'system@new-world.net', NULL, '2022-08-02 05:21:45', '2022-10-23 00:32:38');
 
 -- --------------------------------------------------------
 
@@ -234,7 +256,37 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (43, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Food at Keywords', '', 1, '2022-10-21 20:17:58', NULL),
 (44, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Handicraft at Keywords', '', 1, '2022-10-21 20:18:46', NULL),
 (45, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Traditional Culture at Keywords', '', 1, '2022-10-21 20:20:20', NULL),
-(46, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Field at Keywords', '', 1, '2022-10-21 20:21:01', NULL);
+(46, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/add-save', 'Add New Data Field at Keywords', '', 1, '2022-10-21 20:21:01', NULL),
+(47, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-10-22 00:09:50', NULL),
+(48, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Workshop at Actions', '', 1, '2022-10-22 00:11:19', NULL),
+(49, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Learn/Game at Actions', '', 1, '2022-10-22 00:12:28', NULL),
+(50, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Tour at Actions', '', 1, '2022-10-22 00:13:16', NULL),
+(51, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Idea at Actions', '', 1, '2022-10-22 00:14:54', NULL),
+(52, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Shopping at Actions', '', 1, '2022-10-22 02:21:39', NULL),
+(53, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Entrepreneur Support at Actions', '', 1, '2022-10-22 02:22:40', NULL),
+(54, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/add-save', 'Add New Data Join as Avatar at Actions', '', 1, '2022-10-22 02:23:36', NULL),
+(55, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-10-22 12:04:06', NULL),
+(56, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data dafasdfasdf at Activities', '', 1, '2022-10-22 13:03:44', NULL),
+(57, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-10-22 19:51:53', NULL),
+(58, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data Coba input data at Activities', '', 1, '2022-10-22 22:51:56', NULL),
+(59, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete/2', 'Delete data dafasdfasdf at Activities', '', 1, '2022-10-22 23:04:49', NULL),
+(60, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete/1', 'Delete data coba test at Activities', '', 1, '2022-10-22 23:04:53', NULL),
+(61, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data The best singing slazer at Activities', '', 1, '2022-10-22 23:05:16', NULL),
+(62, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data coba banyakda ta at Activities', '', 1, '2022-10-22 23:08:30', NULL),
+(63, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data Hebatnya at Activities', '', 1, '2022-10-22 23:11:22', NULL),
+(64, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete/4', 'Delete data The best singing slazer at Activities', '', 1, '2022-10-22 23:48:25', NULL),
+(65, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete/3', 'Delete data Coba input data at Activities', '', 1, '2022-10-22 23:48:55', NULL),
+(66, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/links/add-save', 'Add New Data Sebuah link at Links', '', 1, '2022-10-23 00:06:30', NULL),
+(67, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data coba banyakda ta at Activities', '', 1, '2022-10-23 00:22:57', NULL),
+(68, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete/6', 'Delete data coba banyakda ta at Activities', '', 1, '2022-10-23 00:23:31', NULL),
+(69, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>title_en</td><td>coba banyakda ta</td><td>Coba Muahaha</td></tr><tr><td>title_jp</td><td>coba banyakda ta</td><td>Coba Muahaha</td></tr></tbody></table>', 1, '2022-10-23 00:25:42', NULL),
+(70, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>id_keyword</td><td>a:1:{i:0;s:1:\"2\";}</td><td>a:3:{i:0;s:1:\"2\";i:1;s:1:\"3\";i:2;s:1:\"8\";}</td></tr></tbody></table>', 1, '2022-10-23 00:26:02', NULL),
+(71, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>id_country</td><td>5</td><td>1</td></tr><tr><td>id_action</td><td>5</td><td>2</td></tr></tbody></table>', 1, '2022-10-23 00:26:48', NULL),
+(72, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/settings/add-save', 'Add New Data about at Settings', '', 1, '2022-10-23 00:29:22', NULL),
+(73, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/settings/edit-save/17', 'Update data  at Settings', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>about</td><td></td></tr><tr><td>content</td><td></td><td></td></tr><tr><td>content_input_type</td><td>wysiwyg</td><td>textarea</td></tr><tr><td>dataenum</td><td></td><td></td></tr><tr><td>helper</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-23 00:31:19', NULL),
+(74, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/email_templates/edit-save/1', 'Update data Email Template Forgot Password Backend at Email Templates', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>subject</td><td></td><td>Setting</td></tr><tr><td>from_email</td><td>system@crudbooster.com</td><td>system@new-world.net</td></tr><tr><td>cc_email</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-23 00:32:38', NULL),
+(75, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-23 00:33:40', NULL),
+(76, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha Laper bangett at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-23 00:35:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -448,19 +500,20 @@ INSERT INTO `cms_settings` (`id`, `name`, `content`, `content_input_type`, `data
 (1, 'login_background_color', NULL, 'text', NULL, 'Input hexacode', '2022-08-02 05:21:45', NULL, 'Login Register Style', 'Login Background Color'),
 (2, 'login_font_color', NULL, 'text', NULL, 'Input hexacode', '2022-08-02 05:21:45', NULL, 'Login Register Style', 'Login Font Color'),
 (3, 'login_background_image', 'uploads/2022-08/a3efe9568907485e4678ccaba27019c5.jpg', 'upload_image', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Login Register Style', 'Login Background Image'),
-(4, 'email_sender', 'support@crudbooster.com', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'Email Sender'),
+(4, 'email_sender', 'support@new-world.net', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'Email Sender'),
 (5, 'smtp_driver', 'mail', 'select', 'smtp,mail,sendmail', NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'Mail Driver'),
-(6, 'smtp_host', '', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Host'),
+(6, 'smtp_host', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Host'),
 (7, 'smtp_port', '25', 'text', NULL, 'default 25', '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Port'),
-(8, 'smtp_username', '', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Username'),
-(9, 'smtp_password', '', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Password'),
+(8, 'smtp_username', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Username'),
+(9, 'smtp_password', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Email Setting', 'SMTP Password'),
 (10, 'appname', 'New World', 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Application Name'),
 (11, 'default_paper_size', 'A4', 'text', NULL, 'Paper size, ex : A4, Legal, etc', '2022-08-02 05:21:45', NULL, 'Application Setting', 'Default Paper Print Size'),
 (12, 'logo', 'uploads/2022-10/b887c300f72213f8015b58716acba21f.png', 'upload_image', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Logo'),
 (13, 'favicon', 'uploads/2022-08/9549278691f8d624bbc38f872378da24.png', 'upload_image', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Favicon'),
 (14, 'api_debug_mode', 'true', 'select', 'true,false', NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'API Debug Mode'),
 (15, 'google_api_key', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Google API Key'),
-(16, 'google_fcm_key', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Google FCM Key');
+(16, 'google_fcm_key', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Google FCM Key'),
+(17, 'about', NULL, 'textarea', NULL, NULL, '2022-10-23 00:29:22', '2022-10-23 00:31:19', 'General Setting', 'About');
 
 -- --------------------------------------------------------
 
@@ -629,6 +682,18 @@ CREATE TABLE `keyword_activities` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `keyword_activities`
+--
+
+INSERT INTO `keyword_activities` (`id`, `id_keyword`, `id_activity`, `created_at`, `updated_at`) VALUES
+(8, 3, 7, '2022-10-22 23:11:22', NULL),
+(9, 4, 7, '2022-10-22 23:11:22', NULL),
+(10, 7, 7, '2022-10-22 23:11:22', NULL),
+(22, 2, 8, '2022-10-23 00:22:57', NULL),
+(23, 3, 8, '2022-10-23 00:22:57', NULL),
+(24, 8, 8, '2022-10-23 00:22:57', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -644,6 +709,13 @@ CREATE TABLE `links` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `links`
+--
+
+INSERT INTO `links` (`id`, `id_activity`, `title`, `url`, `file`, `created_at`, `updated_at`) VALUES
+(1, 7, 'Sebuah link', '', 'uploads/1/2022-10/agung.pdf', '2022-10-23 00:06:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -935,13 +1007,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actions`
 --
 ALTER TABLE `actions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cms_apicustom`
@@ -977,7 +1049,7 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
@@ -1019,7 +1091,7 @@ ALTER TABLE `cms_privileges_roles`
 -- AUTO_INCREMENT for table `cms_settings`
 --
 ALTER TABLE `cms_settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `cms_statistics`
@@ -1061,13 +1133,13 @@ ALTER TABLE `keywords`
 -- AUTO_INCREMENT for table `keyword_activities`
 --
 ALTER TABLE `keyword_activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `links`
 --
 ALTER TABLE `links`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
