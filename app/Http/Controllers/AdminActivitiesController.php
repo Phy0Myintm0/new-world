@@ -15,12 +15,12 @@
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
-			$this->button_bulk_action = true;
+			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
-			$this->button_detail = true;
+			$this->button_detail = false;
 			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
@@ -30,10 +30,10 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Country","name"=>"id_country","join"=>"countries,title"];
-			$this->col[] = ["label"=>"Action","name"=>"id_action","join"=>"actions,title_jp"];
 			$this->col[] = ["label"=>"Title EN","name"=>"title_en"];
 			$this->col[] = ["label"=>"Title JP","name"=>"title_jp"];
+			$this->col[] = ["label"=>"Country","name"=>"id_country","join"=>"countries,title"];
+			$this->col[] = ["label"=>"Action","name"=>"id_action","join"=>"actions,title_jp"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -50,23 +50,24 @@
 			$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','validation'=>'','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
+			$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Country","name"=>"id_country","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"country,id"];
-			//$this->form[] = ["label"=>"Action","name"=>"id_action","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"action,id"];
-			//$this->form[] = ["label"=>"Title En","name"=>"title_en","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Title Jp","name"=>"title_jp","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Desc En","name"=>"desc_en","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Desc Jp","name"=>"desc_jp","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Youtube","name"=>"youtube","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Photo Cover","name"=>"photo_cover","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Photo1","name"=>"photo1","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Photo2","name"=>"photo2","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Photo3","name"=>"photo3","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Photo4","name"=>"photo4","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+			//$this->form[] = ['label'=>'Country','name'=>'id_country','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'countries,title'];
+			//$this->form[] = ['label'=>'Action','name'=>'id_action','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'actions,title_jp'];
+			//$this->form[] = ['label'=>'Title EN','name'=>'title_en','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc JP','name'=>'desc_jp','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Youtube','name'=>'youtube','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Photo Cover','name'=>'photo_cover','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Photo1','name'=>'photo1','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','validation'=>'','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			# OLD END FORM
 
 			/* 
@@ -349,55 +350,56 @@
 	    */
 	    public function hook_after_add($id) {
 	        //Your code here
-			// $activity = DB::table('activities')
-			// 	->where('id', $id)
-			// 	->get();
+			$activity = DB::table('activities')
+				->where('id', $id)
+				->first();
 
-			// $numItems = count($activity['id_keyword']);
-			// $i = 0;
-			// foreach($activity['id_keyword'] as $item) {
-			// 	if(++$i<$numItems){
-			// 		try {
-			// 			$result = DB::table('keyword_activities')->insert(
-			// 				[
-			// 					'id_activity' => 99, 
-			// 					'id_keyword' => $item,
-			// 					'created_at' => $postdata["created_at"]
-			// 				]
-			// 			);
-			// 		} catch (\Illuminate\Database\QueryException $e){
-			// 			$errorCode = $e->errorInfo[1];
+			$datanya = unserialize($activity->id_keyword);
 
-			// 			// dd($e->errorInfo);
-			// 			if($errorCode == 1062){
-			// 				// houston, we have a duplicate entry problem
-			// 				CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
-			// 				exit;
-			// 			}else{
-			// 				CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
-			// 				exit;
-			// 			}
-			// 			// dd('test!');
-			// 		}
-			// 	}else{
-			// 		$check = DB::table('keyword_activities')
-			// 		->where([
-			// 			'id_activity' => 99,
-			// 			'id_keyword' => $item,
-			// 		])->count();
+			$numItems = count($datanya);
+			$i = 0;
 
-			// 		if($check==0){
-			// 			$data = $item;
-			// 		} else {
-			// 			CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
-			// 			exit();
-			// 		}
-			// 	}
-			// }
+			// dd($numItems);
+			foreach($datanya as $item) {
+				if(++$i<=$numItems){
+					try {
+						$result = DB::table('keyword_activities')->insert(
+							[
+								'id_activity' => $activity->id, 
+								'id_keyword' => $item,
+								'created_at' => $activity->created_at
+							]
+						);
+					} catch (\Illuminate\Database\QueryException $e){
+						$errorCode = $e->errorInfo[1];
+
+						// dd($e->errorInfo);
+						if($errorCode == 1062){
+							// houston, we have a duplicate entry problem
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+							exit;
+						}else{
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+							exit;
+						}
+						// dd('test!');
+					}
+				}else{
+					$check = DB::table('keyword_activities')
+					->where([
+						'id_activity' => $activity->id,
+						'id_keyword' => $item,
+					])->count();
+
+					if($check==0){
+						$data = $item;
+					} else {
+						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+						exit();
+					}
+				}
+			}
 			
-			// $postdata['id_keyword'] = $data;
-			
-
 	    }
 
 	    /* 
@@ -469,7 +471,41 @@
 			return $this->view('admin/activity/add', $data);
 		}
 
-		// pangan
+		// getEdit
+		public function getEdit($id){
+			//Create an Auth
+			if(!CRUDBooster::isUpdate() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
+				CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
+			}
+
+			$data = [];
+			$data['page_title'] = 'Edit Activity';
+			$data['row'] = DB::table('activities')
+				->where(
+					'id',
+					$id
+					)
+				->first();
+			
+			// populate dropdown
+			$data['countries'] = DB::table('countries')
+				->select('title as val', 'id')
+            	->get();
+            
+			$data['actions'] = DB::table('actions')
+				->select('title_en as val', 'id')
+				->get();
+
+			$data['keywords'] = DB::table('keywords')
+				->select('title_en as val', 'id')
+				->get();
+
+			// dd($data);
+
+			return $this->view('admin/activity/edit', $data);
+		}
+
+		// data select
 		public function getFillSelectPangan($id){
 			$data = DB::table('pedagang_pangans')
 			->join(
