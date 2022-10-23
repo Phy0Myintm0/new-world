@@ -29,7 +29,7 @@
     </div>
 
     <form class="form-horizontal" method="post" id="form" enctype="multipart/form-data"
-        action="{{ crudbooster::mainpath('add-save') }}">
+        action="{{ crudbooster::mainpath('edit-save/'.$row->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="panel-body">
@@ -39,7 +39,7 @@
             {{ form_textarea("Desc EN", "desc_en", "textarea", "required", $row->desc_en) }}
             {{ form_textarea("Desc JP", "desc_jp", "textarea", "required", $row->desc_jp) }}
 
-            {{ form_input("Youtube URL", "youtube", "text", 10, "", "") }}
+            {{ form_input("Youtube URL", "youtube", "text", 10, "", "value='$row->youtube'") }}
 
             <hr>
         
@@ -81,7 +81,24 @@
                 </div>
             </div>
 
-            {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
+            @if($row->photo_cover!=null)
+                <div class="form-group header-group-0" id="form-group-file" style="">
+                    <label class="col-sm-2 control-label">Photo Cover</label>
+                    <div class="col-sm-10">
+                        <p><a data-lightbox="roadtrip" href="{{ URL::to('/').'/'.$row->photo_cover }}">
+                            <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo_cover }}">
+                        </a></p>
+                        <input type="hidden" name="_photo_cover" value="{{ $row->photo_cover }}">
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo_cover.'&amp;id='.$row->id.'&amp;column=photo_cover') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
+
+                        <div class="text-danger"></div>
+                    </div>
+                </div>
+            @else
+                {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
+            @endif
+
 
         </div>
         <div class="panel-footer">

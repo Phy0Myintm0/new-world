@@ -174,7 +174,7 @@
 
 				// summernote
 				$('#desc_en').summernote({
-					height: ($(window).height() - 800),
+					height: ($(window).height() - 500),
 					callbacks: {
 						onImageUpload: function (image) {
 							uploadImagedesc_en(image[0]);
@@ -203,7 +203,7 @@
 				}
 
 				$('#desc_jp').summernote({
-					height: ($(window).height() - 800),
+					height: ($(window).height() - 500),
 					callbacks: {
 						onImageUpload: function (image) {
 							uploadImagedesc_jp(image[0]);
@@ -441,6 +441,12 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
+			// insert serialized array to db 
+			$postdata['id_keyword'] = serialize($postdata['id_keyword']);
+
+			// delete pivot data
+			DB::table('keyword_activities')->where('id_activity', $id)->delete();
+
 
 	    }
 
@@ -453,6 +459,55 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
+			$activity = DB::table('activities')
+				->where('id', $id)
+				->first();
+
+			$datanya = unserialize($activity->id_keyword);
+
+			$numItems = count($datanya);
+			$i = 0;
+
+			// dd($numItems);
+			foreach($datanya as $item) {
+				if(++$i<=$numItems){
+					try {
+						$result = DB::table('keyword_activities')->insert(
+							[
+								'id_activity' => $activity->id, 
+								'id_keyword' => $item,
+								'created_at' => $activity->created_at
+							]
+						);
+					} catch (\Illuminate\Database\QueryException $e){
+						$errorCode = $e->errorInfo[1];
+
+						// dd($e->errorInfo);
+						if($errorCode == 1062){
+							// houston, we have a duplicate entry problem
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+							exit;
+						}else{
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+							exit;
+						}
+						// dd('test!');
+					}
+				}else{
+					$check = DB::table('keyword_activities')
+					->where([
+						'id_activity' => $activity->id,
+						'id_keyword' => $item,
+					])->count();
+
+					if($check==0){
+						$data = $item;
+					} else {
+						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+						exit();
+					}
+				}
+			}
 
 	    }
 
