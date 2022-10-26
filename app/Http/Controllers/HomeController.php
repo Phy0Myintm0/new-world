@@ -23,13 +23,13 @@ class HomeController extends Controller
         // --------------------------
 
         $data['keywords'] = DB::table('keywords')
-            ->select('title_en', 'title_jp')
+            ->select('title_en', 'title_jp', 'slug')
             // ->limit(4)
             ->orderBy('id', 'asc')
             ->get();
 
         $data['actions'] = DB::table('actions')
-            ->select('title_en', 'title_jp', 'img')
+            ->select('title_en', 'title_jp', 'img', 'slug')
             // ->limit(4)
             ->orderBy('id', 'asc')
             ->get();

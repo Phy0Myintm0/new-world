@@ -27,7 +27,7 @@
             <ul class="menu">
             @foreach($data['keywords'] as $item)  
                 <li class="spread">
-                    <a class="unit" href="list.html">
+                    <a class="unit" href="{{ url('keyword').'/'.$item->slug }}">
                         <span class="text-bunder">{{ $item->title_jp }}<br>{{ $item->title_en }}</span>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
 <ul class="row">
     @foreach($data['actions'] as $item)
     <li class="tm-tab-link-item col-md-3">
-        <a id="tab2" href="actions.html" class="tm-tab-link">
+        <a id="tab2" href="{{ url('action').'/'.$item->slug }}" class="tm-tab-link">
             <i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
             <span class="tm-tab-link-label">
                 {{ $item->title_jp }}
