@@ -22,3 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'HomeController@index');
+
+Route::get('/activity/{slug}', 'HomeController@activity');
+Route::get('/action/{slug}', 'HomeController@action');
+Route::get('/keyword/{slug}', 'HomeController@keyword');
