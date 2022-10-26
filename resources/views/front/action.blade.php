@@ -9,14 +9,14 @@
     <div class="col-xs-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</li>
             </ol>
         </nav>
     </div>
 </div>
 
-<div class="row tm-services-row">
+<div class="row justify-content-center tm-services-row">
     @foreach($data['activities'] as $item)
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="action-image">

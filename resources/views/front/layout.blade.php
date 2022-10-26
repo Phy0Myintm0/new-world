@@ -17,6 +17,9 @@
 <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
 <link rel="stylesheet" href="{{ asset('vendor/css/style.css') }}">
 
+<!-- custom css -->
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
