@@ -50,43 +50,27 @@ class HomeController extends Controller
         ->with('data', $data);
     }
 
-    public function locations()
+    public function action($slug)
     {
         $data['test'] = 'test';
-        $data['footer_menu'] = DB::table('packages')
-            ->select('id', 'slug', 'title', 'price')
-            ->limit(6)
-            ->orderBy('id', 'asc')
-            ->get();
 
-        return view('front.location')
-        ->with('data', $data);
-    }
-
-    public function package($slug)
-    {
-        $data['test'] = 'test';
-        $data['footer_menu'] = DB::table('packages')
-            ->select('id', 'slug', 'title', 'price')
-            ->limit(6)
-            ->orderBy('id', 'asc')
-            ->get();
-
-        $data['data'] = DB::table('packages')
+        $data['data'] = DB::table('actions')
             ->select('*')
             ->where('slug', $slug)
             ->first();
 
-        $data['bestuse'] = DB::table('bestuses')
+        $data['activities'] = DB::table('activities')
             ->select('*')
-            ->where('package_id', $data['data']->id)
+            ->where('id_action', $data['data']->id)
             ->get();
-            
+
+        
+
         // --------- seo ------------
         // SEOTools::setTitle($data['data']->title);
         // --------------------------
 
-        return view('front.package')
+        return view('front.action')
         ->with('data', $data);
     }
 
