@@ -25,62 +25,14 @@
     <div class="col-md-12 bunderan">
         <div class="icon"><img src="{{ asset('vendor/img/new_world_center.png') }}" alt="">
             <ul class="menu">
-                
+            @foreach($data['keywords'] as $item)  
                 <li class="spread">
                     <a class="unit" href="list.html">
-                        <span class="text-bunder">森 - 土地<br>Forest/land</span>
+                        <span class="text-bunder">{{ $item->title_jp }}<br>{{ $item->title_en }}</span>
                     </a>
                 </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">森<br>Water</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">草<br>Herbs</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">協同組合<br>Cooperative</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">食<br>Food</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">手芸<br>Handicraft</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">伝統文化<br>Traditional Culture</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">畑<br>Field</span>
-                    </a>
-                </li>
-                
-                <li class="spread">
-                    <a class="unit" href="list.html">
-                        <span class="text-bunder">田んぼ<br>Rice Field</span>
-                    </a>
-                </li>
-
-                
+            @endforeach
+            
             </ul>
         </div>
     </div>
@@ -96,72 +48,18 @@
     </div>
 </div>
 <ul class="row">
+    @foreach($data['actions'] as $item)
     <li class="tm-tab-link-item col-md-3">
         <a id="tab2" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-object-group tm-tab-icon"></i>
+            <i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
             <span class="tm-tab-link-label">
-                ワークショップ
-                <br>Workshop
+                {{ $item->title_jp }}
+                <br>{{ $item->title_en }}
             </span>
         </a>
     </li>
+    @endforeach
 
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab3" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-gamepad tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                学び
-                <br>Learn/Game
-            </span>
-        </a>
-    </li>
-
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab4" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-suitcase tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                ツアー
-                <br>Tour
-            </span>
-        </a>
-    </li>
-
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab5" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-lightbulb-o tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                アイデア
-                <br>Idea
-            </span>
-        </a>
-    </li>
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab6" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-shopping-bag tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                買物
-                <br>Shopping
-            </span>
-        </a>
-    </li>
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab7" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-users tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                起業家サポート
-                <br>Entrepreneur Support
-            </span>
-        </a>
-    </li>
-    <li class="tm-tab-link-item col-md-3">
-        <a id="tab8" href="actions.html" class="tm-tab-link">
-            <i class="fa fa-user-plus tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                アバターとして参加する
-                <br>Join as Avatar
-            </span>
-        </a>
-    </li>
 </ul>
 @endsection
 

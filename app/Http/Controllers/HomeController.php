@@ -22,11 +22,17 @@ class HomeController extends Controller
         // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
         // --------------------------
 
-        // $data['packages'] = DB::table('packages')
-        //     ->select('title', 'id', 'slug', 'price')
-        //     // ->limit(4)
-        //     ->orderBy('id', 'asc')
-        //     ->get();
+        $data['keywords'] = DB::table('keywords')
+            ->select('title_en', 'title_jp')
+            // ->limit(4)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $data['actions'] = DB::table('actions')
+            ->select('title_en', 'title_jp', 'img')
+            // ->limit(4)
+            ->orderBy('id', 'asc')
+            ->get();
 
         // $data['blog'] = DB::table('posts')
         //     ->join(
