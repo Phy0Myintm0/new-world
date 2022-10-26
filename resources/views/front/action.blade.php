@@ -1,6 +1,19 @@
 @extends('front.layout')
 
 @push('styles')
+<style>
+.bg-image {
+    @if($data['data']->bg==null)
+        background: url('{{ asset("vendor/img/action-bg.jpg") }}') no-repeat center center fixed; 
+    @else
+        background: url('{{ asset($data['data']->bg) }}') no-repeat center center fixed; 
+    @endif
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+</style>
 @endpush
 
 @section('content')
@@ -16,12 +29,24 @@
     </div>
 </div>
 
+<div class="col-xs-12 col-md-12 text-tengah">
+    <h3 class="tm-about-title text-center text-judul-action">
+        <span>{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</span>
+    </h3>
+</div>
+
 <div class="row justify-content-center tm-services-row">
+    
     @foreach($data['activities'] as $item)
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">
-                    <img loading="lazy" src="img/action-1.jpg">
+                    @if($item->img == NULL)
+                        <img loading="lazy" src="{{ asset('') }}">
+                    @else
+                        <img src="{{ asset($item->img) }}" class="img-fluid" alt="">
+                    @endif
+                    
                     <h3>
                         <span>{{ $item->title_jp }}</span>
                     </h3>

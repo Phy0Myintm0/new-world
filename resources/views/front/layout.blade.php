@@ -28,8 +28,11 @@
 <![endif]-->
 @stack('styles')
 </head>
-
-<body>
+@if(Request::segment(1) == 'action')
+    <body class="bg-image">
+@else
+    <body>
+@endif
 <!-- Header gallery -->
 <div class="container-fluid">
     <!-- navbar -->
@@ -38,8 +41,10 @@
     <!-- content -->
     @yield('content')
 
-    <!-- footer -->
-    @include('front.footer')
+@if(Request::segment(1) != 'action')
+<!-- footer -->
+@include('front.footer')
+@endif
 </div>
 <!-- Placed at the end of the document so the pages load faster -->
 @include('front.scripts')

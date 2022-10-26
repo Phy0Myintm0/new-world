@@ -8,6 +8,9 @@
                     
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-pad-0 tm-nav-item-pair tm-dummy-nav-item">
                         <div class="nav-item none">
+                            @if(Request::segment(1) != null)
+                                <a href="{{ url('/') }}"><img class="white-logo" src="{{ asset('vendor/img/new-world-putih.png') }}" alt="logo new world"></a>
+                            @endif
                         </div>
                         <div class="nav-item none">
                         </div>

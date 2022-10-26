@@ -1394,13 +1394,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.action-image {
 		text-align: center;
 	}
-	.bg-image {
-		background: url('../img/action-bg.jpg') no-repeat center center fixed; 
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-	}
+	
 	.bg-image h3, .text-tengah h3 {
 		margin: 15px 0;
 		font-weight: bold;
@@ -1454,4 +1448,14 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.white-logo {
 		height: 30px;
+	}
+	.text-center {
+		text-align: center;
+	}
+	.text-judul-action span {
+		box-shadow: 10px 0 0px 0px #fff, -10px 0 0px 0px #fff !important;
+		background-color: #ffffff !important;
+	}
+	.breadcrumb-item {
+		background: #fff;
 	}
