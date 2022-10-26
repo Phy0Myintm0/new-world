@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 12:16 AM
+-- Generation Time: Oct 26, 2022 at 02:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -35,6 +35,7 @@ CREATE TABLE `actions` (
   `desc_jp` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `img` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bg` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -43,14 +44,14 @@ CREATE TABLE `actions` (
 -- Dumping data for table `actions`
 --
 
-INSERT INTO `actions` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `img`, `bg`, `created_at`, `updated_at`) VALUES
-(1, 'Workshop', 'ワークショップ', '<p>Workshop description</p>', 'ワークショップ', 'object-group', NULL, '2022-10-22 00:11:19', NULL),
-(2, 'Learn/Game', '学び', 'Learn/Game', 'Descriptiion of 学び', 'gamepad', NULL, '2022-10-22 00:12:28', NULL),
-(3, 'Tour', 'ツアー', 'ツアー\r\nTour', 'ツアー\r\nTour', 'suitcase', NULL, '2022-10-22 00:13:16', NULL),
-(4, 'Idea', 'アイデア', '<p>Idea<br></p>', '<p>アイデア<br></p>', 'lightbulb-o', NULL, '2022-10-22 00:14:54', NULL),
-(5, 'Shopping', '買物', '<p>Shopping</p>', 'Description of 買物', 'shopping-bag', NULL, '2022-10-22 02:21:39', NULL),
-(6, 'Entrepreneur Support', '起業家サポート', '起業家サポート\r\nEntrepreneur Support', '起業家サポート Entrepreneur Support', 'users', NULL, '2022-10-22 02:22:40', NULL),
-(7, 'Join as Avatar', 'アバターとして参加する', 'アバターとして参加する\r\nJoin as Avatar', 'アバターとして参加する\r\nJoin as Avatar', 'user-plus', NULL, '2022-10-22 02:23:36', NULL);
+INSERT INTO `actions` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `img`, `bg`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Workshop', 'ワークショップ', '<p>Workshop description</p>', 'ワークショップ', 'object-group', 'uploads/1/2022-10/sennin_game.jpg', 'workshop', '2022-10-22 00:11:19', '2022-10-26 04:20:15'),
+(2, 'Learn/Game', '学び', 'Learn/Game', 'Descriptiion of 学び', 'gamepad', 'uploads/1/2022-10/senen_no_mori.jpg', 'learngame', '2022-10-22 00:12:28', '2022-10-26 03:21:05'),
+(3, 'Tour', 'ツアー', 'ツアー\r\nTour', 'ツアー\r\nTour', 'suitcase', NULL, 'tour', '2022-10-22 00:13:16', '2022-10-26 02:21:47'),
+(4, 'Idea', 'アイデア', '<p>Idea<br></p>', '<p>アイデア<br></p>', 'lightbulb-o', NULL, 'idea', '2022-10-22 00:14:54', '2022-10-26 02:21:39'),
+(5, 'Shopping', '買物', '<p>Shopping</p>', 'Description of 買物', 'shopping-bag', NULL, 'shopping', '2022-10-22 02:21:39', '2022-10-26 02:21:32'),
+(6, 'Entrepreneur Support', '起業家サポート', '起業家サポート\r\nEntrepreneur Support', '起業家サポート Entrepreneur Support', 'users', NULL, 'entrepreneur-support', '2022-10-22 02:22:40', '2022-10-26 02:21:25'),
+(7, 'Join as Avatar', 'アバターとして参加する', 'アバターとして参加する\r\nJoin as Avatar', 'アバターとして参加する\r\nJoin as Avatar', 'user-plus', NULL, 'join-as-avatar', '2022-10-22 02:23:36', '2022-10-26 02:21:18');
 
 -- --------------------------------------------------------
 
@@ -286,7 +287,24 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (73, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/settings/edit-save/17', 'Update data  at Settings', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>about</td><td></td></tr><tr><td>content</td><td></td><td></td></tr><tr><td>content_input_type</td><td>wysiwyg</td><td>textarea</td></tr><tr><td>dataenum</td><td></td><td></td></tr><tr><td>helper</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-23 00:31:19', NULL),
 (74, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/email_templates/edit-save/1', 'Update data Email Template Forgot Password Backend at Email Templates', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>subject</td><td></td><td>Setting</td></tr><tr><td>from_email</td><td>system@crudbooster.com</td><td>system@new-world.net</td></tr><tr><td>cc_email</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-23 00:32:38', NULL),
 (75, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-23 00:33:40', NULL),
-(76, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha Laper bangett at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-23 00:35:35', NULL);
+(76, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha Laper bangett at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-23 00:35:35', NULL),
+(77, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-10-26 02:20:03', NULL),
+(78, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/7', 'Update data Join as Avatar at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:18', NULL),
+(79, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/6', 'Update data Entrepreneur Support at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:25', NULL),
+(80, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/5', 'Update data Shopping at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:32', NULL),
+(81, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/4', 'Update data Idea at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:39', NULL),
+(82, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/3', 'Update data Tour at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:47', NULL),
+(83, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/2', 'Update data Learn/Game at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:21:55', NULL),
+(84, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/2', 'Update data Learn/Game at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td>learngame</td><td></td></tr></tbody></table>', 1, '2022-10-26 02:22:03', NULL),
+(85, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/1', 'Update data Workshop at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-26 02:22:11', NULL),
+(86, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/9', 'Update data Field at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:22:31', NULL),
+(87, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/8', 'Update data Traditional Culture at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:22:38', NULL),
+(88, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/7', 'Update data Handicraft at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:22:45', NULL),
+(89, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/6', 'Update data Food at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:22:53', NULL),
+(90, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/5', 'Update data Cooperative at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:23:28', NULL),
+(91, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/5', 'Update data Cooperative at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td>cooperative</td><td></td></tr></tbody></table>', 1, '2022-10-26 02:23:35', NULL),
+(92, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/2', 'Update data Learn/Game at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>bg</td><td></td><td>uploads/1/2022-10/senen_no_mori.jpg</td></tr><tr><td>slug</td><td>learngame</td><td></td></tr></tbody></table>', 1, '2022-10-26 03:21:05', NULL),
+(93, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/1', 'Update data Workshop at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>bg</td><td></td><td>uploads/1/2022-10/sennin_game.jpg</td></tr><tr><td>slug</td><td>workshop</td><td></td></tr></tbody></table>', 1, '2022-10-26 04:20:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -649,6 +667,7 @@ CREATE TABLE `keywords` (
   `title_jp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc_jp` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -657,16 +676,16 @@ CREATE TABLE `keywords` (
 -- Dumping data for table `keywords`
 --
 
-INSERT INTO `keywords` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `created_at`, `updated_at`) VALUES
-(1, 'Rice Field', '田んぼ', '<p>Rice Field<br></p>', '<p>田んぼ<br></p>', '2022-10-21 20:12:30', NULL),
-(2, 'Forest - Land', '森 - 土地', '<p>Forest - Land<br></p>', '<p>森 - 土地<br></p>', '2022-10-21 20:13:06', NULL),
-(3, 'Water', '森', '<p>Water<br></p>', '水の説明です', '2022-10-21 20:14:45', NULL),
-(4, 'Herbs', '草', '<p>Herbs<br></p>', 'これはハーブの説明です', '2022-10-21 20:15:45', NULL),
-(5, 'Cooperative', '協同組合', '<p>Cooperative<br></p>', 'これは協力的な説明です', '2022-10-21 20:17:10', NULL),
-(6, 'Food', '食', '<p>Food<br></p>', 'これは食べ物の説明です', '2022-10-21 20:17:58', NULL),
-(7, 'Handicraft', '手芸', '<p>Handicraft<br></p>', 'これは手作りの説明です', '2022-10-21 20:18:46', NULL),
-(8, 'Traditional Culture', '伝統文化', '<p>Traditional Culture<br></p>', '伝統文化の説明', '2022-10-21 20:20:20', NULL),
-(9, 'Field', '畑', '<p>Field<br></p>', '空のフィールドの説明', '2022-10-21 20:21:01', NULL);
+INSERT INTO `keywords` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Rice Field', '田んぼ', '<p>Rice Field<br></p>', '<p>田んぼ<br></p>', '', '2022-10-21 20:12:30', NULL),
+(2, 'Forest - Land', '森 - 土地', '<p>Forest - Land<br></p>', '<p>森 - 土地<br></p>', '', '2022-10-21 20:13:06', NULL),
+(3, 'Water', '森', '<p>Water<br></p>', '水の説明です', '', '2022-10-21 20:14:45', NULL),
+(4, 'Herbs', '草', '<p>Herbs<br></p>', 'これはハーブの説明です', '', '2022-10-21 20:15:45', NULL),
+(5, 'Cooperative', '協同組合', '<p>Cooperative<br></p>', 'これは協力的な説明です', 'cooperative', '2022-10-21 20:17:10', '2022-10-26 02:23:35'),
+(6, 'Food', '食', '<p>Food<br></p>', 'これは食べ物の説明です', 'food', '2022-10-21 20:17:58', '2022-10-26 02:22:53'),
+(7, 'Handicraft', '手芸', '<p>Handicraft<br></p>', 'これは手作りの説明です', 'handicraft', '2022-10-21 20:18:46', '2022-10-26 02:22:45'),
+(8, 'Traditional Culture', '伝統文化', '<p>Traditional Culture<br></p>', '伝統文化の説明', 'traditional-culture', '2022-10-21 20:20:20', '2022-10-26 02:22:38'),
+(9, 'Field', '畑', '<p>Field<br></p>', '空のフィールドの説明', 'field', '2022-10-21 20:21:01', '2022-10-26 02:22:31');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1068,7 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
