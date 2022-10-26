@@ -269,6 +269,18 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			$data = DB::table('keywords')
+				->select('title_en')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('keywords')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title_en)
+					]
+				);
 
 	    }
 
@@ -293,7 +305,19 @@
 	    | 
 	    */
 	    public function hook_after_edit($id) {
-	        //Your code here 
+	        //Your code here
+			$data = DB::table('keywords')
+				->select('title_en')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('keywords')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title_en)
+					]
+				); 
 
 	    }
 
