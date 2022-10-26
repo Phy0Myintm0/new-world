@@ -5,6 +5,8 @@
 	use DB;
 	use CRUDBooster;
 
+	use Illuminate\Support\Str;
+
 	class AdminKeywordsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
