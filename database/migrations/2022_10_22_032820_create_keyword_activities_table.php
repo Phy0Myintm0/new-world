@@ -25,6 +25,8 @@ class CreateKeywordActivitiesTable extends Migration
             $table->foreign('id_activity')
                     ->references('id')
                     ->on('activities');
+            
+            $table->text('slug');
 
             $table->timestamps();
         });

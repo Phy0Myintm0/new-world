@@ -21,6 +21,7 @@ class CreateActionsTable extends Migration
             $table->text('desc_jp');
 
             $table->text('img');
+            $table->text('slug');
 
             $table->timestamps();
         });

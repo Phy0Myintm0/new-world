@@ -36,7 +36,7 @@
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">
                     @if($item->img == NULL)
-                        <img loading="lazy" src="{{ asset('') }}">
+                        <img loading="lazy" src="{{ asset('vendor/img/default-img.jpg') }}">
                     @else
                         <img src="{{ asset($item->img) }}" class="img-fluid" alt="">
                     @endif

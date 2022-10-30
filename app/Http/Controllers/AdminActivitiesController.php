@@ -379,6 +379,20 @@
 	    */
 	    public function hook_after_add($id) {
 	        //Your code here
+			$data = DB::table('activities')
+				->select('title_en')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('activities')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title_en)
+					]
+				);
+
+			// -----------------------------
 			$activity = DB::table('activities')
 				->where('id', $id)
 				->first();
@@ -459,6 +473,20 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
+			$data = DB::table('activities')
+				->select('title_en')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('activities')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title_en)
+					]
+				);
+				
+			// ------------------------
 			$activity = DB::table('activities')
 				->where('id', $id)
 				->first();

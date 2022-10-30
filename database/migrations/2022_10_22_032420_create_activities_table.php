@@ -38,6 +38,7 @@ class CreateActivitiesTable extends Migration
             $table->text('photo2');
             $table->text('photo3');
             $table->text('photo4');
+            $table->text('slug');
             
             $table->timestamps();
         });
