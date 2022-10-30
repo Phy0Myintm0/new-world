@@ -18,7 +18,9 @@
 
 @section('content')
 
-<div class="row"><div class="col-xs-12"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li><li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</li></ol>
+<div class="row">
+    <div class="col-xs-12">
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li><li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</li></ol>
         </nav>
     </div>
 </div>

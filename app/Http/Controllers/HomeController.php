@@ -74,6 +74,48 @@ class HomeController extends Controller
         ->with('data', $data);
     }
 
+    public function keyword($slug)
+    {
+        $data['test'] = 'test';
+
+        $data['data'] = DB::table('keywords')
+            ->select('*')
+            ->where('slug', $slug)
+            ->first();
+
+        $data['activities'] = DB::table('activities')
+            ->join(
+                'actions',
+                'activities.id_action',
+                '=',
+                'actions.id'
+            )
+            ->join(
+                'countries',
+                'activities.id_country',
+                '=',
+                'countries.id'
+            )
+            ->join(
+                'keyword_activities',
+                'activities.id',
+                '=',
+                'keyword_activities.id_activity'
+            )
+            ->select('activities.*', 'actions.title_en as actionnya', 'actions.slug as action_slug', 'countries.title as country')
+            ->where('keyword_activities.id_keyword', $data['data']->id)
+            ->get();
+
+        
+
+        // --------- seo ------------
+        // SEOTools::setTitle($data['data']->title);
+        // --------------------------
+
+        return view('front.keyword')
+        ->with('data', $data);
+    }
+
     public function blog()
     {
         $data['test'] = 'test';
