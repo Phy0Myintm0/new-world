@@ -5,6 +5,8 @@
 	use DB;
 	use CRUDBooster;
 
+	use Illuminate\Support\Str;
+
 	class AdminActivitiesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
@@ -485,7 +487,7 @@
 						'slug' => Str::slug($data->title_en)
 					]
 				);
-				
+
 			// ------------------------
 			$activity = DB::table('activities')
 				->where('id', $id)

@@ -35,10 +35,10 @@
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">
-                    @if($item->img == NULL)
+                    @if($item->photo_cover == NULL)
                         <img loading="lazy" src="{{ asset('vendor/img/default-img.jpg') }}">
                     @else
-                        <img src="{{ asset($item->img) }}" class="img-fluid" alt="">
+                        <img src="{{ asset($item->photo_cover) }}" class="img-fluid" alt="">
                     @endif
                     
                     <h3>

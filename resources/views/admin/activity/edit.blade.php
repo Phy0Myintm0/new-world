@@ -89,7 +89,7 @@
                             <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo_cover }}">
                         </a></p>
                         <input type="hidden" name="_photo_cover" value="{{ $row->photo_cover }}">
-                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo_cover.'&amp;id='.$row->id.'&amp;column=photo_cover') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo_cover.'&id='.$row->id.'&column=photo_cover') }}"><i class="fa fa-ban"></i> Delete </a></p>
                         <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
 
                         <div class="text-danger"></div>

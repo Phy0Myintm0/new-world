@@ -1390,6 +1390,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 		height: 250px;
 		object-fit: cover;
 		padding: 8px;
+		margin: 0 auto;
 	}
 	.action-image {
 		text-align: center;
