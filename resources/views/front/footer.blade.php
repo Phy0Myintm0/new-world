@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <hr>
         <p class="text-xs-center no-margin">
-            <a href="#!">Who we are</a> | <a href="#!">Contact Us</a></p>
+            <a href="{{ url('about') }}">Who we are</a> | <a href="{{ url('contact') }}">Contact Us</a></p>
         <p class="text-xs-center tm-copyright">
             Copyright &copy; 2022 New World
         </p>

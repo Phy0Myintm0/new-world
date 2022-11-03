@@ -169,6 +169,30 @@ class HomeController extends Controller
         ->with('data', $data);
     }
 
+    public function about()
+    {
+        $data['test'] = 'test';
+
+        // --------- seo ------------
+        // SEOTools::setTitle($data['data']->title);
+        // --------------------------
+
+        return view('front.about')
+        ->with('data', $data);
+    }
+
+    public function contact()
+    {
+        $data['test'] = 'test';
+
+        // --------- seo ------------
+        // SEOTools::setTitle($data['data']->title);
+        // --------------------------
+
+        return view('front.contact')
+        ->with('data', $data);
+    }
+
     public function blog()
     {
         $data['test'] = 'test';
