@@ -28,22 +28,30 @@
                 @endif
                 <span class="badge badge-primary">{{ $data['data']->action_en }}</span>
                 <div class="menu-detail tm-header-gallery">
-                    <!-- <a href="img/list-1.jpg">
-                        <img src="img/list-1.jpg" alt="Image"
+                    @if($data['data']->photo1!=null)
+                    <a href="{{ asset($data['data']->photo1) }}">
+                        <img src="{{ asset($data['data']->photo1) }}" alt="Image"
                         class="img-fluid tm-header-img col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-pad-0">
                     </a>
-                    <a href="img/detail-1.jpg">
-                        <img src="img/detail-1.jpg" alt="Image"
+                    @endif
+                    @if($data['data']->photo2!=null)
+                    <a href="{{ asset($data['data']->photo2) }}">
+                        <img src="{{ asset($data['data']->photo2) }}" alt="Image"
                         class="img-fluid tm-header-img col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-pad-0">
                     </a>
-                    <a href="img/detail-2.jpg">
-                        <img src="img/detail-2.jpg" alt="Image"
+                    @endif
+                    @if($data['data']->photo3!=null)
+                    <a href="{{ asset($data['data']->photo3) }}">
+                        <img src="{{ asset($data['data']->photo3) }}" alt="Image"
                         class="img-fluid tm-header-img col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-pad-0">
                     </a>
-                    <a href="img/detail-3.jpg">
-                        <img src="img/detail-3.jpg" alt="Image"
+                    @endif
+                    @if($data['data']->photo4!=null)
+                    <a href="{{ asset($data['data']->photo4) }}">
+                        <img src="{{ asset($data['data']->photo4) }}" alt="Image"
                         class="img-fluid tm-header-img col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-pad-0">
-                    </a> -->
+                    </a>
+                    @endif
                 </div>
                 <ul class="list-group">
                     @foreach($data['links'] as $item)
@@ -89,9 +97,39 @@
 
 @push('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="{{ asset('assets/vendor/parallax/parallax.min.js') }}"></script>
-
+<script src="{{ asset('vendor/js/jquery.magnific-popup.min.js') }}"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
 <script type="text/javascript">
+    $(window).load(function(){
+        /* Gallery pop up
+        -----------------------------------------*/
+        $('.tm-header-gallery').magnificPopup({
+            delegate: 'a', // child items selector, by clicking on it popup will open
+            type: 'image',
+            gallery:{enabled:true}                
+        });
 
+        // Tabs
+        // http://stackoverflow.com/questions/11645081/how-to-build-simple-tabs-with-jquery
+        $('.tm-tab-content-box').hide();                
+        //$('#tab1C').fadeIn('slow');
+        $('#tab1C').show();
+
+        $('.tm-tab-link').click(function(){
+            
+            var t = $(this).attr('id');
+            
+            $('.tm-tab-link').removeClass('active');
+            $(this).addClass('active');                    
+
+            $('.tm-tab-content-box').hide();
+            $('#'+ t + 'C').fadeIn('slow');
+
+        });
+
+        // Remove preloader
+        // https://ihatetomatoes.net/create-custom-preloading-screen/
+        $('body').addClass('loaded');
+                    
+    });
 </script>
 @endpush

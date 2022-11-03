@@ -1350,6 +1350,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.badge-primary {
 		color: #fff;
 		background-color: #1cb3a5;
+		z-index: 1;
 	}
 	.list-group-item, .list-group-item.active {
 		border-radius: 0;
@@ -1459,4 +1460,12 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.breadcrumb-item {
 		background: #fff;
+	}
+	.no-data {
+		text-align: center;
+		margin: 0 auto;
+	}
+	.no-data img {
+		border-radius: 100%;
+		height: 250px;
 	}

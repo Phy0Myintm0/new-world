@@ -81,6 +81,82 @@
                 </div>
             </div>
 
+            <hr>
+            @if($row->photo1!=null)
+                <div class="form-group header-group-0" id="form-group-file" style="">
+                    <label class="col-sm-2 control-label">Photo 1</label>
+                    <div class="col-sm-10">
+                        <p><a data-lightbox="roadtrip" href="{{ URL::to('/').'/'.$row->photo1 }}">
+                            <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo1 }}">
+                        </a></p>
+                        <input type="hidden" name="_photo1" value="{{ $row->photo1 }}">
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo1.'&id='.$row->id.'&column=photo1') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
+
+                        <div class="text-danger"></div>
+                    </div>
+                </div>
+            @else
+                {{ form_mediapicker("Photo 1", "photo1", 10, "", '') }}
+            @endif
+
+            @if($row->photo2!=null)
+                <div class="form-group header-group-0" id="form-group-file" style="">
+                    <label class="col-sm-2 control-label">Photo 2</label>
+                    <div class="col-sm-10">
+                        <p><a data-lightbox="roadtrip" href="{{ URL::to('/').'/'.$row->photo2 }}">
+                            <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo2 }}">
+                        </a></p>
+                        <input type="hidden" name="_photo2" value="{{ $row->photo2 }}">
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo2.'&id='.$row->id.'&column=photo2') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
+
+                        <div class="text-danger"></div>
+                    </div>
+                </div>
+            @else
+                {{ form_mediapicker("Photo 2", "photo2", 10, "", '') }}
+            @endif
+
+            @if($row->photo3!=null)
+                <div class="form-group header-group-0" id="form-group-file" style="">
+                    <label class="col-sm-2 control-label">Photo 3</label>
+                    <div class="col-sm-10">
+                        <p><a data-lightbox="roadtrip" href="{{ URL::to('/').'/'.$row->photo3 }}">
+                            <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo3 }}">
+                        </a></p>
+                        <input type="hidden" name="_photo3" value="{{ $row->photo3 }}">
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo3.'&id='.$row->id.'&column=photo3') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
+
+                        <div class="text-danger"></div>
+                    </div>
+                </div>
+            @else
+                {{ form_mediapicker("Photo 3", "photo3", 10, "", '') }}
+            @endif
+
+            @if($row->photo4!=null)
+                <div class="form-group header-group-0" id="form-group-file" style="">
+                    <label class="col-sm-2 control-label">Photo 4</label>
+                    <div class="col-sm-10">
+                        <p><a data-lightbox="roadtrip" href="{{ URL::to('/').'/'.$row->photo4 }}">
+                            <img style="max-width:160px" title="Image" src="{{ URL::to('/').'/'.$row->photo4 }}">
+                        </a></p>
+                        <input type="hidden" name="_photo4" value="{{ $row->photo4 }}">
+                        <p><a class="btn btn-danger btn-delete btn-sm" onclick="if(!confirm('Are you sure ?')) return false" href="{{ CRUDBooster::mainpath('delete-image?image='.$row->photo4.'&id='.$row->id.'&column=photo4') }}"><i class="fa fa-ban"></i> Delete </a></p>
+                        <p class="text-muted"><em>* If you want to upload other file, please first delete the file.</em></p>
+
+                        <div class="text-danger"></div>
+                    </div>
+                </div>
+            @else
+                {{ form_mediapicker("Photo 4", "photo4", 10, "", '') }}
+            @endif
+
+            <hr>
+
+
             @if($row->photo_cover!=null)
                 <div class="form-group header-group-0" id="form-group-file" style="">
                     <label class="col-sm-2 control-label">Photo Cover</label>

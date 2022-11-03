@@ -32,7 +32,8 @@
 </div>
 
 <div class="row justify-content-center tm-services-row">
-    
+
+@if(!$data['activities']->isEmpty())
     @foreach($data['activities'] as $item)
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="action-image">
@@ -50,6 +51,11 @@
             </div>
         </div>
     @endforeach
+@else
+    <div class="no-data">
+        <img src="{{ asset('vendor/img/no-data.png') }}" alt="Image" class="img-responsive tm-pad-0">
+    </div>
+@endif
     
 </div>
 <!-- .row .tm-services-row -->

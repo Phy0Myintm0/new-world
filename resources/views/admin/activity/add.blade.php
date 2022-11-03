@@ -80,6 +80,13 @@
                 </div>
             </div>
 
+            <hr>
+            {{ form_mediapicker("Photo 1", "photo1", 10, "", '') }}
+            {{ form_mediapicker("Photo 2", "photo2", 10, "", '') }}
+            {{ form_mediapicker("Photo 3", "photo3", 10, "", '') }}
+            {{ form_mediapicker("Photo 4", "photo4", 10, "", '') }}
+            <hr>
+
             {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
 
         </div>
