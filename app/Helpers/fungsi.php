@@ -493,4 +493,17 @@ function f_radio($label, $name, $lb1, $lb2, $val_lb1, $val_lb2, $id_lb1, $id_lb2
     ';
 }
 
+// youtube checker
+function getYouTubeData($videoId) {
+    $theURL = "https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=$videoId&format=json";
+
+    $curl = curl_init($theURL);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $body = curl_exec($curl);
+    curl_close($curl);
+
+    return json_decode($body, true);
+}
+
 ?>

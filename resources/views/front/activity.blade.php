@@ -20,10 +20,12 @@
     <div class="row tm-services-row detail">
         <div class="col-xs-12 col-sm-12 col-md-4 tm-services-col-left">
             <div>
+                @if(!empty(getYouTubeData($data['data']->youtube)))
                 <iframe width="100%" height="215" src="https://www.youtube.com/embed/{{ $data['data']->youtube }}"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
+                @endif
                 <span class="badge badge-primary">{{ $data['data']->action_en }}</span>
                 <div class="menu-detail tm-header-gallery">
                     <!-- <a href="img/list-1.jpg">
