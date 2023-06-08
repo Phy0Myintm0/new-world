@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 02:31 PM
+-- Generation Time: Nov 03, 2022 at 02:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -74,6 +74,7 @@ CREATE TABLE `activities` (
   `photo3` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo4` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -82,9 +83,10 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `id_country`, `id_action`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `youtube`, `photo_cover`, `photo1`, `photo2`, `photo3`, `photo4`, `id_keyword`, `created_at`, `updated_at`) VALUES
-(7, 3, 2, 'Hebatnya', 'Hebatnya', '<p>Hebatnya<br></p>', '<p>Hebatnya<br></p>', NULL, NULL, NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"3\";i:1;s:1:\"4\";i:2;s:1:\"7\";}', '2022-10-22 23:11:22', NULL),
-(8, 1, 2, 'Coba Muahaha Laper bangett', 'Coba Muahaha', '<p>coba banyakda ta<br></p>', '<p>coba banyakda ta<br></p>', NULL, 'uploads/1/2022-10/kotasawah.jpg', NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"2\";i:1;s:1:\"3\";i:2;s:1:\"8\";}', '2022-10-23 00:22:57', '2022-10-23 00:35:35');
+INSERT INTO `activities` (`id`, `id_country`, `id_action`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `youtube`, `photo_cover`, `photo1`, `photo2`, `photo3`, `photo4`, `id_keyword`, `slug`, `created_at`, `updated_at`) VALUES
+(7, 3, 2, 'Hebatnya', 'Hebatnya', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Nam metus justo, dapibus id lorem at, sollicitudin bibendum leo. Quisque malesuada ut massa sit amet vehicula. Proin dictum vitae tortor sed luctus. Nulla faucibus lacinia porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus nulla metus, vitae aliquam erat luctus nec. Nulla mollis ac tortor vel rhoncus. Ut facilisis lobortis dui, non consequat sapien. Suspendisse potenti. Suspendisse potenti. Integer nec laoreet odio, at convallis metus. Sed elementum augue a nisl pretium facilisis. Etiam mi nisi, faucibus ac eleifend sed, elementum et metus. Morbi id diam sagittis, ultricies lacus pulvinar, elementum tellus. Suspendisse pulvinar justo eu lectus fermentum facilisis.</span><br></p>', '<p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Nam metus justo, dapibus id lorem at, sollicitudin bibendum leo. Quisque malesuada ut massa sit amet vehicula. Proin dictum vitae tortor sed luctus. Nulla faucibus lacinia porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus nulla metus, vitae aliquam erat luctus nec. Nulla mollis ac tortor vel rhoncus. Ut facilisis lobortis dui, non consequat sapien. Suspendisse potenti. Suspendisse potenti. Integer nec laoreet odio, at convallis metus. Sed elementum augue a nisl pretium facilisis. Etiam mi nisi, faucibus ac eleifend sed, elementum et metus. Morbi id diam sagittis, ultricies lacus pulvinar, elementum tellus. Suspendisse pulvinar justo eu lectus fermentum facilisis.</span><br></p>', 'LBp967lApCQ', NULL, NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"3\";i:1;s:1:\"4\";i:2;s:1:\"7\";}', 'hebatnya', '2022-10-22 23:11:22', '2022-10-29 22:06:33'),
+(8, 1, 2, 'Coba Muahaha Laper bangett', 'Coba Muahaha', '<p>coba banyakda ta<br></p>', '<p>coba banyakda ta<br></p>', 'https://youtube.com/@zeneight', 'uploads/1/2022-10/kotasawah.jpg', NULL, NULL, NULL, NULL, 'a:3:{i:0;s:1:\"2\";i:1;s:1:\"3\";i:2;s:1:\"8\";}', 'coba-muahaha-laper-bangett', '2022-10-23 00:22:57', '2022-10-29 20:54:46'),
+(9, 1, 4, 'Another activity on the move', 'Another activity on the move', '<p>Another activity on the move<br></p>', '<p>Another activity on the move<br></p>', NULL, 'uploads/1/2022-11/aw5fmoqtt5b71.jpg', 'uploads/1/2022-11/untitled.png', 'uploads/1/2022-11/photo_6325473606024407196_y.jpg', 'uploads/1/2022-11/screenshot_266.png', NULL, 'a:2:{i:0;s:1:\"5\";i:1;s:1:\"6\";}', 'another-activity-on-the-move', '2022-11-03 03:21:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -304,7 +306,21 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (90, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/5', 'Update data Cooperative at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-26 02:23:28', NULL),
 (91, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/5', 'Update data Cooperative at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td>cooperative</td><td></td></tr></tbody></table>', 1, '2022-10-26 02:23:35', NULL),
 (92, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/2', 'Update data Learn/Game at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>bg</td><td></td><td>uploads/1/2022-10/senen_no_mori.jpg</td></tr><tr><td>slug</td><td>learngame</td><td></td></tr></tbody></table>', 1, '2022-10-26 03:21:05', NULL),
-(93, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/1', 'Update data Workshop at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>bg</td><td></td><td>uploads/1/2022-10/sennin_game.jpg</td></tr><tr><td>slug</td><td>workshop</td><td></td></tr></tbody></table>', 1, '2022-10-26 04:20:15', NULL);
+(93, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/actions/edit-save/1', 'Update data Workshop at Actions', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>bg</td><td></td><td>uploads/1/2022-10/sennin_game.jpg</td></tr><tr><td>slug</td><td>workshop</td><td></td></tr></tbody></table>', 1, '2022-10-26 04:20:15', NULL),
+(94, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-10-29 20:53:53', NULL),
+(95, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/8', 'Update data Coba Muahaha Laper bangett at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-29 20:54:47', NULL),
+(96, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/7', 'Update data Hebatnya at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody></tbody></table>', 1, '2022-10-29 20:55:10', NULL),
+(97, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/7', 'Update data Hebatnya at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td>hebatnya</td><td></td></tr></tbody></table>', 1, '2022-10-29 20:56:05', NULL),
+(98, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/delete-image', 'Delete the image of Hebatnya at Activities', '', 1, '2022-10-29 21:04:27', NULL),
+(99, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/9', 'Update data Field at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td>field</td><td></td></tr></tbody></table>', 1, '2022-10-29 21:36:13', NULL),
+(100, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/1', 'Update data Rice Field at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-29 21:36:34', NULL),
+(101, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/2', 'Update data Forest - Land at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-29 21:36:40', NULL),
+(102, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/3', 'Update data Water at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-29 21:36:48', NULL),
+(103, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/keywords/edit-save/4', 'Update data Herbs at Keywords', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>slug</td><td></td><td></td></tr></tbody></table>', 1, '2022-10-29 21:36:55', NULL),
+(104, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/edit-save/7', 'Update data Hebatnya at Activities', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>desc_en</td><td><p>Hebatnya<br></p></td><td><p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Nam metus justo, dapibus id lorem at, sollicitudin bibendum leo. Quisque malesuada ut massa sit amet vehicula. Proin dictum vitae tortor sed luctus. Nulla faucibus lacinia porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus nulla metus, vitae aliquam erat luctus nec. Nulla mollis ac tortor vel rhoncus. Ut facilisis lobortis dui, non consequat sapien. Suspendisse potenti. Suspendisse potenti. Integer nec laoreet odio, at convallis metus. Sed elementum augue a nisl pretium facilisis. Etiam mi nisi, faucibus ac eleifend sed, elementum et metus. Morbi id diam sagittis, ultricies lacus pulvinar, elementum tellus. Suspendisse pulvinar justo eu lectus fermentum facilisis.</span><br></p></td></tr><tr><td>desc_jp</td><td><p>Hebatnya<br></p></td><td><p><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Nam metus justo, dapibus id lorem at, sollicitudin bibendum leo. Quisque malesuada ut massa sit amet vehicula. Proin dictum vitae tortor sed luctus. Nulla faucibus lacinia porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus nulla metus, vitae aliquam erat luctus nec. Nulla mollis ac tortor vel rhoncus. Ut facilisis lobortis dui, non consequat sapien. Suspendisse potenti. Suspendisse potenti. Integer nec laoreet odio, at convallis metus. Sed elementum augue a nisl pretium facilisis. Etiam mi nisi, faucibus ac eleifend sed, elementum et metus. Morbi id diam sagittis, ultricies lacus pulvinar, elementum tellus. Suspendisse pulvinar justo eu lectus fermentum facilisis.</span><br></p></td></tr><tr><td>slug</td><td>hebatnya</td><td></td></tr></tbody></table>', 1, '2022-10-29 22:06:33', NULL),
+(105, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/login', 'admin@new-world.net login with IP Address 127.0.0.1', '', 1, '2022-11-03 03:15:01', NULL),
+(106, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/activities/add-save', 'Add New Data Another activity on the move at Activities', '', 1, '2022-11-03 03:21:48', NULL),
+(107, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'http://localhost:8000/admin/settings/edit-save/17', 'Update data  at Settings', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>name</td><td>about</td><td></td></tr><tr><td>content</td><td>Donec a suscipit turpis. Duis hendrerit risus arcu, et eleifend ipsum vaius vel. Nam tortor lacus, fringilla nec quam a, volupat laoreet dui. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam beatae ut, a blanditiis in aspernatur est debitis. Optio quis inventore officia numquam nostrum qui soluta, recusandae mollitia labore magnam doloribus.\r\n\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae laudantium molestias eaque iusto. Eligendi iure consequatur, molestiae quaerat eaque maxime dolorem sapiente quia doloremque tempore, repellendus quasi aliquid cumque voluptas?\r\n\r\niure consequatur, molestiae quaerat eaque maxime dolorem sapiente quia doloremque tempore, repellendus quasi aliquid cumque</td><td></td></tr><tr><td>content_input_type</td><td>textarea</td><td>wysiwyg</td></tr><tr><td>dataenum</td><td></td><td></td></tr><tr><td>helper</td><td></td><td></td></tr></tbody></table>', 1, '2022-11-03 04:16:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -531,7 +547,7 @@ INSERT INTO `cms_settings` (`id`, `name`, `content`, `content_input_type`, `data
 (14, 'api_debug_mode', 'true', 'select', 'true,false', NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'API Debug Mode'),
 (15, 'google_api_key', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Google API Key'),
 (16, 'google_fcm_key', NULL, 'text', NULL, NULL, '2022-08-02 05:21:45', NULL, 'Application Setting', 'Google FCM Key'),
-(17, 'about', NULL, 'textarea', NULL, NULL, '2022-10-23 00:29:22', '2022-10-23 00:31:19', 'General Setting', 'About');
+(17, 'about', '<p>Donec a suscipit turpis. Duis hendrerit risus arcu, et eleifend ipsum vaius vel. Nam tortor lacus, fringilla nec quam a, volupat laoreet dui. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam beatae ut, a blanditiis in aspernatur est debitis.</p>\r\n<p>Optio quis inventore officia numqam nostrum qui soluta, recusandae mollitia labore magnam doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae laudantium molestias eaque iusto.</p>\r\n<p>Eligendi iure consequatur, molestiae quaerat eaque maxime dolorem sapiente quia doloremque tempore, repellendus quasi aliquid cumque voluptas? iure consequatur, molestiae quaerat eaque maxime dolorem sapiente quia doloremque tempore, repellendus quasi aliquid cumque</p>', 'wysiwyg', NULL, NULL, '2022-10-23 00:29:22', '2022-11-03 04:16:01', 'General Setting', 'About');
 
 -- --------------------------------------------------------
 
@@ -677,15 +693,15 @@ CREATE TABLE `keywords` (
 --
 
 INSERT INTO `keywords` (`id`, `title_en`, `title_jp`, `desc_en`, `desc_jp`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Rice Field', '田んぼ', '<p>Rice Field<br></p>', '<p>田んぼ<br></p>', '', '2022-10-21 20:12:30', NULL),
-(2, 'Forest - Land', '森 - 土地', '<p>Forest - Land<br></p>', '<p>森 - 土地<br></p>', '', '2022-10-21 20:13:06', NULL),
-(3, 'Water', '森', '<p>Water<br></p>', '水の説明です', '', '2022-10-21 20:14:45', NULL),
-(4, 'Herbs', '草', '<p>Herbs<br></p>', 'これはハーブの説明です', '', '2022-10-21 20:15:45', NULL),
+(1, 'Rice Field', '田んぼ', '<p>Rice Field<br></p>', '<p>田んぼ<br></p>', 'rice-field', '2022-10-21 20:12:30', '2022-10-29 21:36:34'),
+(2, 'Forest - Land', '森 - 土地', '<p>Forest - Land<br></p>', '<p>森 - 土地<br></p>', 'forest-land', '2022-10-21 20:13:06', '2022-10-29 21:36:40'),
+(3, 'Water', '森', '<p>Water<br></p>', '水の説明です', 'water', '2022-10-21 20:14:45', '2022-10-29 21:36:48'),
+(4, 'Herbs', '草', '<p>Herbs<br></p>', 'これはハーブの説明です', 'herbs', '2022-10-21 20:15:45', '2022-10-29 21:36:55'),
 (5, 'Cooperative', '協同組合', '<p>Cooperative<br></p>', 'これは協力的な説明です', 'cooperative', '2022-10-21 20:17:10', '2022-10-26 02:23:35'),
 (6, 'Food', '食', '<p>Food<br></p>', 'これは食べ物の説明です', 'food', '2022-10-21 20:17:58', '2022-10-26 02:22:53'),
 (7, 'Handicraft', '手芸', '<p>Handicraft<br></p>', 'これは手作りの説明です', 'handicraft', '2022-10-21 20:18:46', '2022-10-26 02:22:45'),
 (8, 'Traditional Culture', '伝統文化', '<p>Traditional Culture<br></p>', '伝統文化の説明', 'traditional-culture', '2022-10-21 20:20:20', '2022-10-26 02:22:38'),
-(9, 'Field', '畑', '<p>Field<br></p>', '空のフィールドの説明', 'field', '2022-10-21 20:21:01', '2022-10-26 02:22:31');
+(9, 'Field', '畑', '<p>Field<br></p>', '空のフィールドの説明', 'field', '2022-10-21 20:21:01', '2022-10-29 21:36:13');
 
 -- --------------------------------------------------------
 
@@ -706,12 +722,14 @@ CREATE TABLE `keyword_activities` (
 --
 
 INSERT INTO `keyword_activities` (`id`, `id_keyword`, `id_activity`, `created_at`, `updated_at`) VALUES
-(8, 3, 7, '2022-10-22 23:11:22', NULL),
-(9, 4, 7, '2022-10-22 23:11:22', NULL),
-(10, 7, 7, '2022-10-22 23:11:22', NULL),
-(22, 2, 8, '2022-10-23 00:22:57', NULL),
-(23, 3, 8, '2022-10-23 00:22:57', NULL),
-(24, 8, 8, '2022-10-23 00:22:57', NULL);
+(25, 2, 8, '2022-10-23 00:22:57', NULL),
+(26, 3, 8, '2022-10-23 00:22:57', NULL),
+(27, 8, 8, '2022-10-23 00:22:57', NULL),
+(34, 3, 7, '2022-10-22 23:11:22', NULL),
+(35, 4, 7, '2022-10-22 23:11:22', NULL),
+(36, 7, 7, '2022-10-22 23:11:22', NULL),
+(37, 5, 9, '2022-11-03 03:21:48', NULL),
+(38, 6, 9, '2022-11-03 03:21:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -1032,7 +1050,7 @@ ALTER TABLE `actions`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cms_apicustom`
@@ -1068,7 +1086,7 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
@@ -1152,7 +1170,7 @@ ALTER TABLE `keywords`
 -- AUTO_INCREMENT for table `keyword_activities`
 --
 ALTER TABLE `keyword_activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `links`

@@ -162,7 +162,7 @@ p {	line-height: 1.5; }
     width: 50%;
     text-align: center;
     /* background-color: #cccccc; */
-	background-color: #2f2d2d;
+	background-color: #52a36b;
     height: 60px;
     font-size: 1rem;
     display: -ms-flexbox;
@@ -602,7 +602,7 @@ button:focus { outline: none; }
         -webkit-box-align: center;
         -webkit-align-items: center;
             align-items: center;
-    background: #1C8178;
+    background: #52a36b;
     color: white;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
@@ -610,7 +610,7 @@ button:focus { outline: none; }
 
 .tm-tab-link-label {
 	background: transparent;
-	color: #1C8178;
+	color: #52a36b;
 	display: block;
 	padding-left: 5%;
     padding-right: 5%;
@@ -621,7 +621,7 @@ button:focus { outline: none; }
 .tm-tab-link.active .tm-tab-icon,
 .tm-tab-link:hover .tm-tab-icon {
 	background: white;
-	color: #1C8178;
+	color: #52a36b;
 }
 
 .tm-tab-link.active .tm-tab-link-label,
@@ -630,7 +630,7 @@ button:focus { outline: none; }
 }
 
 .tm-tab-link.active,
-.tm-tab-link:hover { background: #1C8178; }
+.tm-tab-link:hover { background: #52a36b; }
 
 .tm-tab-content-box-col {
 	display: -webkit-box;
@@ -649,7 +649,7 @@ button:focus { outline: none; }
 }
 
 .tm-tab-content-box { 
-	border: 1px solid #1C8178;
+	border: 1px solid #52a36b;
 	display: -ms-flexbox; 
 	display: -webkit-box; 
 	display: -webkit-flex; 
@@ -734,7 +734,7 @@ button:focus { outline: none; }
 .tm-blog-post-text-box-outer { padding: 25px 30px; }
 
 .tm-blog-post-title {
-	color: #1C8178; 
+	color: #52a36b; 
 	font-size: 1.7rem; 
 	margin-bottom: 5%;
 }
@@ -753,7 +753,7 @@ button:focus { outline: none; }
 .tm-blog-post-link,
 .tm-blog-post-link:hover,
 .tm-blog-post-link:focus {
-	color: #1C8178;
+	color: #52a36b;
 }
 
 .tm-contact-form-row { padding: 30px 15px 60px; }
@@ -775,7 +775,7 @@ button:focus { outline: none; }
 	margin-bottom: 15px;
 }
 
-.form-control:focus { border-color: #1C8178; }
+.form-control:focus { border-color: #52a36b; }
 .form-group { margin-bottom: 1.75rem; }
 
 .tm-submit-btn,
@@ -786,7 +786,7 @@ button:focus { outline: none; }
 	padding: 0.8rem 3.5rem;
 }
 
-.tm-submit-btn { background-color: #1C8178; }
+.tm-submit-btn { background-color: #52a36b; }
 
 .tm-submit-btn:hover,
 .tm-submit-btn:focus { background-color: #499ff5; }
@@ -1365,10 +1365,10 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.navbar-nav .nav-item.active, .navbar-nav .nav-item.none:hover {
 		/* background-color: #cccccc; */
-		background-color: #2f2d2d;
+		background-color: #52a36b;
 	}
 	a {
-		color: #1c8178;
+		color: #52a36b;
 		text-decoration: none;
 	}
 	.tm-blue-text {
@@ -1468,4 +1468,48 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.no-data img {
 		border-radius: 100%;
 		height: 250px;
+	}
+
+	.intro-page {
+		padding: 0 150px;
+	}
+	.big-font {
+		font-size: 45px;
+	}
+	.story-page .card-body {
+		padding: 20px;
+	}
+	.story-page img {
+		border-radius: 0;
+	}
+	span.label.label-default {
+		padding: 3px 10px;
+		background: #52a36b;
+		color: #fff;
+		font-weight: bolder;
+		font-size: 20px;
+	}
+	p.card-text {
+		margin-top: 10px;
+		font-size: 22px;
+	}
+	.justify-content-md-center {
+		-webkit-box-pack: center!important;
+		-ms-flex-pack: center!important;
+		justify-content: center!important;
+	}
+
+	footer {
+		background: #52a36b;
+		color: #fff;
+		padding-top:45px;
+	}
+	footer div.text-center {
+		padding: 20px;
+	}
+	footer h6 {
+		font-weight: bold;
+	}
+	.flag-small {
+		width: 50px;
 	}

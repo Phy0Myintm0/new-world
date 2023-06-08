@@ -43,9 +43,9 @@
 
 @if(Request::segment(1) != 'action')
 <!-- footer -->
-@include('front.footer')
 @endif
 </div>
+@include('front.footer')
 <!-- Placed at the end of the document so the pages load faster -->
 @include('front.scripts')
 </body>
