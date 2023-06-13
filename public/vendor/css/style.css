@@ -1506,6 +1506,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	footer div.text-center {
 		padding: 20px;
+		margin-top: 30px;
 	}
 	footer h6 {
 		font-weight: bold;
@@ -1513,3 +1514,9 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.flag-small {
 		width: 50px;
 	}
+@media (max-width: 792px) {
+    .intro-page {
+        padding: 0 10px;
+    }
+    
+}
