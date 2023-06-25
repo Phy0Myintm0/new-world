@@ -224,22 +224,16 @@ class HomeController extends Controller
     public function post($slug)
     {
         $data['test'] = 'test';
-        $data['footer_menu'] = DB::table('packages')
-            ->select('id', 'slug', 'title', 'price')
-            ->limit(6)
-            ->orderBy('id', 'asc')
-            ->get();
-            
-
+        
         $data['data'] = DB::table('posts')
             ->join(
-                'categories',
+                'countries',
                 'posts.cat_id',
                 '=',
-                'categories.id'
+                'countries.id'
             )
-            ->select('posts.*', 'categories.title as cat')
-            ->where('slug', $slug)
+            ->select('posts.*', 'countries.title as cat')
+            ->where('posts.slug', $slug)
             ->first();
 
         $data['recents'] = DB::table('posts')
@@ -247,7 +241,7 @@ class HomeController extends Controller
             ->where('slug', '<>', $slug)
             ->get();
 
-        $data['categories'] = DB::table('categories')
+        $data['countries'] = DB::table('countries')
             ->select('title', 'id')
             ->limit(6)
             ->orderBy('id', 'asc')
@@ -258,6 +252,61 @@ class HomeController extends Controller
         // --------------------------
 
         return view('front.post')
+        ->with('data', $data);
+    }
+
+    public function countries($slug)
+    {
+        $data['test'] = 'test';
+
+        $data['data'] = DB::table('countries')
+            ->select('*')
+            ->where('slug', $slug)
+            ->first();
+
+        $data['activities'] = DB::table('activities')
+            ->join(
+                'actions',
+                'activities.id_action',
+                '=',
+                'actions.id'
+            )
+            ->join(
+                'countries',
+                'activities.id_country',
+                '=',
+                'countries.id'
+            )
+            ->join(
+                'keyword_activities',
+                'activities.id',
+                '=',
+                'keyword_activities.id_activity'
+            )
+            ->select('activities.*', 'actions.title_en as actionnya', 'actions.slug as action_slug', 'countries.title as country')
+            ->where('keyword_activities.id_keyword', $data['data']->id)
+            ->get();
+
+
+        $data['keywords'] = DB::table('keywords')
+            ->select('title_en', 'title_jp', 'slug')
+            // ->limit(4)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $data['actions'] = DB::table('actions')
+            ->select('title_en', 'title_jp', 'img', 'slug')
+            // ->limit(4)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        
+
+        // --------- seo ------------
+        // SEOTools::setTitle($data['data']->title);
+        // --------------------------
+
+        return view('front.countries')
         ->with('data', $data);
     }
 

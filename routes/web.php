@@ -28,3 +28,7 @@ Route::get('/contact', 'HomeController@contact');
 Route::get('/activity/{slug}', 'HomeController@activity');
 Route::get('/action/{slug}', 'HomeController@action');
 Route::get('/keyword/{slug}', 'HomeController@keyword');
+
+
+Route::get('/countries/{slug}', 'HomeController@countries');
+Route::get('/post/{slug}', 'HomeController@post');

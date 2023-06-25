@@ -1,143 +1,316 @@
 @extends('front.layout')
 
 @push('styles')
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Lato:700,900");
+
+    @font-face {
+        font-family: Arno Pro;
+        src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ArnoPro-Regular.otf);
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: Arno Pro;
+        src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ArnoPro-Italic.otf);
+        font-style: italic;
+    }
+
+    p {
+        font-family: Arno Pro, serif;
+        font-size: 1.2rem;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    p.credits {
+        font-style: italic;
+        text-indent: 0 !important;
+        margin: 1rem 0;
+    }
+
+    p a {
+        font-weight: bolder;
+        color: #000;
+        text-decoration: none;
+    }
+
+    @supports (font-variant-caps: small-caps) {
+        .multicol:first-of-type p:first-of-type {
+            font-variant-caps: small-caps;
+        }
+    }
+
+    p:not(:first-of-type) {
+        text-indent: 1.4rem;
+    }
+
+    .multicol {
+        -moz-column-count: 4;
+        column-count: 4;
+        -moz-column-gap: 2rem;
+        column-gap: 2rem;
+    }
+
+    .multicol+img {
+        margin: 2rem 0;
+    }
+
+    article {
+        width: 80%;
+        margin: 0 auto 4rem;
+    }
+
+    article img {
+        width: 100%;
+    }
+
+    article header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 4rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    }
+
+    article h1 {
+        margin-top: 0;
+        font-size: 3rem;
+    }
+
+    article h2 {
+        -moz-column-break-after: column;
+        break-after: column;
+        font-size: 1.5rem;
+    }
+
+    h1,
+    h2 {
+        font-family: Lato, sans-serif;
+    }
+
+    @media all and (max-width: 1600px) {
+        .multicol {
+            -moz-column-count: 3;
+            column-count: 3;
+        }
+    }
+
+    @media all and (max-width: 1000px) {
+        .multicol {
+            -moz-column-count: 2;
+            column-count: 2;
+        }
+    }
+
+    @media all and (max-width: 800px) {
+        article h2 {
+            -moz-column-break-after: avoid;
+            break-after: avoid;
+        }
+
+        .multicol {
+            -moz-column-count: 1;
+            column-count: 1;
+        }
+    }
+
+    @media all and (max-width: 600px) {
+        body {
+            margin: 0;
+        }
+
+        article {
+            width: 100%;
+        }
+
+        .multicol {
+            padding: 0 1rem;
+        }
+
+        article header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+</style>
 @endpush
 
 @section('content')
 
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <!-- <div class="page-header d-flex align-items-center" style="background-image: url('');">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h2>Package</h2>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <nav>
-            <div class="container">
-                <ol>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li>{{ $data['data']->title }}</li>
-                </ol>
-            </div>
+<div class="row">
+    <div class="col-xs-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title }}</li>
+            </ol>
         </nav>
-    </div><!-- End Breadcrumbs -->
+    </div>
+</div>
 
-    <!-- ======= Blog Details Section ======= -->
-    <section id="blog" class="blog">
-        <div class="container" data-aos="fade-up">
+<div class="row">
+    <div class="col-xs-12 col-md-11 offset-md-1 text-tengah">
+        <h3 class="tm-about-title">
+            <span>{{ $data['data']->title }}</span>
+        </h3>
+    </div>
+</div>
 
-            <div class="row g-5">
+<base href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/">
+<main>
+    <article>
+        <header>
+            <img src="dead-horse-point-state-park-2x.jpg" alt="">
+        </header>
+        <div class="multicol">
+            <h1>Land of Salt and Rock</h1>
+            <h2>Five Days in Utah</h2>
+            <p>“Why Utah?”</p>
+            <p>The question was posed to me pretty much every time I told someone where I was headed on my next
+                adventure.</p>
+            <p>“What’s there?”</p>
+            <p>I was, of course, going to find out what was there. But at the very least I knew that if HBO’s
+                <cite>Westworld</cite>, which is filmed in the state, was anything close to how the landscapes looked in
+                real life, I was in for a few days of magic.</p>
+            <p>Utah might not be one of the first states that comes to mind when making a trip to America, but it should
+                be. For lovers of the outdoors, it is an unparalleled paradise, with breathtaking rock formations around
+                every highway turn.</p>
+            <p>To maximize the area covered, consider flying into Las Vegas, renting a car, and driving up into Utah
+                (stop in Vegas for a quick lunch, perhaps at the delicious La Comida located off the strip). Utah has
+                five glorious national parks, each with their own distinct characteristics, so it is best to plan ahead
+                to figure out which ones are within your means for time and distance.</p>
+            <p>Amangiri, a five-star Aman property sitting close to Utah’s border with Arizona, provides an ideal
+                destination for day one.</p>
+        </div>
+        <img src="route-89-2x.jpg" alt="">
+        <div class="multicol">
+            <p>Driving out of Nevada, through parts of Arizona, and into Utah is nothing short of awe-inspiring, with
+                the scenery morphing from yellow to red to beige. Reaching Amangiri feels like approaching a secluded
+                fortress, with a private winding road that snakes through the mountainous rocks.</p>
+            <p>“We’ve been expecting you!” the receptionist says as we buzz for entry through Amangiri’s locked gate.
+                Finally reaching the resort itself, my partner and I are greeted by a team of friendly staff who
+                immediately whisk our bags away as a host escorts us up the paved stairs. It is nighttime when we
+                arrive, and the building is lined with glowing lanterns that light our path.</p>
+            <p>Inside, the lobby flows into the dining room and open kitchen, which in turn leads to an inner courtyard.
+                Past the dazzling pool and hot tub, we are guided to our room, where check-in is as simple as signing
+                our names.</p>
+            <p>Inspired by the area’s native Navajo people, Amangiri is so in touch with its surroundings that it seems
+                as if it grew from the ground itself. Exposed concrete in soft greys; contemporary furnishings in muted
+                yellows; a handmade dreamcatcher presented on the bed as a welcome gift—this place knows service, and
+                knows detail. Want to go for a walk? There is an umbrella in case it rains. Partake in stargazing? They
+                bring in an expert astronomer. Eat a delicious meal? Pull up a seat in the dining room and indulge in
+                tortilla soup for dinner or huevos rancheros for breakfast, all the while never having to sign a bill or
+                even give your room number. Guests here are friendly, too, and you never know who you might be talking
+                to—that brunette woman dining solo might just have designed sets for 1995’s <cite>Outbreak</cite>.</p>
+            <p>Amangiri offers free guided hikes right from the property that explore the surrounding terrain, but it is
+                also only a few hours’ drive from Zion National Park. Along the way, watch the rock formations change,
+                perhaps stopping at the Grand-Staircase Escalante for a short detour to see some toadstools. That is the
+                beauty of this land: even small journeys on the side of the highway turn into momentous adventures.</p>
+            <p>If visiting Zion in the off-season, you can take your car right through the park, stopping as many or as
+                few times as desired (if there during peak season, shuttles are used to take explorers to the different
+                viewpoints). The rock patterns on these red mountains seem to swirl and swish like ice cream cones, and
+                a short hike down along the Lower Emerald Pool Trail makes me feel as though I’ve encountered a rugged
+                stony jungle.</p>
+        </div>
+        <img src="monument-valley-2x.jpg" alt="">
+        <div class="multicol">
+            <p>On the way back to Amangiri, we detour to the Coral Pink Sand Dunes State Park and revel in the fact that
+                we are the only two people in the entire place. Traipsing over mountains of Kool-Aid-coloured sand, I
+                bend down to feel it between my fingers. It’s silky and light, almost whimsical.</p>
+            <p>If looking to stop for a bite somewhere along the way, consider Kanab Creek Bakery, located in the town
+                of Kanab that sits between Amangiri and Zion; pop in for a humungous turkey sandwich on freshly baked
+                bread.</p>
+            <p>Back at Amangiri, we indulge in a couple’s massage at the onsite spa, taking in the pre-treatment sage
+                smudging and post-treatment steam shower. I then spend a few moments alone in the outdoor wading pool,
+                letting the darkness of the night envelop me.</p>
+            <p>Come morning, we bid a sad farewell to Amangiri and head for Bryce Canyon National Park. Known for its
+                chillingly beautiful sea of spire rock formations called hoodoos, Bryce is best enjoyed from Sunset
+                Point, where the amphitheatre of hoodoos can be seen in full force, and adventurers can even walk down
+                into the basin to stand right next to them. Also not to miss is the Natural Bridge viewpoint, which
+                looks out onto a majestic arch-like wonder.</p>
+            <p>From Bryce Canyon, the road leads us north to the state capital, Salt Lake City. Host of the 2002 Winter
+                Olympics, Salt Lake’s close proximity to six ski resorts makes it a great jumping off point for
+                snowbirds. Our home for two nights is The Grand America Hotel, a luxury property with old world charms.
+                Indeed, as the receptionist prepares the room key—shaped like an actual key, not the typical swipe
+                card—he says, “We like to keep things a bit old-fashioned.”</p>
+            <p>For food, head to Pago for kale Caesar salad and bavette steak, or to HSL for pork chops, fried chicken,
+                and General Tso-style cauliflower. Craft beer can be found at many places including the notable Uinta
+                Brewing (because yes, alcohol is allowed and even produced in this Mormon state), and coffee is good at
+                the Rose Establishment. The cafe is our final stop on the way to the Salt Lake airport, one last hurrah
+                before leaving the splendid landscapes behind and heading back home to tell everyone exactly what can be
+                found in this land of salt and rock.</p>
 
-                <div class="col-lg-8">
-
-                    <article class="blog-details">
-
-                        <div class="post-img">
-                            <img src="{{ asset($data['data']->img) }}" alt="Image of {{ $data['data']->title }}" class="img-fluid">
-                        </div>
-
-                        <h2 class="title">{{ $data['data']->title }}</h2>
-
-                        <div class="meta-top">
-                            <ul>
-                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                        href="#!">Admin</a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-                                        href="#!"><time datetime="{{ $data['data']->created_at }}">{{ $data['data']->created_at }}</time></a></li>
-                                        
-                                <li class="d-flex align-items-center"><i class="bi bi-folder"></i> <a
-                                        href="#!">{{ $data['data']->cat }}</a></li>
-                            </ul>
-                        </div><!-- End meta top -->
-
-                        <div class="content">
-                            {!! $data['data']->desc !!}
-
-                        </div><!-- End post content -->
-
-                    </article><!-- End blog post -->
-
-                    <!-- <div class="post-author d-flex align-items-center">
-                        <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
-                        <div>
-                            <h4>{{ CRUDBooster::getSetting('appname') }}</h4>
-                            <div class="social-links">
-                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                            </div>
-                            <p>
-                                
-                            </p>
-                        </div>
-                    </div> -->
-
-                    <div class="comments">
-                        <!-- <h4 class="comments-count">Comments</h4> -->
-
-                    </div><!-- End blog comments -->
-
-                </div>
-
-                <div class="col-lg-4">
-
-                    <div class="sidebar">
-
-                        <div class="sidebar-item categories">
-                            <h3 class="sidebar-title">Categories</h3>
-                            <ul class="mt-3">
-                                @foreach($data['categories'] as $item)
-                                <li><a href="{{ url('blog/category').'/'.$item->id }}">{{ $item->title }} <span>(#)</span></a></li>
-                                @endforeach
-                            </ul>
-                        </div><!-- End sidebar categories-->
-
-                        <div class="sidebar-item recent-posts">
-                            <h3 class="sidebar-title">Recent Posts</h3>
-
-                            <div class="mt-3">
-                                @foreach($data['recents'] as $item)
-                                <div class="post-item mt-3">
-                                    <img src="{{ asset($item->img) }}" alt="Image of {{ $item->title }}">
-                                    <div>
-                                        <h4><a href="{{ url('post').'/'.$item->slug }}">{{ $item->title }}</a></h4>
-                                        <time datetime="{{ $item->created_at }}">{{ $item->created_at }}</time>
-                                    </div>
-                                </div><!-- End recent post item-->
-                                @endforeach
-
-    
-                            </div>
-
-                        </div><!-- End sidebar recent posts-->
-                        <br>
-
-                        <!-- <div class="sidebar-item tags">
-                            <h3 class="sidebar-title">Tags</h3>
-                            <ul class="mt-3">
-                                <li><a href="#">App</a></li>
-                                
-                            </ul>
-                        </div> -->
-                        <!-- End sidebar tags-->
-
-                    </div><!-- End Blog Sidebar -->
-
-                </div>
-            </div>
+            <p class="credits">Text by <a
+                    href="http://montecristomagazine.com/magazine/spring-2018/five-days-in-utah">Sarah Harowitz</a></p>
+            <p class="credits">Photographs by <a
+                    href="https://www.flickr.com/photos/pedrosz/albums/72157645897945460">Pedro Szekely</a>, used under
+                a <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Creative Commons
+                    Attribution-NonCommercial-ShareAlike 2.0 Generic license</a></p>
 
         </div>
-    </section><!-- End Blog Details Section -->
+    </article>
+</main>
 
-</main><!-- End #main -->
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
+        <h3 class="">
+            <span>Other Success Story & Activities</span>
+        </h3>
+    </div>
+</div>
+
+<div class="row story-page">
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="label label-default">2023年 1月 13日</span></h1>
+                </div>
+                <p class="card-text">This is a wider card with supporting text.</p>
+            </div>
+            <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                src="https://picsum.photos/seed/agung/500/300" data-holder-rendered="true">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="label label-default">2023年 7月 2日</span></h1>
+                </div>
+                <p class="card-text">Lorem ipsum asda AsdasdafaaLorem ipsum asda.</p>
+            </div>
+            <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                src="https://picsum.photos/seed/dddww/500/300" data-holder-rendered="true">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="label label-default">2023年 4月 3日</span></h1>
+                </div>
+                <p class="card-text">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
+            </div>
+            <img class="card-img-top"
+                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                src="https://picsum.photos/seed/aacv/500/300" data-holder-rendered="true">
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
 @endsection
 
 @push('scripts')

@@ -8,6 +8,9 @@
     #map {
         min-height: 500px;
     }
+    .electricblaze-yxyKslpMBkjKVPcsWvD4 {
+        display: none;
+    }
 
 </style>
 @endpush
@@ -226,32 +229,11 @@
 <br><br><br>
 
 <div class="row">
-    <div class="col-md-6">
-        <h2>Tag</h2>
-        <p>Ready to beyond the starter template? Check out these open source projects that you can quickly duplicate to
-            a new GitHub repository.</p>
-        <ul class="icon-list ps-0">
-            <li class="d-flex align-items-start mb-1"><a href="https://github.com/twbs/bootstrap-npm-starter"
-                    rel="noopener" target="_blank">Bootstrap npm starter</a></li>
-            <li class="text-muted d-flex align-items-start mb-1">Bootstrap Parcel starter (coming soon!)</li>
-        </ul>
-    </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
         <h2>RSS</h2>
-        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
-        <ul class="icon-list ps-0">
-            <li class="d-flex align-items-start mb-1"><a href="/docs/5.2/getting-started/introduction/">Bootstrap quick
-                    start guide</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="/docs/5.2/getting-started/webpack/">Bootstrap Webpack
-                    guide</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="/docs/5.2/getting-started/parcel/">Bootstrap Parcel
-                    guide</a></li>
-            <li class="d-flex align-items-start mb-1"><a href="/docs/5.2/getting-started/vite/">Bootstrap Vite guide</a>
-            </li>
-            <li class="d-flex align-items-start mb-1"><a href="/docs/5.2/getting-started/contribute/">Contributing to
-                    Bootstrap</a></li>
-        </ul>
+        <script src="https://s.electricblaze.com/widget.js" defer></script>
+        <div class="electricblaze-id-2Uhx9Oy"></div>
     </div>
 </div>
 
@@ -292,8 +274,8 @@
         const orangeIcon = new LeafIcon({iconUrl: 'img/japan.png'});
         const indiaIcon = new LeafIcon({iconUrl: 'img/india.png'});
 
-        const mGreen = L.marker([-0.663646, 113.280315], {icon: greenIcon}).bindPopup('Indonesia.').addTo(map);
-        const mRed = L.marker([11.561753, 104.667034], {icon: redIcon}).bindPopup('Cambodia').addTo(map);
+        const mGreen = L.marker([-0.663646, 113.280315], {icon: greenIcon}).bindPopup('<a href="countries/indonesia">Indonesia</a>.').addTo(map);
+        const mRed = L.marker([11.561753, 104.667034], {icon: redIcon}).bindPopup('<a href="countries/cambodia">Cambodia</a>').addTo(map);
         const mOrange = L.marker([31.161974, 130.682658], {icon: orangeIcon}).bindPopup('Japan').addTo(map);
         const mIndia = L.marker([20.998287, 79.969769], {icon: indiaIcon}).bindPopup('India').addTo(map);
     })
