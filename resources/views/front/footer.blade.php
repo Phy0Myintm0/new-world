@@ -13,6 +13,7 @@
           molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
           aliquam voluptatem veniam, est atque cumque eum delectus sint!
         </p>
+        <br>
 
         <h6>Contact Us</h6>
 
@@ -33,8 +34,9 @@
           molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
           aliquam voluptatem veniam, est atque cumque eum delectus sint!
         </p>
+        <br>
 
-        <p>
+        <div>
             <img class="flag-small" src="{{ asset('img/indonesia.png') }}">
             <img class="flag-small" src="{{ asset('img/india.png') }}">
             <img class="flag-small" src="{{ asset('img/cambodia.png') }}">
@@ -44,7 +46,7 @@
             <img class="flag-small" src="{{ asset('img/nepal.png') }}">
             <img class="flag-small" src="{{ asset('img/philipine.png') }}">
             <img class="flag-small" src="{{ asset('img/Sri_Lanka.png') }}">
-        </p>
+</div>
       </div>
       <!--Grid column-->
     </div>
@@ -54,7 +56,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-  Copyright © 2023 <a class="text-dark" href="#!">Community Without Border</a>
+  <small>Copyright © 2023 <a class="text-dark" href="#!">Community Without Border</a></small>
   </div>
   <!-- Copyright -->
 </footer>

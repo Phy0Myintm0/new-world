@@ -6,238 +6,570 @@
 
 <style>
     #map {
-        min-height: 500px;
+        min-height: 600px;
+        z-index: 1;
     }
+
     .electricblaze-yxyKslpMBkjKVPcsWvD4 {
         display: none;
+    }
+
+    .mfp-with-zoom .mfp-title,
+    .touch .gallery-image figcaption,
+    html:not(.touch) .gallery-image figcaption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0);
+        padding: 1em;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        max-width: calc(100% - 9em);
+        line-height: 1.25;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .mfp-with-zoom .mfp-title:before,
+    .touch .gallery-image figcaption:before,
+    html:not(.touch) .gallery-image figcaption:before,
+    .mfp-with-zoom .mfp-title:after,
+    .touch .gallery-image figcaption:after,
+    html:not(.touch) .gallery-image figcaption:after {
+        content: "";
+        position: absolute;
+        background: rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .mfp-with-zoom .mfp-title:before,
+    .touch .gallery-image figcaption:before,
+    html:not(.touch) .gallery-image figcaption:before,
+    .mfp-with-zoom .mfp-title:after,
+    .touch .gallery-image figcaption:after,
+    html:not(.touch) .gallery-image figcaption:after {
+        right: 100%;
+        bottom: 100%;
+    }
+
+    .mfp-with-zoom .mfp-title:after,
+    .touch .gallery-image figcaption:after,
+    html:not(.touch) .gallery-image figcaption:after {
+        left: 100%;
+        top: 100%;
+    }
+
+    .mfp-with-zoom.mfp-ready .mfp-title,
+    .touch .gallery-image figcaption,
+    html:not(.touch) .gallery-image:hover figcaption {
+        color: white;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease 0.3s;
+    }
+
+    .mfp-with-zoom.mfp-ready .mfp-title:before,
+    .touch .gallery-image figcaption:before,
+    html:not(.touch) .gallery-image:hover figcaption:before,
+    .mfp-with-zoom.mfp-ready .mfp-title:after,
+    .touch .gallery-image figcaption:after,
+    html:not(.touch) .gallery-image:hover figcaption:after {
+        opacity: 1;
+    }
+
+    .mfp-with-zoom.mfp-ready .mfp-title:before,
+    .touch .gallery-image figcaption:before,
+    html:not(.touch) .gallery-image:hover figcaption:before {
+        right: -1.5em;
+        bottom: -1.5em;
+    }
+
+    .mfp-with-zoom.mfp-ready .mfp-title:after,
+    .touch .gallery-image figcaption:after,
+    html:not(.touch) .gallery-image:hover figcaption:after {
+        left: -1.5em;
+        top: -1.5em;
+    }
+
+    html {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizelegibility;
+    }
+
+    body {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    .gallery {
+        -moz-column-gap: 0;
+        column-gap: 0;
+    }
+
+    @media (min-width: 480px) {
+        .gallery {
+            -moz-column-count: 2;
+            column-count: 2;
+        }
+    }
+
+    @media (min-width: 1260px) {
+        .gallery {
+            -moz-column-count: 3;
+            column-count: 3;
+        }
+    }
+
+    .gallery-image {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gallery-image:before,
+    .gallery-image:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 16px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        will-change: border;
+    }
+
+    .gallery-image:after {
+        border-width: 0;
+    }
+
+    .gallery-image img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    html:not(.touch) .gallery-image {
+        overflow: hidden;
+    }
+
+    html:not(.touch) .gallery-image:hover:before {
+        border-width: 16px;
+    }
+
+    html:not(.touch) .gallery-image:hover:after {
+        border-width: 32px;
+    }
+
+    .touch .gallery-image figcaption {
+        top: auto;
+        bottom: 2em;
+    }
+
+    .mfp-with-zoom .mfp-container,
+    .mfp-with-zoom.mfp-bg {
+        opacity: 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: all 0.3s ease-out;
+    }
+
+    .mfp-with-zoom.mfp-bg {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .mfp-with-zoom.mfp-ready .mfp-container {
+        opacity: 1;
+    }
+
+    .mfp-with-zoom.mfp-ready.mfp-bg {
+        opacity: 1;
+    }
+
+    .mfp-with-zoom.mfp-removing .mfp-container,
+    .mfp-with-zoom.mfp-removing.mfp-bg {
+        opacity: 0;
+    }
+
+    .mfp-with-zoom img.mfp-img {
+        padding: 0;
+    }
+
+    .mfp-with-zoom .mfp-figure:after {
+        top: 0;
+        bottom: 0;
+    }
+
+    .mfp-with-zoom .mfp-container {
+        padding: 0;
+    }
+
+    .mfp-with-zoom .mfp-content {
+        overflow: hidden;
+    }
+
+    .mfp-with-zoom .mfp-bottom-bar {
+        top: auto;
+        bottom: 0;
+        margin-top: 0;
+    }
+
+    .mfp-with-zoom .mfp-title {
+        top: auto;
+        bottom: 2em;
+    }
+
+    .mfp-arrow {
+        opacity: 1;
+        margin-top: 0 !important;
+        width: 20%;
+        height: 30%;
+        transform: translateY(-50%);
+    }
+
+    .mfp-arrow:before,
+    .mfp-arrow:after {
+        margin: 0;
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        transform: rotate(-45deg) translate(-50%, -100%);
+        opacity: 1;
+        top: 50%;
+        left: 50%;
+        transition: all 0.15s;
+    }
+
+    .mfp-arrow:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .mfp-arrow-left {
+        left: 0;
+    }
+
+    .mfp-arrow-left:before,
+    .mfp-arrow-left:after {
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+    }
+
+    .mfp-arrow-left:after {
+        margin-left: 2rem;
+    }
+
+    .mfp-arrow-left:hover:before,
+    .mfp-arrow-left:active:before {
+        margin-left: 2rem;
+    }
+
+    .mfp-arrow-left:hover:after,
+    .mfp-arrow-left:active:after {
+        margin-left: 0;
+    }
+
+    .mfp-arrow-right {
+        right: 0;
+    }
+
+    .mfp-arrow-right:before,
+    .mfp-arrow-right:after {
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .mfp-arrow-right:after {
+        margin-left: 2rem;
+    }
+
+    .mfp-arrow-right:hover:before {
+        margin-left: 2rem;
+    }
+
+    .mfp-arrow-right:hover:after {
+        margin-left: 0;
+    }
+
+    button.mfp-close {
+        opacity: 1;
+        margin-top: 0 !important;
+        width: 20%;
+        height: 30%;
+        font: 0/0 serif;
+        text-shadow: none;
+        color: transparent;
+    }
+
+    button.mfp-close:before,
+    button.mfp-close:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        border: none;
+        width: 2rem;
+        height: 2rem;
+        opacity: 1;
+        transition: all 0.15s;
+        transform-origin: 0 0;
+        border-top: 2px solid white;
+        border-left: 2px solid white;
+    }
+
+    button.mfp-close:before {
+        transform: rotate(-45deg);
+    }
+
+    button.mfp-close:after {
+        transform: rotate(135deg);
+    }
+
+    button.mfp-close:hover:before {
+        transform: rotate(135deg);
+    }
+
+    button.mfp-close:hover:after {
+        transform: rotate(315deg);
+    }
+
+    button.mfp-close:active {
+        transform: scale(0.95);
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 
 </style>
 @endpush
 
 @section('content')
-<div class="row tm-content-boxes-row">
+<!-- <div class="row tm-content-boxes-row">
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 img-logo">
-        <img src="{{ asset('vendor/img/new-world.png') }}" alt="new-world-logo">
-    </div>
+	
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 offset-md-6">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 offset-md-6">
 
-        <form class="form-inline">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        </form>
-        <p>Please choose keywords from the circle to start!</p>
+		<form class="form-inline">
+			<input class="form-control" type="search" placeholder="Search" aria-label="Search">
+		</form>
+		<p>Please choose keywords from the circle to start!</p>
 
-    </div>
+	</div>
+</div> -->
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 img-logo">
+    <img src="{{ asset('vendor/img/new-world.png') }}" alt="new-world-logo">
 </div>
-
 <div class="row">
     <div class="card-body" id="map" style="width: 100%; height: 400px;"></div>
 </div>
 
 <!-- 
 <div class="row tm-row-margin-b tm-content-boxes-row">
-    <div class="col-md-12 bunderan">
-        <div class="icon"><img src="{{ asset('vendor/img/new_world_center.png') }}" alt="">
-            <ul class="menu">
-            @foreach($data['keywords'] as $item)  
-                <li class="spread">
-                    <a class="unit" href="{{ url('keyword').'/'.$item->slug }}">
-                        <span class="text-bunder">{{ $item->title_jp }}<br>{{ $item->title_en }}</span>
-                    </a>
-                </li>
-            @endforeach
-            
-            </ul>
-        </div>
-    </div>
+	<div class="col-md-12 bunderan">
+		<div class="icon"><img src="{{ asset('vendor/img/new_world_center.png') }}" alt="">
+			<ul class="menu">
+			@foreach($data['keywords'] as $item)  
+				<li class="spread">
+					<a class="unit" href="{{ url('keyword').'/'.$item->slug }}">
+						<span class="text-bunder">{{ $item->title_jp }}<br>{{ $item->title_en }}</span>
+					</a>
+				</li>
+			@endforeach
+			
+			</ul>
+		</div>
+	</div>
 </div> -->
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
+<div class="row section intro">
+    <div class="col-xs-12 text-tengah bg-text">
         <h3 class="text-xs-center big-font">
-            <span>Community Network Without Border</span>
+            <span><i>C</i>ommunity <i>N</i>etwork <i>W</i>ithout <i>B</i>order</span>
         </h3>
         <div class="text-center intro-page">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum facilisis est id
-                condimentum. Vivamus dignissim tellus quis fringilla posuere. Pellentesque habitant morbi tristique
-                senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis
-                in faucibus. Sed consectetur ut massa quis pretium. Integer id erat metus. Nulla aliquam rutrum enim,
-                eget viverra risus. Nullam est lorem, cursus sit amet dignissim ut, pretium eget mi. Praesent in lorem
-                aliquam, venenatis ex non, dictum nisi. Quisque vel pulvinar lacus. Ut iaculis, mi vitae tristique
-                placerat, turpis ipsum vulputate orci, in scelerisque mauris quam sit amet dolor. Mauris pellentesque a
-                nunc at malesuada. Vestibulum tristique lacinia turpis ac vulputate.</p>
-            <p>
-                Curabitur cursus ipsum nibh, eget egestas enim ornare non. Donec vitae mi mauris. Nulla quis scelerisque
-                erat. Nulla iaculis ligula vitae mauris lacinia, vulputate sagittis metus sodales. Vestibulum sed
-                dignissim urna, id dignissim dolor. Nunc molestie sapien ac aliquet lobortis. Cras vulputate maximus
-                varius. Nullam quis elementum velit, in aliquam tellus. Aliquam laoreet fermentum sapien quis ultricies.
-                Etiam felis libero, ultrices eget mauris sed, iaculis bibendum ligula. Integer orci lectus, gravida
-                interdum sem tincidunt, molestie efficitur erat. Proin tellus elit, sodales et mollis dictum, lobortis a
-                orci. Phasellus semper, orci blandit maximus blandit, sapien mauris maximus lorem, at tempus erat turpis
-                a arcu.
-            </p>
+            {!! CRUDBooster::getSetting("intro_text") !!}
         </div>
     </div>
 </div>
 
-
-<br><br><br>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
-        <h3 class="">
-            <span>Success Story</span>
-        </h3>
+<div class="row story-page section">
+    <div class="col-xs-12 text-tengah">
+        <div class="section-header">
+            <h3><span>Success Story</span></h3>
+            <p>These articles below are our success story with the communities around the world.</p>
+        </div>
     </div>
-</div>
-
-<div class="row story-page">
-    <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="label label-default">2023年 1月 13日</span></h1>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#!">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="label label-default"><i class="fa fa-clock-o"></i> February 21, 2022</span>
+                            </h1>
+                        </div>
+                        <h5>Short Title TEst Asdas</h5>
+                        <p class="card-text">Short Description lorasfsd asdfa sdfasdf.</p>
+                    </div>
+                    <img class="card-img-top"
+                        data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                        alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                        src="https://picsum.photos/seed/agung/500/300" data-holder-rendered="true">
                 </div>
-                <p class="card-text">This is a wider card with supporting text.</p>
-            </div>
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/agung/500/300"
-                data-holder-rendered="true">
+            </a>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="label label-default">2023年 7月 2日</span></h1>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="label label-default">2023年 7月 2日</span></h1>
+                    </div>
+                    <p class="card-text">Lorem ipsum asda AsdasdafaaLorem ipsum asda.</p>
                 </div>
-                <p class="card-text">Lorem ipsum asda AsdasdafaaLorem ipsum asda.</p>
+                <img class="card-img-top"
+                    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                    alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                    src="https://picsum.photos/seed/dddww/500/300" data-holder-rendered="true">
             </div>
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/dddww/500/300"
-                data-holder-rendered="true">
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <span class="label label-default">2023年 4月 3日</span></h1>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="label label-default">2023年 4月 3日</span></h1>
+                    </div>
+                    <p class="card-text">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
                 </div>
-                <p class="card-text">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
+                <img class="card-img-top"
+                    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                    alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                    src="https://picsum.photos/seed/aacv/500/300" data-holder-rendered="true">
             </div>
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/aacv/500/300"
-                data-holder-rendered="true">
         </div>
+    </div>
+    <!-- .row-fluid -->
+</div>
+
+<div class="row section cwb-category">
+    <div class="col-xs-12 text-tengah">
+        <div class="section-header">
+            <h3><span>CWB Category</span></h3>
+            <p>These are our comunity work, these community work divided into some category.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <ul class="justify-content-md-center">
+            @foreach($data['actions'] as $item)
+            <li class="tm-tab-link-item col-md-4">
+                <a id="tab2" href="{{ url('action').'/'.$item->slug }}" class="tm-tab-link">
+                    <i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
+                    <span class="tm-tab-link-label">
+                        {{ $item->title_jp }}
+                        <br>{{ $item->title_en }}
+                    </span>
+                </a>
+            </li>
+            @endforeach
+        </ul>
     </div>
 </div>
 
-<br><br><br>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
-        <h3 class="">
-            <span>Category</span>
-        </h3>
+<div class="row story-page section">
+    <div class="col-xs-12 text-tengah">
+        <div class="section-header">
+            <h3><span>Photo Gallery</span></h3>
+            <p>These are our photos doing some activities with the young and others in each of the community.</p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <article class='gallery'>
+            <a class='gallery-link' href='https://unsplash.it/1400/1000?image=1081'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1400/1000?image=1081' width='1400'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1200/1400?image=1014'>
+                <figure class='gallery-image'>
+                    <img height='1400' src='https://unsplash.it/1200/1400?image=1014' width='1200'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1000/1000?image=267'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1000/1000?image=267' width='1000'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1200/1200?image=266'>
+                <figure class='gallery-image'>
+                    <img height='1200' src='https://unsplash.it/1200/1200?image=266' width='1200'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1000/1200?image=634'>
+                <figure class='gallery-image'>
+                    <img height='1200' src='https://unsplash.it/1000/1200?image=634' width='1000'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1000/1000?image=923'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1000/1000?image=923' width='1000'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1200/1000?image=682'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1200/1000?image=682' width='1200'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1400/1000?image=173'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1400/1000?image=173' width='1400'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+            <a class='gallery-link' href='https://unsplash.it/1000/1000?image=943'>
+                <figure class='gallery-image'>
+                    <img height='1000' src='https://unsplash.it/1000/1000?image=943' width='1000'>
+                    <figcaption>Photo caption</figcaption>
+                </figure>
+            </a>
+        </article>
     </div>
 </div>
 
-<ul class="row justify-content-md-center">
-    @foreach($data['actions'] as $item)
-    <li class="tm-tab-link-item col-md-4">
-        <a id="tab2" href="{{ url('action').'/'.$item->slug }}" class="tm-tab-link">
-            <i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
-            <span class="tm-tab-link-label">
-                {{ $item->title_jp }}
-                <br>{{ $item->title_en }}
-            </span>
-        </a>
-    </li>
-    @endforeach
-</ul>
-
-<br><br><br>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-tengah">
-        <h3 class="">
-            <span>Photos</span>
-        </h3>
-    </div>
-</div>
-
-<div class="row story-page">
-    <div class="col-md-3">
-        <div class="card mb-4 box-shadow">
-
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/sasd/300/300"
-                data-holder-rendered="true">
-                <br>
-                <p class="text-center">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
+<div class="row section">
+    <div class="col-xs-12 text-tengah">
+        <div class="section-header">
+            <h3><span>Instagram</span></h3>
+            <p>Our activites on social media.</p>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card mb-4 box-shadow">
-
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/ffffvv/300/300"
-                data-holder-rendered="true">
-                <br>
-                <p class="text-center">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card mb-4 box-shadow">
-
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/picsum/300/300"
-                data-holder-rendered="true">
-                <br>
-                <p class="text-center">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card mb-4 box-shadow">
-
-            <img class="card-img-top"
-                data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                src="https://picsum.photos/seed/asdas/300/300"
-                data-holder-rendered="true">
-                <br>
-                <p class="text-center">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
-        </div>
-    </div>
-</div>
-
-<br><br><br>
-
-<div class="row">
 
     <div class="col-md-12">
-        <h2>RSS</h2>
         <script src="https://s.electricblaze.com/widget.js" defer></script>
         <div class="electricblaze-id-2Uhx9Oy"></div>
     </div>
 </div>
 
-<br><br><br>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+
 @endsection
 
 @push('scripts')
@@ -247,11 +579,16 @@
 
 <script>
     $(function () {
-        setLocation = [21.2442454, 94.6914487];
-        var map = L.map('map').setView(setLocation, 14);
-        L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
+        setLocation = [17.8852266, 100.7893092];
+        var map = L.map('map', null, {
+            zoomControl: false
+        }).setView(setLocation, 14);
+        map.removeControl(map.zoomControl);
+        // 
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            // L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
             maxZoom: 4,
+            minZoom: 4,
         }).addTo(map);
         map.attributionControl.setPrefix(false);
         // var marker = new L.marker(setLocation, {
@@ -262,23 +599,95 @@
         const LeafIcon = L.Icon.extend({
             options: {
                 shadowUrl: 'leaf-shadow.png',
-                iconSize:     [45, 45],
-                iconAnchor:   [22, 94],
+                iconSize: [45, 45],
+                iconAnchor: [22, 94],
                 shadowAnchor: [4, 62],
-                popupAnchor:  [-3, -76]
+                popupAnchor: [-3, -76]
             }
         });
 
-        const greenIcon = new LeafIcon({iconUrl: 'img/indonesia.png'});
-        const redIcon = new LeafIcon({iconUrl: 'img/cambodia.png'});
-        const orangeIcon = new LeafIcon({iconUrl: 'img/japan.png'});
-        const indiaIcon = new LeafIcon({iconUrl: 'img/india.png'});
+        const greenIcon = new LeafIcon({
+            iconUrl: 'img/indonesia.png'
+        });
+        const redIcon = new LeafIcon({
+            iconUrl: 'img/cambodia.png'
+        });
+        const orangeIcon = new LeafIcon({
+            iconUrl: 'img/japan.png'
+        });
+        const indiaIcon = new LeafIcon({
+            iconUrl: 'img/india.png'
+        });
 
-        const mGreen = L.marker([-0.663646, 113.280315], {icon: greenIcon}).bindPopup('<a href="countries/indonesia">Indonesia</a>.').addTo(map);
-        const mRed = L.marker([11.561753, 104.667034], {icon: redIcon}).bindPopup('<a href="countries/cambodia">Cambodia</a>').addTo(map);
-        const mOrange = L.marker([31.161974, 130.682658], {icon: orangeIcon}).bindPopup('Japan').addTo(map);
-        const mIndia = L.marker([20.998287, 79.969769], {icon: indiaIcon}).bindPopup('India').addTo(map);
+        const mGreen = L.marker([-0.663646, 113.280315], {
+            icon: greenIcon
+        }).bindPopup('<a href="countries/indonesia">CWB Indonesia</a>').addTo(map);
+        const mRed = L.marker([11.561753, 104.667034], {
+            icon: redIcon
+        }).bindPopup('<a href="countries/cambodia">CWB Cambodia</a>').addTo(map);
+        const mOrange = L.marker([31.161974, 130.682658], {
+            icon: orangeIcon
+        }).bindPopup('Japan').addTo(map);
+        const mIndia = L.marker([20.998287, 79.969769], {
+            icon: indiaIcon
+        }).bindPopup('India').addTo(map);
     })
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>
+
+<script src="{{ asset('js/magnific-popup.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $('.gallery-link').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            mainClass: 'mfp-with-zoom mfp-img-mobile',
+            image: {
+                verticalFit: true,
+                titleSrc: function (item) {
+                    return item.el.find('figcaption').text() || item.el.attr('title');
+                }
+            },
+            zoom: {
+                enabled: true
+            },
+            // duration: 300
+            gallery: {
+                enabled: true,
+                navigateByImgClick: false,
+                tCounter: ''
+            },
+            disableOn: function () {
+                return $(window).width() > 640;
+            }
+        });
+
+    });
+
+    //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiPGFub255bW91cz4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBQSxDQUFBLENBQUUsZUFBRixDQUFrQixDQUFDLGFBQW5CLENBQ0U7SUFBQSxJQUFBLEVBQU0sT0FBTjtJQUNBLG1CQUFBLEVBQXFCLElBRHJCO0lBRUEsY0FBQSxFQUFnQixLQUZoQjtJQUdBLFNBQUEsRUFBVyw4QkFIWDtJQUlBLEtBQUEsRUFDRTtNQUFBLFdBQUEsRUFBYSxJQUFiO01BQ0EsUUFBQSxFQUFVLFFBQUEsQ0FBQyxJQUFELENBQUE7ZUFDUixJQUFJLENBQUMsRUFBRSxDQUFDLElBQVIsQ0FBYSxZQUFiLENBQTBCLENBQUMsSUFBM0IsQ0FBQSxDQUFBLElBQXFDLElBQUksQ0FBQyxFQUFFLENBQUMsSUFBUixDQUFhLE9BQWI7TUFEN0I7SUFEVixDQUxGO0lBUUEsSUFBQSxFQUNFO01BQUEsT0FBQSxFQUFTO0lBQVQsQ0FURjs7SUFXQSxPQUFBLEVBQ0U7TUFBQSxPQUFBLEVBQVMsSUFBVDtNQUNBLGtCQUFBLEVBQW9CLEtBRHBCO01BRUEsUUFBQSxFQUFVO0lBRlYsQ0FaRjtJQWVBLFNBQUEsRUFBVyxRQUFBLENBQUEsQ0FBQTthQUNULENBQUEsQ0FBRSxNQUFGLENBQVMsQ0FBQyxLQUFWLENBQUEsQ0FBQSxHQUFvQjtJQURYO0VBZlgsQ0FERjtBQUFBIiwic291cmNlc0NvbnRlbnQiOlsiJCgnLmdhbGxlcnktbGluaycpLm1hZ25pZmljUG9wdXBcbiAgdHlwZTogJ2ltYWdlJ1xuICBjbG9zZU9uQ29udGVudENsaWNrOiB0cnVlXG4gIGNsb3NlQnRuSW5zaWRlOiBmYWxzZVxuICBtYWluQ2xhc3M6ICdtZnAtd2l0aC16b29tIG1mcC1pbWctbW9iaWxlJ1xuICBpbWFnZTogXG4gICAgdmVydGljYWxGaXQ6IHRydWVcbiAgICB0aXRsZVNyYzogKGl0ZW0pIC0+XG4gICAgICBpdGVtLmVsLmZpbmQoJ2ZpZ2NhcHRpb24nKS50ZXh0KCkgfHwgaXRlbS5lbC5hdHRyKCd0aXRsZScpXG4gIHpvb206XG4gICAgZW5hYmxlZDogdHJ1ZVxuICAgICMgZHVyYXRpb246IDMwMFxuICBnYWxsZXJ5OlxuICAgIGVuYWJsZWQ6IHRydWVcbiAgICBuYXZpZ2F0ZUJ5SW1nQ2xpY2s6IGZhbHNlXG4gICAgdENvdW50ZXI6ICcnXG4gIGRpc2FibGVPbjogLT5cbiAgICAkKHdpbmRvdykud2lkdGgoKSA+IDY0MCAiXX0=
+    //# sourceURL=coffeescript
 
 </script>
 @endpush

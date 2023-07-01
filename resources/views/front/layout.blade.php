@@ -34,7 +34,7 @@
     <body>
 @endif
 <!-- Header gallery -->
-<div class="container-fluid">
+<div class="container">
     <!-- navbar -->
     @include('front.navbar')
 

@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 head">
         <nav class="navbar">
             
             <div id="tmNavbar">

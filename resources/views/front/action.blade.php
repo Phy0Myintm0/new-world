@@ -20,22 +20,26 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li><li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</li></ol>
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li><li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_en }}</li></ol>
         </nav>
     </div>
 </div>
 
 <div class="col-xs-12 col-md-12 text-tengah">
     <h3 class="tm-about-title text-center text-judul-action">
-        <span>{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</span>
+        <span>{{ $data['data']->title_en }}</span>
     </h3>
+    <div class="text-action">
+        {!! $data['data']->desc_en !!}
+    </div>
 </div>
 
 <div class="row justify-content-center tm-services-row">
 
 @if(!$data['activities']->isEmpty())
     @foreach($data['activities'] as $item)
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <img class="action-country" src="../img/indonesia.png">
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">
                     @if($item->photo_cover == NULL)
@@ -47,6 +51,9 @@
                     <h3>
                         <span>{{ $item->title_jp }}</span>
                     </h3>
+                    <div class="text-action">
+                    {{ Str::limit(strip_tags($item->desc_en), 150) }}
+                    </div>
                 </a>
             </div>
         </div>
