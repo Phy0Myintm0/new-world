@@ -70,6 +70,11 @@
 	</div>
 	<div class="row-fluid">
 		<div class="col-xs-12">
+			@if($data['activity']->isEmpty())
+				<div class="no-data">
+					<img src="{{ asset('vendor/img/no-data.png') }}" alt="Image" class="img-responsive tm-pad-0">
+				</div>
+			@endif
 			<div class="blog_slider_area owl-carousel">
 			@foreach($data['activity'] as $item)
 				<div class="box-area box-shadow">
@@ -112,6 +117,11 @@
 
 	<div class="col-xs-12">
 		<article class='gallery'>
+		@if($data['gallery']->isEmpty())
+			<div class="no-data">
+				<img src="{{ asset('vendor/img/no-data.png') }}" alt="Image" class="img-responsive tm-pad-0">
+			</div>
+		@endif
 		@foreach($data['gallery'] as $item)
 			<a class='gallery-link' href='{{ asset($item->img) }}'>
 				<figure class='gallery-image'>

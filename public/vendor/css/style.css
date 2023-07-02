@@ -1349,7 +1349,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.badge-primary {
 		color: #fff;
-		background-color: #1cb3a5;
+		background-color: #1b8078;
 		z-index: 1;
 	}
 	.list-group-item, .list-group-item.active {
@@ -1405,7 +1405,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.bg-image h3 span, .text-tengah h3 span {
 		box-shadow: 10px 0 0px 0px #ecc740, -10px 0 0px 0px #ecc740;
 		background-color: #ecc740;
-		line-height:1.3;
+		line-height:1;
 	}
 	.text-tengah h3 {
 		letter-spacing: 4px;
@@ -1465,10 +1465,11 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.no-data {
 		text-align: center;
-		margin: 0 auto;
+		margin: 15px auto;
 	}
 	.no-data img {
-		border-radius: 100%;
+		border-radius: 77% !important;
+		width: auto !important;
 		height: 250px;
 	}
 
@@ -1514,6 +1515,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	}
 	.flag-small {
 		width: 50px;
+		margin-bottom: 5px;
 	}
 @media (max-width: 792px) {
     .intro-page {
@@ -1874,4 +1876,20 @@ ul#menu ul ul {
 	font-size: 12px;
 	float: right;
 	margin-right: 5px;
+}
+
+.badge-normal {
+	display: inline-block;
+    padding: 0.55em 0.9em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    /* vertical-align: baseline; */
+    border-radius: 0.25rem;
+    margin-bottom: 5px;
+}
+a.bn {
+	text-decoration: none;
 }

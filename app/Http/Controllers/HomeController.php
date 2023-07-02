@@ -14,8 +14,12 @@ class HomeController extends Controller
 	public function __construct()
 	{
 		$this->navbar['nav_country'] = DB::table('countries')
-										->select('slug', 'title', 'logo')
-										->get();
+			->select('slug', 'title', 'logo')
+			->get();
+		
+		$this->navbar['foot_keyword'] = DB::table('keywords')
+			->select('slug', 'title_en')
+			->get();
 	
 	}
 
@@ -87,7 +91,19 @@ class HomeController extends Controller
 			->first();
 
 		$data['activities'] = DB::table('activities')
-			->select('*')
+			->join(
+				'countries',
+				'activities.id_country',
+				'=',
+				'countries.id'
+			)
+			->select(
+				'activities.title_en',
+				'activities.desc_en',
+				'activities.photo_cover',
+				'activities.slug',
+				'countries.logo'
+			)
 			->where('id_action', $data['data']->id)
 			->get();
 

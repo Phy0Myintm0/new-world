@@ -97,6 +97,11 @@
 				</div>
 			</div>
 			<div class="row">
+			@if($data['recents']->isEmpty())
+				<div class="no-data">
+					<img src="{{ asset('vendor/img/no-data.png') }}" alt="Image" class="img-responsive tm-pad-0">
+				</div>
+			@endif
 			@foreach($data['recents'] as $item)
 				<div class="col-md-4">
 					<a href="{{ url('story').'/'.$item->slug }}">

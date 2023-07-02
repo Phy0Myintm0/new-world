@@ -39,7 +39,7 @@
 @if(!$data['activities']->isEmpty())
     @foreach($data['activities'] as $item)
         <div class="col-xs-12 col-sm-6 col-md-4">
-            <img class="action-country" src="../img/indonesia.png">
+            <img class="action-country" src="{{ asset($item->logo) }}">
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">
                     @if($item->photo_cover == NULL)
@@ -49,7 +49,7 @@
                     @endif
                     
                     <h3>
-                        <span>{{ $item->title_jp }}</span>
+                        <span>{{ $item->title_en }}</span>
                     </h3>
                     <div class="text-action">
                     {{ Str::limit(strip_tags($item->desc_en), 150) }}

@@ -40,8 +40,8 @@
                                                 <li><a href="{{ url('countries').'/'.$item->slug }}">{{ $item->title }}</a></li>
                                                 @endforeach
                                             </ul></li>
-                                        <li><a href="#!">Join Us</a></li>
                                         <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                                        <li><a href="{{ url('join-us') }}">Join Us</a></li>
                                     </ul></li>
                             </ul>
 
