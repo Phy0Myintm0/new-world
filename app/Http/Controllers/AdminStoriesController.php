@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminCountriesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminStoriesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -15,7 +15,7 @@
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
-			$this->button_bulk_action = false;
+			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
@@ -25,28 +25,43 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "countries";
+			$this->table = "stories";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Desc","name"=>"desc"];
+			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,title"];
+			$this->col[] = ["label"=>"Caption","name"=>"caption"];
+			$this->col[] = ["label"=>"Img Header","name"=>"img_header","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'wysiwyg','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Latitude','name'=>'cord_lat','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Longitude','name'=>'cord_long','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255|required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|max:5000|required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Footer Note','name'=>'footer_note','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'wysiwyg','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Footer Note','name'=>'footer_note','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','validation'=>'max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
 			# OLD END FORM
 
 			/* 
