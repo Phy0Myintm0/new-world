@@ -310,40 +310,37 @@ class HomeController extends Controller
         ->with('data', $data);
     }
 
-    public function apiGraph(Request $request){
+    public function apiCountries(){
         $data = array();
 
-        $survei = DB::table('surveis')
-        ->join(
-            'pedagangs',
-            'surveis.pedagang_id',
-            '=',
-            'pedagangs.id'
-        )
-        ->join(
-            'pangans',
-            'surveis.pangan_id',
-            '=',
-            'pangans.id'
-        )
-        ->select(DB::raw('sum('.$request->tipe.') as persediaan'), 'pedagangs.nama')
-        ->where('pangans.id', $request->pangan_id)
-        ->whereBetween('surveis.tgl_input', [$request->tgl_awal, $request->tgl_akhir])
-        ->groupBy('pedagangs.nama')
+        // $survei = DB::table('surveis')
+        // ->join(
+        //     'pedagangs',
+        //     'surveis.pedagang_id',
+        //     '=',
+        //     'pedagangs.id'
+        // )
+        // ->join(
+        //     'pangans',
+        //     'surveis.pangan_id',
+        //     '=',
+        //     'pangans.id'
+        // )
+        // ->select(DB::raw('sum('.$request->tipe.') as persediaan'), 'pedagangs.nama')
+        // ->where('pangans.id', $request->pangan_id)
+        // ->whereBetween('surveis.tgl_input', [$request->tgl_awal, $request->tgl_akhir])
+        // ->groupBy('pedagangs.nama')
+        // ->get();
+
+        $countries = DB::table('countries')
         ->get();
 
-        $pangan = DB::table('pangans')
-        ->select('nama_pangan', 'satuan')
-        ->where('id', $request->pangan_id)
-        ->first();
+        $data['list'] = $countries;
 
-        $data['pangan'] = $pangan->nama_pangan;
-        $data['satuan'] = $pangan->satuan;
-
-        foreach($survei as $item) {
-            $data['survei'][] = $item->persediaan;
-            $data['pedagang'][] = $item->nama;
-        }
+        // foreach($survei as $item) {
+        //     $data['survei'][] = $item->persediaan;
+        //     $data['pedagang'][] = $item->nama;
+        // }
 
 		return response()->json($data);
 	}

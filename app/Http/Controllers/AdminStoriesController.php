@@ -4,6 +4,7 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use Str;
 
 	class AdminStoriesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
@@ -283,6 +284,18 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			$data = DB::table('stories')
+				->select('title')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('stories')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title)
+					]
+				);
 
 	    }
 
@@ -308,6 +321,18 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
+			$data = DB::table('stories')
+				->select('title')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('stories')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title)
+					]
+				);
 
 	    }
 

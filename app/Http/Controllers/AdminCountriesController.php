@@ -4,6 +4,7 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use Str;
 
 	class AdminCountriesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
@@ -31,6 +32,7 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Title","name"=>"title"];
+			$this->col[] = ["label"=>"Logo","name"=>"logo","image"=>true];
 			$this->col[] = ["label"=>"Desc","name"=>"desc"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
@@ -47,6 +49,9 @@
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'wysiwyg','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Latitude','name'=>'cord_lat','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Longitude','name'=>'cord_long','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -268,6 +273,18 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			$data = DB::table('countries')
+				->select('title')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('countries')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title)
+					]
+				);
 
 	    }
 
@@ -293,6 +310,18 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
+			$data = DB::table('countries')
+				->select('title')
+				->where('id', $id)
+				->first();
+
+			$result = DB::table('countries')
+				->where('id', $id)
+				->update(
+					[
+						'slug' => Str::slug($data->title)
+					]
+				);
 
 	    }
 
