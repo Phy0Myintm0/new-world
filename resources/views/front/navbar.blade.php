@@ -31,7 +31,7 @@
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 nav-item">
                             <!-- <a class="nav-link" href="#!">Eng/日本語</a> -->
                             <ul id="menu">
-                                <li class="parent"><a href="#"><i class="fa fa-navicon"></i> Menu</a>
+                                <li class="parent"><a href="#!"><i class="fa fa-navicon"></i> Menu</a>
                                     <ul class="child this">
                                         <li><a href="{{ url('about') }}">About Us</a></li>
                                         <li class="parent"><a href="#">CWB Communities <span class="expand">»</span></a>

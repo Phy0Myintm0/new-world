@@ -47,26 +47,14 @@
 			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/dead-horse-point-state-park-2x.jpg" alt="">
 		</header>
 		<div class="multicol">
-			<h1>Land of Salt and Rock</h1>
-			<h2>Five Days in Utah</h2>
+			<h3>Land of Salt and Rock</h3>
+			<!-- <h2>Five Days in Utah</h2> -->
 			<p>“Why Utah?”</p>
 			<p>The question was posed to me pretty much every time I told someone where I was headed on my next
 				adventure.</p>
-			<p>“What’s there?”</p>
-			<p>I was, of course, going to find out what was there. But at the very least I knew that if HBO’s
-				<cite>Westworld</cite>, which is filmed in the state, was anything close to how the landscapes looked in
-				real life, I was in for a few days of magic.</p>
-			<p>Utah might not be one of the first states that comes to mind when making a trip to America, but it should
-				be. For lovers of the outdoors, it is an unparalleled paradise, with breathtaking rock formations around
-				every highway turn.</p>
-			<p>To maximize the area covered, consider flying into Las Vegas, renting a car, and driving up into Utah
-				(stop in Vegas for a quick lunch, perhaps at the delicious La Comida located off the strip). Utah has
-				five glorious national parks, each with their own distinct characteristics, so it is best to plan ahead
-				to figure out which ones are within your means for time and distance.</p>
-			<p>Amangiri, a five-star Aman property sitting close to Utah’s border with Arizona, provides an ideal
-				destination for day one.</p>
 		</div>
-		<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/route-89-2x.jpg" alt="">
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/route-89-2x.jpg" alt=""> -->
+		<hr>
 		<div class="multicol">
 			<p>Driving out of Nevada, through parts of Arizona, and into Utah is nothing short of awe-inspiring, with
 				the scenery morphing from yellow to red to beige. Reaching Amangiri feels like approaching a secluded

@@ -1806,7 +1806,7 @@ img.action-country {
 }
 article hr {
     margin: 13px 0px;
-    border: solid 1px;
+    border: 1px solid rgb(139 139 139 / 80%);
 }
 
 /* dropdown menu */
