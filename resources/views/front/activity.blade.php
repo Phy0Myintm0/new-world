@@ -65,7 +65,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-8 tm-services-col-right">
             <div class="tm-services-box detail">
-                <p class="country-text tm-blue-text">Myanmar</p>
+                <p class="country-text tm-blue-text">{{ $data['data']->country_title }}</p>
                 <h3>{{ $data['data']->title_en }}</h3>
                 <p>{!! $data['data']->desc_en !!}</p>
 

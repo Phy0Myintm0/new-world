@@ -1723,7 +1723,7 @@ img.country {
 	top: 0;
 	left: 0;
 	opacity: 0;
-	background: rgba(255, 69, 0, 0.6);
+	background: #4ad8777c;
 	transition: all 0.30s ease 0s;
 }
 .single-blog:hover .post-img:after {
@@ -1737,7 +1737,8 @@ img.country {
 }
 .single-blog .post-title {
 	margin: 0 0 15px 0px;
-	font-size: 20px;
+	font-size: 22px;
+    font-weight: bold;
 	color: #333;
 	display: inline-block;
 	text-transform: capitalize;

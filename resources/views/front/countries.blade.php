@@ -30,16 +30,10 @@
 
 <div class="container-fluid">
 	<div class="col-md-3">
-		<img class="country" src="{{ asset('img/'.$data['data']->title.'.png') }}">
+		<img class="country" src="{{ asset($data['data']->logo) }}">
 	</div>
 	<div class="col-md-8">
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis, enim numquam. Asperiores quod dicta ab, sed
-		dolorum aperiam dolores qui, consectetur delectus dolorem aspernatur molestias odio rerum nesciunt repudiandae
-		fugiat! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem explicabo, assumenda dignissimos nulla
-		facere officia, unde tempore ex, dolores natus excepturi voluptatem eveniet porro debitis inventore. Consequatur
-		vero a ea? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia impedit ut debitis rerum in nihil
-		repellendus blanditiis aperiam ipsum hic veniam voluptatum aliquam, sapiente, voluptas nulla explicabo, est
-		possimus sed?
+		{!! $data['data']->desc !!}
 	</div>
 </div>
 
@@ -47,47 +41,24 @@
 	rel="stylesheet">
 
 <div class="container-fluid">
+	@foreach($data['story'] as $item)
 	<div class="card">
 		<figure class="card__thumb">
-			<img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell"
+			<img src="{{ asset($item->img_header) }}" alt="{{ $item->title }}"
 				class="card__image">
 			<figcaption class="card__caption">
-				<h2 class="card__title">NASA Has Found Hundreds Of Potential New Planets</h2>
-				<p class="card__snippet">NASA released a list of 219 new “planet candidates” discovered by the Kepler
-					space telescope, 10 of which are similar to Earth’s size and may be habitable by other life forms.
+				<h2 class="card__title">{{ $item->title }}</h2>
+				<i class="fa fa-clock-o"></i> <i>{{ date('F d, Y', strtotime($item->created_at)) }}</i>
+				<p class="card__snippet">
+					{!! Str::limit(strip_tags($item->caption_desc), 150) !!}
 				</p>
-				<a href="/post/example-success-story-post" class="card__button">Read more</a>
+				<p>By <i>{{ $item->name }}</i></p>
+				<a href="{{ url('story').'/'.$item->slug }}" class="card__button">Read more</a>
 			</figcaption>
 		</figure>
 	</div>
+	@endforeach
 
-	<div class="card">
-		<figure class="card__thumb">
-			<img src="https://source.unsplash.com/71u2fOofI-U/300x510" alt="Picture by Nathan Dumlao"
-				class="card__image">
-			<figcaption class="card__caption">
-				<h2 class="card__title">This Is Your Body And Brain On Coffee</h2>
-				<p class="card__snippet">Drinking more caffeine during the coronavirus lockdown? Here's how it can
-					affect you over time and advice on making it better for you.</p>
-				<a href="" class="card__button">Read more</a>
-			</figcaption>
-		</figure>
-	</div>
-
-	<div class="card">
-		<figure class="card__thumb">
-			<img src="https://source.unsplash.com/qXMpNtNp1uE/300x510" alt="Picture by Daniel Lincoln"
-				class="card__image">
-			<figcaption class="card__caption">
-				<h2 class="card__title">Why You Should Bring Your Dog To Work</h2>
-				<p class="card__snippet">On Friday, offices around the country celebrated the 15th annual Take Your Dog
-					to Work Day. Though the event's primary goal is to raise awareness for pet adoption, the
-					unanticipated impact may be a slightly more relaxing work environment for any office choosing to
-					participate.</p>
-				<a href="" class="card__button">Read more</a>
-			</figcaption>
-		</figure>
-	</div>
 </div>
 
 <div class="row section">
@@ -97,146 +68,34 @@
 			<p>These are activities we do on this country.</p>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row-fluid">
 		<div class="col-xs-12">
 			<div class="blog_slider_area owl-carousel">
-				<div class="box-area">
+			@foreach($data['activity'] as $item)
+				<div class="box-area box-shadow">
 					<div class="single-blog">
 						<div class="post-img">
-							<img src="img/1.jpg" alt="" />
+							<img src="{{ asset($item->photo_cover) }}" alt="{{ $item->title }}" />
 						</div>
 						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
+							<a href="{{ url('activity').'/'.$item->slug }}">
+								<h3 class="post-title">{{ $item->title_en }}</h3>
 							</a>
 							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
+								<li>
+								<span class="label label-default">{{ $item->actionnya }}</span>
+								</li>
 							</ul>
 							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
+							{!! Str::limit(strip_tags($item->desc_en), 150) !!}
 							</p>
 							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
+								<a href="{{ url('activity').'/'.$item->slug }}" class="btn btn-default main_btn">check it out</a>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="box-area">
-					<div class="single-blog wow fadeInUp">
-						<div class="post-img">
-							<img src="img/2.jpg" alt="" />
-						</div>
-						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
-							</a>
-							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
-							</ul>
-							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
-							</p>
-							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
-							</div>
-						</div>
-					</div>
-				</div> <!-- END SINGLE blogS -->
-
-				<div class="box-area">
-					<div class="single-blog wow fadeInUp">
-						<div class="post-img">
-							<img src="img/3.jpg" alt="" />
-						</div>
-						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
-							</a>
-							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
-							</ul>
-							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
-							</p>
-							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
-							</div>
-						</div>
-					</div>
-				</div> <!-- END SINGLE blogS -->
-
-				<div class="box-area">
-					<div class="single-blog wow fadeInUp">
-						<div class="post-img">
-							<img src="img/4.jpg" alt="" />
-						</div>
-						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
-							</a>
-							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
-							</ul>
-							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
-							</p>
-							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
-							</div>
-						</div>
-					</div>
-				</div> <!-- END SINGLE blogS -->
-
-				<div class="box-area">
-					<div class="single-blog wow fadeInUp">
-						<div class="post-img">
-							<img src="img/5.jpg" alt="" />
-						</div>
-						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
-							</a>
-							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
-							</ul>
-							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
-							</p>
-							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
-							</div>
-						</div>
-					</div>
-				</div> <!-- END SINGLE blogS -->
-
-				<div class="box-area">
-					<div class="single-blog wow fadeInUp">
-						<div class="post-img">
-							<img src="img/6.jpg" alt="" />
-						</div>
-						<div class="single_blog">
-							<a href="#">
-								<h3 class="post-title">Web Design Agency</h3>
-							</a>
-							<ul class="icon-area">
-								<li><i class="fa fa-clock-o"></i>February 21,2022 </li>
-							</ul>
-							<p class="blog-text">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-								has been the industry's standard.
-							</p>
-							<div class="btn-area">
-								<a href="#" class="btn btn-default main_btn">read more</a>
-							</div>
-						</div>
-					</div>
-				</div> <!-- END SINGLE blogS -->
+			@endforeach
 			</div>
 		</div>
 	</div>
@@ -253,60 +112,14 @@
 
 	<div class="col-xs-12">
 		<article class='gallery'>
-			<a class='gallery-link' href='https://unsplash.it/1400/1000?image=1081'>
+		@foreach($data['gallery'] as $item)
+			<a class='gallery-link' href='{{ asset($item->img) }}'>
 				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1400/1000?image=1081' width='1400'>
-					<figcaption>Photo caption</figcaption>
+					<img height='1000' src='{{ asset($item->img) }}' width='1400'>
+					<figcaption>{{ $item->title }}</figcaption>
 				</figure>
 			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1400?image=1014'>
-				<figure class='gallery-image'>
-					<img height='1400' src='https://unsplash.it/1200/1400?image=1014' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=267'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=267' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1200?image=266'>
-				<figure class='gallery-image'>
-					<img height='1200' src='https://unsplash.it/1200/1200?image=266' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1200?image=634'>
-				<figure class='gallery-image'>
-					<img height='1200' src='https://unsplash.it/1000/1200?image=634' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=923'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=923' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1000?image=682'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1200/1000?image=682' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1400/1000?image=173'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1400/1000?image=173' width='1400'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=943'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=943' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
+		@endforeach
 		</article>
 	</div>
 

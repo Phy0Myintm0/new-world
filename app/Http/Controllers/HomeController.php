@@ -165,7 +165,8 @@ class HomeController extends Controller
 				'keywords.title_en as keyword_en',
 				'keywords.title_jp as keyword_jp',
 				'keywords.slug as keyword_slug',
-				'actions.title_en as action_en'
+				'actions.title_en as action_en',
+				'countries.title as country_title'
 			)
 			->where('activities.slug', $slug)
 			->first();
@@ -279,7 +280,7 @@ class HomeController extends Controller
 			->where('slug', $slug)
 			->first();
 
-		$data['activities'] = DB::table('activities')
+		$data['activity'] = DB::table('activities')
 			->join(
 				'actions',
 				'activities.id_action',
@@ -299,14 +300,14 @@ class HomeController extends Controller
 				'keyword_activities.id_activity'
 			)
 			->select('activities.*', 'actions.title_en as actionnya', 'actions.slug as action_slug', 'countries.title as country')
-			->where('keyword_activities.id_keyword', $data['data']->id)
+			->where('activities.id_country', $data['data']->id)
 			->get();
 
-
-		$data['keywords'] = DB::table('keywords')
-			->select('title_en', 'title_jp', 'slug')
+		$data['sns'] = DB::table('sns')
+			->select('*')
 			// ->limit(4)
 			->orderBy('id', 'asc')
+			->where('country_id', $data['data']->id)
 			->get();
 
 		$data['actions'] = DB::table('actions')
@@ -314,6 +315,42 @@ class HomeController extends Controller
 			// ->limit(4)
 			->orderBy('id', 'asc')
 			->get();
+
+		$data['story'] = DB::table('stories')
+			->join(
+				'countries',
+				'stories.country_id',
+				'=',
+				'countries.id'
+			)
+			->join(
+				'cms_users',
+				'stories.user_id',
+				'=',
+				'cms_users.id'
+			)
+			->select(
+				'stories.title', 
+				'stories.id', 
+				'stories.slug', 
+				'img_header', 
+				'caption_desc', 
+				'stories.created_at', 
+				'countries.title as country_title',
+				'cms_users.name'
+			)
+			->limit(3)
+			->where('country_id', $data['data']->id)
+			->orderBy('id', 'desc')
+			->get();
+
+		$data['gallery'] = DB::table('galleries')
+            ->select('img', 'title')
+            ->limit(13)
+			->where('country_id', $data['data']->id)
+			->inRandomOrder()
+            ->orderBy('id', 'desc')
+            ->get();
 
 		
 

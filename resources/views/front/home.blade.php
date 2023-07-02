@@ -71,7 +71,7 @@
 					</div>
 					<img class="card-img-top"
 						alt="Photo of {{ $item->title }}" style="height: 225px; width: 100%; display: block;"
-						src="{{ $item->img_header }}" data-holder-rendered="true">
+						src="{{ asset($item->img_header) }}" data-holder-rendered="true">
 				</div>
 			</a>
 		</div>
@@ -114,9 +114,9 @@
 	<div class="col-xs-12">
 		<article class='gallery'>
 		@foreach($data['gallery'] as $item)
-			<a class='gallery-link' href='{{ $item->img }}'>
+			<a class='gallery-link' href='{{ asset($item->img) }}'>
 				<figure class='gallery-image'>
-					<img height='1000' src='{{ $item->img }}' width='1400'>
+					<img height='1000' src='{{ asset($item->img) }}' width='1400'>
 					<figcaption>{{ $item->title }}</figcaption>
 				</figure>
 			</a>
