@@ -9,9 +9,20 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+	protected $navbar = [];
+
+	public function __construct()
+	{
+		$this->navbar['nav_country'] = DB::table('countries')
+										->select('slug', 'title', 'logo')
+										->get();
+	
+	}
+
 	public function index()
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 		// --------- seo ------------
 		// SEOTools::setTitle('Home');
 		// SEOTools::setDescription('This is my page description');
@@ -68,6 +79,7 @@ class HomeController extends Controller
 	public function action($slug)
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		$data['data'] = DB::table('actions')
 			->select('*')
@@ -92,6 +104,7 @@ class HomeController extends Controller
 	public function keyword($slug)
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		$data['data'] = DB::table('keywords')
 			->select('*')
@@ -134,6 +147,7 @@ class HomeController extends Controller
 	public function activity($slug)
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		$data['data'] = DB::table('activities')
 			->join(
@@ -188,6 +202,7 @@ class HomeController extends Controller
 	public function about()
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		// --------- seo ------------
 		// SEOTools::setTitle($data['data']->title);
@@ -200,6 +215,7 @@ class HomeController extends Controller
 	public function contact()
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		// --------- seo ------------
 		// SEOTools::setTitle($data['data']->title);
@@ -212,6 +228,8 @@ class HomeController extends Controller
 	public function blog()
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
 		$data['footer_menu'] = DB::table('packages')
 			->select('id', 'slug', 'title', 'price')
 			->limit(6)
@@ -240,21 +258,29 @@ class HomeController extends Controller
 	public function story($slug)
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 		
 		$data['data'] = DB::table('stories')
 			->join(
 				'countries',
-				'posts.cat_id',
+				'stories.country_id',
 				'=',
 				'countries.id'
 			)
-			->select('posts.*', 'countries.title as cat')
-			->where('posts.slug', $slug)
+			->join(
+				'cms_users',
+				'stories.user_id',
+				'=',
+				'cms_users.id'
+			)
+			->select('stories.*', 'countries.title as country_title', 'countries.slug as country_slug', 'cms_users.name')
+			->where('stories.slug', $slug)
 			->first();
 
-		$data['recents'] = DB::table('posts')
-			->select('title', 'created_at', 'slug', 'img')
+		$data['recents'] = DB::table('stories')
+			->select('title', 'created_at', 'slug', 'img_header')
 			->where('slug', '<>', $slug)
+			->inRandomOrder()
 			->get();
 
 		$data['countries'] = DB::table('countries')
@@ -274,6 +300,7 @@ class HomeController extends Controller
 	public function countries($slug)
 	{
 		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
 
 		$data['data'] = DB::table('countries')
 			->select('*')

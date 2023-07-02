@@ -36,7 +36,9 @@
                                         <li><a href="{{ url('about') }}">About Us</a></li>
                                         <li class="parent"><a href="#">CWB Communities <span class="expand">»</span></a>
                                             <ul class="child">
-                                                <li><a href="#!">List Countries</a></li>
+                                                @foreach($data['nav_footer']['nav_country'] as $item)
+                                                <li><a href="{{ url('countries').'/'.$item->slug }}">{{ $item->title }}</a></li>
+                                                @endforeach
                                             </ul></li>
                                         <li><a href="#!">Join Us</a></li>
                                         <li><a href="{{ url('contact') }}">Contact Us</a></li>
