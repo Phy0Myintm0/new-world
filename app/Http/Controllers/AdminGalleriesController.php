@@ -33,7 +33,7 @@
 			$this->col[] = ["label"=>"Title","name"=>"title"];
 			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,title"];
 			$this->col[] = ["label"=>"Activity","name"=>"act_id","join"=>"activities,title_en"];
-			$this->col[] = ["label"=>"Img","name"=>"img"];
+			$this->col[] = ["label"=>"Img","name"=>"img","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -47,11 +47,11 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Title","name"=>"title","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
-			//$this->form[] = ["label"=>"Desc","name"=>"desc","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Img","name"=>"img","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Country Id","name"=>"country_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"country,id"];
-			//$this->form[] = ["label"=>"Act Id","name"=>"act_id","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"act,id"];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'textarea','validation'=>'max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img','name'=>'img','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			//$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en'];
 			# OLD END FORM
 
 			/* 

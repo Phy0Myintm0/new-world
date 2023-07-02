@@ -107,66 +107,20 @@
 <div class="row story-page section">
 	<div class="col-xs-12 text-tengah">
 		<div class="section-header">
-			<h3><span>Photo Gallery</span></h3>
-			<p>These are our photos doing some activities with the young and others in each of the community.</p>
+			<h3><span>Our Galleries</span></h3>
+			<p>These are our photos doing some activities with the youngs and others in each of the CWB Community.</p>
 		</div>
 	</div>
 	<div class="col-xs-12">
 		<article class='gallery'>
-			<a class='gallery-link' href='https://unsplash.it/1400/1000?image=1081'>
+		@foreach($data['gallery'] as $item)
+			<a class='gallery-link' href='{{ $item->img }}'>
 				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1400/1000?image=1081' width='1400'>
-					<figcaption>Photo caption</figcaption>
+					<img height='1000' src='{{ $item->img }}' width='1400'>
+					<figcaption>{{ $item->title }}</figcaption>
 				</figure>
 			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1400?image=1014'>
-				<figure class='gallery-image'>
-					<img height='1400' src='https://unsplash.it/1200/1400?image=1014' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=267'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=267' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1200?image=266'>
-				<figure class='gallery-image'>
-					<img height='1200' src='https://unsplash.it/1200/1200?image=266' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1200?image=634'>
-				<figure class='gallery-image'>
-					<img height='1200' src='https://unsplash.it/1000/1200?image=634' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=923'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=923' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1200/1000?image=682'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1200/1000?image=682' width='1200'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1400/1000?image=173'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1400/1000?image=173' width='1400'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
-			<a class='gallery-link' href='https://unsplash.it/1000/1000?image=943'>
-				<figure class='gallery-image'>
-					<img height='1000' src='https://unsplash.it/1000/1000?image=943' width='1000'>
-					<figcaption>Photo caption</figcaption>
-				</figure>
-			</a>
+		@endforeach
 		</article>
 	</div>
 </div>
