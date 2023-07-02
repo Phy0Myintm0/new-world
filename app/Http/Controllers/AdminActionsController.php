@@ -34,7 +34,7 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Title EN","name"=>"title_en"];
 			$this->col[] = ["label"=>"Title JP","name"=>"title_jp"];
-			$this->col[] = ["label"=>"Img","name"=>"img"];
+			$this->col[] = ["label"=>"Img","name"=>"img","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -43,7 +43,7 @@
 			$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'wysiwyg','validation'=>'required|string','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Desc JP','name'=>'desc_jp','type'=>'wysiwyg','validation'=>'required|string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Logo','name'=>'img','type'=>'text','validation'=>'string','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Logo','name'=>'img','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'BG','name'=>'bg','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
@@ -53,8 +53,8 @@
 			//$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'wysiwyg','validation'=>'required|string','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc JP','name'=>'desc_jp','type'=>'wysiwyg','validation'=>'required|string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Logo','name'=>'img','type'=>'text','validation'=>'required|string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'BG','name'=>'bg','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Logo','name'=>'img','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'BG','name'=>'bg','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

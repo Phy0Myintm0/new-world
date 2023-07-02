@@ -145,13 +145,18 @@
 
 	<div class="col-xs-12">
 		<ul class="justify-content-md-center">
-			@foreach($data['actions'] as $item)
+			@if($data['sns']->isEmpty())
+			<div class="no-data">
+				<img src="{{ asset('vendor/img/no-data.png') }}" alt="Image" class="img-responsive tm-pad-0">
+			</div>
+			@endif
+			@foreach($data['sns'] as $item)
 			<li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="{{ url('action').'/'.$item->slug }}" class="tm-tab-link">
-					<i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
+				<a id="tab2" target="_blank" href="{{ $item->url }}" class="tm-tab-link">
+					<i class="fa fa-{{ $item->logo }} tm-tab-icon"></i>
 					<span class="tm-tab-link-label">
-						{{ $item->title_jp }}
-						<br>{{ $item->title_en }}
+						{{ $item->title }}
+						<br>{{ $item->desc }}
 					</span>
 				</a>
 			</li>

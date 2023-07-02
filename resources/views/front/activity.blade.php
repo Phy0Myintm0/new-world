@@ -10,7 +10,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('keyword').'/'.$data['data']->keyword_slug }}">{{ $data['data']->keyword_jp }} - {{ $data['data']->keyword_en }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('action').'/'.$data['data']->action_slug }}">{{ $data['data']->action_en }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_en }}</li>
                 </ol>
             </nav>
@@ -21,7 +21,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 tm-services-col-left">
             <div>
                 @if(!empty(getYouTubeData($data['data']->youtube)))
-                <iframe width="100%" height="215" src="https://www.youtube.com/embed/{{ $data['data']->youtube }}"
+                <iframe width="100%" height="215" src="https://www.youtube.com/embed/{{ $data['data']->youtube }}?autoplay=1&mute=1&enablejsapi=1"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
@@ -65,28 +65,58 @@
 
         <div class="col-xs-12 col-sm-12 col-md-8 tm-services-col-right">
             <div class="tm-services-box detail">
-                <p class="country-text tm-blue-text">{{ $data['data']->country_title }}</p>
-                <h3>{{ $data['data']->title_en }}</h3>
-                <p>{!! $data['data']->desc_en !!}</p>
+                <div class="text-tengah">
+                    <div class="section-header">
+                        <h3><span>{{ $data['data']->title_en }}</span></h3>
+                        <p><span class="label label-default"><i class="fa fa-clock-o"></i> {{ date('F d, Y', strtotime($data['data']->created_at)) }}</span> <span class="label label-default"> {{ $data['data']->country_title }}</span></p>
+                    </div>
+                </div>
+                <hr>
+                    {!! $data['data']->desc_en !!}
+                    <br>
+
+                    <div class="menu-detail tm-header-gallery">
+                    @foreach($data['gallery'] as $item)
+                        <a href="{{ asset($item->img) }}">
+                            <img src="{{ asset($item->img) }}" alt="Image"
+                            class="img-fluid tm-header-img col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-pad-0">
+                        </a>
+                    @endforeach
+                    </div>
 
                 <hr>
-                <form>
-                    <div class="form-group">
-                        <label for="inputAddress">Name</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">e-mail</label>
-                        <input type="email" class="form-control" id="inputAddress2"
-                            placeholder="your@emailaddress">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">Message</label>
-                        <textarea class="form-control" name="" id="" rows="3"></textarea>
-                    </div>
+                    <h4><b>Interested?</b></h4>
+                    <p>If you are interested with our activity and want to join or contribute, please go to the contact us page or click button below. Thank you!</p>
+                    <a href="{{ url('/contact') }}" class="btn btn-primary">Contact Us</a>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                
+                <hr>
+                    <small class="tags">
+                        <i class="fa fa-tags"></i> 
+                        Tags/Keywords: 
+                            <a href='#!'>#test</a>
+                            <a href='#!'>#hastag1</a>
+                    </small>
+                <hr>
+                <div id="disqus_thread"></div>
+                <script>
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://cwb-world.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
         </div>
     </div>

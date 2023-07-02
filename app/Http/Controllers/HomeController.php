@@ -44,14 +44,14 @@ class HomeController extends Controller
 			->get();
 
 		$data['actions'] = DB::table('actions')
-			->select('title_en', 'title_jp', 'img', 'slug')
+			->select('title_en', 'desc_en', 'img', 'slug')
 			// ->limit(4)
 			->orderBy('id', 'asc')
 			->get();
 
 		$data['gallery'] = DB::table('galleries')
             ->select('img', 'title')
-            ->limit(13)
+            // ->limit(13)
 			->inRandomOrder()
             ->orderBy('id', 'desc')
             ->get();
@@ -192,9 +192,7 @@ class HomeController extends Controller
 			)
 			->select(
 				'activities.*', 
-				'keywords.title_en as keyword_en',
-				'keywords.title_jp as keyword_jp',
-				'keywords.slug as keyword_slug',
+				'actions.slug as action_slug',
 				'actions.title_en as action_en',
 				'countries.title as country_title'
 			)
@@ -206,6 +204,14 @@ class HomeController extends Controller
 			->select('*')
 			->where('id_activity', $data['data']->id)
 			->get();
+
+		$data['gallery'] = DB::table('galleries')
+            ->select('img', 'title')
+            ->limit(3)
+			->where('act_id', $data['data']->id)
+			->inRandomOrder()
+            ->orderBy('id', 'desc')
+            ->get();
 
 		// --------- seo ------------
 		// SEOTools::setTitle($data['data']->title);

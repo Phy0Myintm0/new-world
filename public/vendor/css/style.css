@@ -1782,7 +1782,7 @@ img.country {
 
 .text-action {
 	background: #ffffffde;
-    padding: 20px 5px;
+    padding: 20px;
 	margin-bottom: 30px;
 	color: #000;
 }
@@ -1892,4 +1892,10 @@ ul#menu ul ul {
 }
 a.bn {
 	text-decoration: none;
+}
+.list-group-item {
+	border-radius: 0 !important;
+}
+.list-group {
+	margin: 15px 0 !important;
 }

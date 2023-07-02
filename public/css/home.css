@@ -340,3 +340,126 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* CARDS */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .cards .card {
+    margin: 20px;
+    padding: 20px;
+    width: 250px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+  }
+  
+  .cards .card:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  
+  .cards .card__link,
+  .cards .card__exit,
+  .cards .card__icon {
+    position: relative;
+    text-decoration: none;
+    color: rgb(15 15 15 / 90%);
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  .cards .card__link::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(37, 37, 37, 0.6);
+    transition: all 0.5s;
+  }
+  
+  .cards .card__link:hover::after {
+    width: 100%;
+  }
+  
+  .cards .card__exit {
+    grid-row: 1/2;
+    justify-self: end;
+  }
+  
+  .cards .card__icon {
+    grid-row: 2/3;
+    font-size: 30px;
+  }
+  
+  .cards .card__title {
+    grid-row: 3/4;
+    font-weight: 600;
+    color: #272727;
+  }
+
+  .cards .card__body {
+    grid-row: 4/6;
+    color: #272727;
+    overflow: hidden;
+    /* border-bottom: 1px solid; */
+    margin-bottom: 10px;
+  }
+  
+  .cards .card__apply {
+    grid-row: 6/7;
+    align-self: center;
+  }
+  
+  /* CARD BACKGROUNDS */
+  
+  .card-1 {
+    background: radial-gradient(#1fe4f5, #3fbafe);
+  }
+  
+  .card-2 {
+    background: radial-gradient(#fbc1cc, #fa99b2);
+  }
+  
+  .card-3 {
+    background: radial-gradient(#76b2fe, #6291f7);
+  }
+  
+  .card-4 {
+    background: radial-gradient(#60efbc, #58d5c9);
+  }
+  
+  .card-5 {
+    background: radial-gradient(#f588d8, #c0a3e5);
+  }
+
+  .card-6 {
+    background: radial-gradient(#ffc812, #f7ce83);
+  }
+
+  .card-7 {
+    background: radial-gradient(#dddcdc, #e6e6e6);
+  }
+  
+  /* RESPONSIVE */
+  
+  @media (max-width: 1600px) {
+    .cards {
+      justify-content: center;
+    }
+  }
+
+.card__icon img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+  

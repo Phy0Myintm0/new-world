@@ -17,7 +17,7 @@
 
 				<h6>Tags/Keywords</h6>
 
-				<p>
+				<div>
 				@foreach($data['nav_footer']['foot_keyword'] as $item)
 					<a class="bn" href="{{ url('keyword').'/'.$item->slug }}">
 						<span class="badge-normal badge-primary">
@@ -25,7 +25,7 @@
 						</span>
 					</a>
 				@endforeach
-				</p>
+				</div>
 			</div>
 			<!--Grid column-->
 
