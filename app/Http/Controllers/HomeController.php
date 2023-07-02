@@ -34,17 +34,25 @@ class HomeController extends Controller
             ->orderBy('id', 'asc')
             ->get();
 
-        // $data['blog'] = DB::table('posts')
-        //     ->join(
-        //         'categories',
-        //         'posts.cat_id',
-        //         '=',
-        //         'categories.id'
-        //     )
-        //     ->select('posts.title', 'posts.id', 'slug', 'img', 'created_at', 'categories.title as cat')
-        //     ->limit(3)
-        //     ->orderBy('id', 'desc')
-        //     ->get();
+        $data['story'] = DB::table('stories')
+            ->join(
+                'countries',
+                'stories.country_id',
+                '=',
+                'countries.id'
+            )
+            ->select(
+                'stories.title', 
+                'stories.id', 
+                'stories.slug', 
+                'img_header', 
+                'caption_desc', 
+                'stories.created_at', 
+                'countries.title as country_title'
+            )
+            ->limit(3)
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('front.home')
         ->with('data', $data);
@@ -221,11 +229,11 @@ class HomeController extends Controller
         ->with('data', $data);
     }
 
-    public function post($slug)
+    public function story($slug)
     {
         $data['test'] = 'test';
         
-        $data['data'] = DB::table('posts')
+        $data['data'] = DB::table('stories')
             ->join(
                 'countries',
                 'posts.cat_id',

@@ -30,6 +30,6 @@ Route::get('/action/{slug}', 'HomeController@action');
 Route::get('/keyword/{slug}', 'HomeController@keyword');
 
 Route::get('/countries/{slug}', 'HomeController@countries');
-Route::get('/post/{slug}', 'HomeController@post');
+Route::get('/story/{slug}', 'HomeController@story');
 
 Route::get('/api-countries', 'HomeController@apiCountries');

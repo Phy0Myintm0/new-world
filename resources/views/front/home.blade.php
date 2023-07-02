@@ -57,52 +57,25 @@
 		</div>
 	</div>
 	<div class="row">
+	@foreach($data['story'] as $item)
 		<div class="col-md-4">
-			<a href="#!">
+			<a href="{{ url('story').'/'.$item->slug }}">
 				<div class="card mb-4 box-shadow">
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<span class="label label-default"><i class="fa fa-clock-o"></i> February 21, 2022</span>
+							<span class="label label-default"><i class="fa fa-clock-o"></i> {{ date('F d, Y', strtotime($item->created_at)) }}</span> <span class="label label-default"> {{ $item->country_title }}</span>
 							</h1>
 						</div>
-						<h5>Short Title TEst Asdas</h5>
-						<p class="card-text">Short Description lorasfsd asdfa sdfasdf.</p>
+						<h5>{{ $item->title }}</h5>
+						<p class="card-text">{!! Str::limit(strip_tags($item->caption_desc), 150) !!}</p>
 					</div>
 					<img class="card-img-top"
-						data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-						alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-						src="https://picsum.photos/seed/agung/500/300" data-holder-rendered="true">
+						alt="Photo of {{ $item->title }}" style="height: 225px; width: 100%; display: block;"
+						src="{{ $item->img_header }}" data-holder-rendered="true">
 				</div>
 			</a>
 		</div>
-		<div class="col-md-4">
-			<div class="card mb-4 box-shadow">
-				<div class="card-body">
-					<div class="d-flex justify-content-between align-items-center">
-						<span class="label label-default">2023年 7月 2日</span></h1>
-					</div>
-					<p class="card-text">Lorem ipsum asda AsdasdafaaLorem ipsum asda.</p>
-				</div>
-				<img class="card-img-top"
-					data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-					alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-					src="https://picsum.photos/seed/dddww/500/300" data-holder-rendered="true">
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card mb-4 box-shadow">
-				<div class="card-body">
-					<div class="d-flex justify-content-between align-items-center">
-						<span class="label label-default">2023年 4月 3日</span></h1>
-					</div>
-					<p class="card-text">Lorem ipsum asda Asdasdafaa. asdasdsa sadasdas sssss.</p>
-				</div>
-				<img class="card-img-top"
-					data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-					alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-					src="https://picsum.photos/seed/aacv/500/300" data-holder-rendered="true">
-			</div>
-		</div>
+	@endforeach
 	</div>
 	<!-- .row-fluid -->
 </div>
