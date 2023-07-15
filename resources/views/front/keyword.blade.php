@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_en }}</li>
             </ol>
             </nav>
     </div>
@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col-xs-12 col-md-11 offset-md-1 text-tengah">
         <h3 class="tm-about-title">
-            <span>{{ $data['data']->title_jp }} - {{ $data['data']->title_en }}</span>
+            <span>{{ $data['data']->title_en }}</span>
         </h3>
     </div>
 </div>

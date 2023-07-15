@@ -199,6 +199,17 @@ class HomeController extends Controller
 			->where('activities.slug', $slug)
 			->first();
 		
+		$data['keyword'] = DB::table('keywords')
+			->join(
+				'keyword_activities',
+				'keywords.id',
+				'=',
+				'keyword_activities.id_keyword'
+			)
+			->select('title_en', 'slug')
+			->where('id_activity', $data['data']->id)
+			->get();
+		
 		// links
 		$data['links'] = DB::table('links')
 			->select('*')

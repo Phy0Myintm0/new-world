@@ -94,8 +94,9 @@
                     <small class="tags">
                         <i class="fa fa-tags"></i> 
                         Tags/Keywords: 
-                            <a href='#!'>#test</a>
-                            <a href='#!'>#hastag1</a>
+                        @foreach($data['keyword'] as $item)
+                            <a href="{{ url('keyword').'/'.$item->slug }}">#{{ $item->title_en }}</a>
+                        @endforeach
                     </small>
                 <hr>
                 <div id="disqus_thread"></div>

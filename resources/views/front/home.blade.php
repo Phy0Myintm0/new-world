@@ -92,21 +92,6 @@
             <p>These are our comunity work, these community work divided into some category.</p>
         </div>
     </div>
-    <!-- <div class="col-xs-12">
-		<ul class="justify-content-md-center">
-			@foreach($data['actions'] as $item)
-			<li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="{{ url('action').'/'.$item->slug }}" class="tm-tab-link">
-					<i class="fa fa-{{ $item->img }} tm-tab-icon"></i>
-					<span class="tm-tab-link-label">
-						{{ $item->title_jp }}
-						<br>{{ $item->title_en }}
-					</span>
-				</a>
-			</li>
-			@endforeach
-		</ul>
-	</div> -->
 
     <div class="col-xs-12 cards">
 	@php $i = 1; @endphp

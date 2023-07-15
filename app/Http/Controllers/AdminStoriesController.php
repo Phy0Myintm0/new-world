@@ -39,11 +39,11 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255|required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|max:5000|required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Footer Note','name'=>'footer_note','type'=>'text','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
@@ -55,13 +55,13 @@
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Footer Note','name'=>'footer_note','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','validation'=>'max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Desc Footer','name'=>'desc_footer','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Footer Note','name'=>'footer_note','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
 			# OLD END FORM
 
