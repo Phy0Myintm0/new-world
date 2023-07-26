@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
-// use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class HomeController extends Controller
 {
@@ -30,11 +30,9 @@ class HomeController extends Controller
 		// --------- seo ------------
 		// SEOTools::setTitle('Home');
 		// SEOTools::setDescription('This is my page description');
-		// SEOTools::opengraph()->setUrl('http://current.url.com');
-		// SEOTools::setCanonical('https://codecasts.com.br/lesson');
+		SEOTools::opengraph()->setUrl('https://cwb-team.net');
+		SEOTools::setCanonical('https://cwb-team.net');
 		// SEOTools::opengraph()->addProperty('type', 'articles');
-		// SEOTools::twitter()->setSite('@zeneight');
-		// SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 		// --------------------------
 
 		$data['keywords'] = DB::table('keywords')
@@ -111,6 +109,8 @@ class HomeController extends Controller
 
 		// --------- seo ------------
 		// SEOTools::setTitle($data['data']->title);
+		SEOTools::setTitle($data['activities']->title_en);
+		SEOTools::setDescription('This is my page description');
 		// --------------------------
 
 		return view('front.action')
@@ -324,7 +324,7 @@ class HomeController extends Controller
 			->get();
 
 		// --------- seo ------------
-		// SEOTools::setTitle($data['data']->title);
+		SEOTools::setTitle($data['data']->title);
 		// --------------------------
 
 		return view('front.post')

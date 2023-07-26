@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{!! SEO::generate() !!}
 
-<title>新世界 - New World</title>
 <!-- load stylesheets -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400">
 <!-- Google web font "Open Sans" -->
