@@ -106,11 +106,9 @@ class HomeController extends Controller
 			->get();
 
 		
-
 		// --------- seo ------------
-		// SEOTools::setTitle($data['data']->title);
-		SEOTools::setTitle($data['activities']->title_en);
-		SEOTools::setDescription('This is my page description');
+		SEOTools::setTitle($data['data']->title_en);
+		// SEOTools::setDescription('This is my page description');
 		// --------------------------
 
 		return view('front.action')
