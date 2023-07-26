@@ -223,7 +223,7 @@ class HomeController extends Controller
             ->get();
 
 		// --------- seo ------------
-		// SEOTools::setTitle($data['data']->title);
+		SEOTools::setTitle($data['data']->title_en);
 		// --------------------------
 
 		return view('front.activity')
