@@ -39,7 +39,7 @@
             {{ form_textarea("Desc EN", "desc_en", "textarea", "required", $row->desc_en) }}
             {{ form_textarea("Desc JP", "desc_jp", "textarea", "required", $row->desc_jp) }}
 
-            {{ form_input("Youtube URL", "youtube", "text", 10, "", "value='$row->youtube'") }}
+            {{ form_input("Youtube URL", "youtube", "text", 10, "", "value='$row->youtube'", "", "Please add only the Youtube ID Ex: https://www.youtube.com/watch?v=BswtqHoRmPk -> The ID is BswtqHoRmPk") }}
 
             <hr>
         

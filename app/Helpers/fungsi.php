@@ -213,7 +213,7 @@ function end_modal($save=true, $special="") {
 }
 
 // kotak input
-function form_input($label, $name, $type="text", $width="5", $class="", $attr="", $belakang="") {
+function form_input($label, $name, $type="text", $width="5", $class="", $attr="", $belakang="", $helper="") {
     echo '
     <div class="form-group">
         <label for="'.$name.'" class="col-sm-2 control-label">
@@ -225,7 +225,7 @@ function form_input($label, $name, $type="text", $width="5", $class="", $attr=""
         '</label>
         <div class="col-sm-'.$width.'">
             <input type="'.$type.'" class="form-control '.$class.'" id="'.$name.'" name="'.$name.'" autocomplete="off" placeholder="Input Data" '.$attr.'>
-            <p class="help-block"></p>
+            <p class="help-block">'.$helper.'</p>
             <div class="text-danger"></div>
         </div>';
 

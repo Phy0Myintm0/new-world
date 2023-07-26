@@ -26,7 +26,7 @@
 			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
-			$this->button_export = false;
+			$this->button_export = true;
 			$this->table = "activities";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
@@ -46,7 +46,7 @@
 			$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Desc JP','name'=>'desc_jp','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Youtube','name'=>'youtube','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Youtube','name'=>'youtube','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','help'=>'Please add only the Youtube ID EX: https://www.youtube.com/watch?v=BswtqHoRmPk -> The ID is BswtqHoRmPk'];
 			$this->form[] = ['label'=>'Photo Cover','name'=>'photo_cover','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo1','name'=>'photo1','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
@@ -69,7 +69,7 @@
 			//$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','validation'=>'','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
+			//$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			# OLD END FORM
 
 			/* 

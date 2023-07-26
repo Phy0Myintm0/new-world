@@ -39,7 +39,7 @@
             {{ form_textarea("Desc EN", "desc_en", "textarea", "required", "") }}
             {{ form_textarea("Desc JP", "desc_jp", "textarea", "required", "") }}
 
-            {{ form_input("Youtube URL", "youtube", "text", 10, "", "") }}
+            {{ form_input("Youtube URL", "youtube", "text", 10, "", "", "", "Please add only the Youtube ID EX: https://www.youtube.com/watch?v=BswtqHoRmPk -> The ID is BswtqHoRmPk") }}
 
             <hr>
 
