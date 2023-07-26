@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKeywordActivitiesTable extends Migration
+class CreateActionActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateKeywordActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('keyword_activities', function (Blueprint $table) {
+        Schema::create('action_activities', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('id_keyword')->unsigned();
-            $table->foreign('id_keyword')
+            $table->integer('id_action')->unsigned();
+            $table->foreign('id_action')
                     ->references('id')
-                    ->on('keywords');
+                    ->on('actions');
             
             $table->integer('id_activity')->unsigned();
             $table->foreign('id_activity')
@@ -37,6 +37,6 @@ class CreateKeywordActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keyword_activities');
+        Schema::dropIfExists('action_activities');
     }
 }
