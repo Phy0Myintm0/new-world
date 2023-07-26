@@ -313,6 +313,7 @@ class HomeController extends Controller
 		$data['recents'] = DB::table('stories')
 			->select('title', 'created_at', 'slug', 'img_header')
 			->where('slug', '<>', $slug)
+			->limit(3)
 			->inRandomOrder()
 			->get();
 

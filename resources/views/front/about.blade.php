@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Who we are</li>
+                <li class="breadcrumb-item active" aria-current="page">About Us</li>
             </ol>
         </nav>
     </div>
@@ -18,11 +18,11 @@
 
 <div class="row tm-services-row detail">
     <div class="col-xs-12 text-tengah">
-        <h3 class="text-xs-center">
+        <h1 class="text-xs-center">
             <span>
-            Who we are
+            About Us
             </span>
-        </h3>
+        </h1>
         {!! CRUDBooster::getSetting('about') !!}
     </div>
 </div>

@@ -1312,6 +1312,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	.tm-services-row.detail img {
 		height: 215px;
 		object-fit: cover;
+		width: 100% !important;
 	}
 	.no-margin {
 		margin: 0;
@@ -1397,17 +1398,32 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 		text-align: center;
 	}
 	
-	.bg-image h3, .text-tengah h3 {
+	.bg-image h2, .text-tengah h2 {
 		margin: 15px 0;
 		font-weight: bold;
 		color: #104b47;
 	}
-	.bg-image h3 span, .text-tengah h3 span {
+	.bg-image h2 span, .text-tengah h2 span {
 		box-shadow: 10px 0 0px 0px #ecc740, -10px 0 0px 0px #ecc740;
 		background-color: #ecc740;
 		line-height:1;
 	}
-	.text-tengah h3 {
+	.text-tengah h2 {
+		letter-spacing: 4px;
+		margin-bottom: 25px;
+	}
+
+	.bg-image h1, .text-tengah h1 {
+		margin: 15px 0;
+		font-weight: bold;
+		color: #104b47;
+	}
+	.bg-image h1 span, .text-tengah h1 span {
+		box-shadow: 10px 0 0px 0px #ecc740, -10px 0 0px 0px #ecc740;
+		background-color: #ecc740;
+		line-height:1;
+	}
+	.text-tengah h1 {
 		letter-spacing: 4px;
 		margin-bottom: 25px;
 	}
@@ -1539,7 +1555,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
     text-align: center;
     padding-bottom: 33px;
 }
-.section-header h3 {
+.section-header h2, .section-header h1 {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -1547,7 +1563,7 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
     position: relative;
     font-style: italic;
 }
-.section-header h3:after {
+.section-header h2:after, .section-header h1:after {
     content: "";
     position: absolute;
     display: block;

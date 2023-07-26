@@ -44,9 +44,9 @@
 </div> -->
 <div class="row section intro">
     <div class="col-xs-12 text-tengah bg-text">
-        <h3 class="text-xs-center big-font">
+        <h1 class="text-xs-center big-font">
             <span><i>C</i>ommunity <i>N</i>etwork <i>W</i>ithout <i>B</i>order</span>
-        </h3>
+        </h1>
         <div class="text-center intro-page">
             {!! CRUDBooster::getSetting("intro_text") !!}
         </div>
@@ -56,7 +56,7 @@
 <div class="row story-page section">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
-            <h3><span>Success Story</span></h3>
+            <h2><span>Success Story</span></h2>
             <p>These articles below are our success story with the communities around the world.</p>
         </div>
     </div>
@@ -88,7 +88,7 @@
 <div class="row section cwb-category">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
-            <h3><span>CWB Category</span></h3>
+            <h2><span>CWB Category</span></h2>
             <p>These are our comunity work, these community work divided into some category.</p>
         </div>
     </div>
@@ -117,7 +117,7 @@
 <div class="row story-page section">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
-            <h3><span>Our Galleries</span></h3>
+            <h2><span>Our Galleries</span></h2>
             <p>These are our photos doing some activities with the youngs and others in each of the CWB Community.</p>
         </div>
     </div>
@@ -135,7 +135,7 @@
     </div>
 </div>
 
-<div class="row section">
+<!-- <div class="row section">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
             <h3><span>Instagram</span></h3>
@@ -147,7 +147,7 @@
         <script src="https://s.electricblaze.com/widget.js" defer></script>
         <div class="electricblaze-id-2Uhx9Oy"></div>
     </div>
-</div>
+</div> -->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
