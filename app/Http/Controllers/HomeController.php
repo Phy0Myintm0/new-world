@@ -236,10 +236,23 @@ class HomeController extends Controller
 		$data['nav_footer'] = $this->navbar;
 
 		// --------- seo ------------
-		// SEOTools::setTitle($data['data']->title);
+		SEOTools::setTitle('About Us');
 		// --------------------------
 
 		return view('front.about')
+		->with('data', $data);
+	}
+
+	public function joinus()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Join Us');
+		// --------------------------
+
+		return view('front.joinus')
 		->with('data', $data);
 	}
 
@@ -249,7 +262,7 @@ class HomeController extends Controller
 		$data['nav_footer'] = $this->navbar;
 
 		// --------- seo ------------
-		// SEOTools::setTitle($data['data']->title);
+		SEOTools::setTitle('Contact Us');
 		// --------------------------
 
 		return view('front.contact')

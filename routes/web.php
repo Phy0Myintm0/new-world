@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
+Route::get('/join-us', 'HomeController@joinus');
 
 Route::get('/activity/{slug}', 'HomeController@activity');
 Route::get('/action/{slug}', 'HomeController@action');

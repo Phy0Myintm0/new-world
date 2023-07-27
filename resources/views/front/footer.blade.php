@@ -9,9 +9,8 @@
 				<h6>About Us</h6>
 
 				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-					molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-					aliquam voluptatem veniam, est atque cumque eum delectus sint!
+				All our activities are based on and/or reflect our Philosophy, ‘Inspired Economy’.
+First of all, economy means that we do not reject money itself, nor market system. But we do not accept its tendency to make humans into mere money-mongers. In Inspired Economy, money is just one of the tools of transactions. Also we use a market system to make each transaction easier.
 				</p>
 				<br>
 
@@ -34,9 +33,7 @@
 				<h5 class="text-uppercase">Community Without Border</h5>
 
 				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-					molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-					aliquam voluptatem veniam, est atque cumque eum delectus sint!
+				CWB is stand for Community Works without Border. We participate in each community to make jobs for community youth to make each community sustainable. Till now, youth go outside to get new opportunity. That is not bad thing. Youth go outside, meet various kinds of persons, customs, religions, get new insight of themself and their community. But in the tide of globalisation, going out of community makes youth (and also their parents) as uniform style. We lost our global diversity. We want to keep diversity of customs, traditions in each community through making jobs.
 				</p>
 				<br>
 

@@ -26,9 +26,9 @@
 </div>
 
 <div class="col-xs-12 col-md-12 text-tengah">
-    <h3 class="tm-about-title text-center text-judul-action">
+    <h1 class="tm-about-title text-center text-judul-action">
         <span>{{ $data['data']->title_en }}</span>
-    </h3>
+    </h1>
     <div class="text-action">
         {!! $data['data']->desc_en !!}
     </div>
@@ -48,9 +48,9 @@
                         <img src="{{ asset($item->photo_cover) }}" class="img-fluid" alt="">
                     @endif
                     
-                    <h3>
+                    <h2>
                         <span>{{ $item->title_en }}</span>
-                    </h3>
+                    </h2>
                     <div class="text-action">
                     {{ Str::limit(strip_tags($item->desc_en), 150) }}
                     </div>
