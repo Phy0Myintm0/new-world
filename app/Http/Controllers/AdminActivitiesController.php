@@ -450,6 +450,7 @@
 				}
 			}
 
+			$i = 0;
 			// action
 			foreach($datanya2 as $item) {
 				if(++$i<=$numItems2){
@@ -590,6 +591,7 @@
 				}
 			}
 
+			$i = 0;
 			// action
 			foreach($datanya2 as $item) {
 				if(++$i<=$numItems2){

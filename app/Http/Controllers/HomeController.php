@@ -95,6 +95,12 @@ class HomeController extends Controller
 				'=',
 				'countries.id'
 			)
+			->join(
+				'action_activities',
+				'activities.id',
+				'=',
+				'action_activities.id_activity'
+			)
 			->select(
 				'activities.title_en',
 				'activities.desc_en',
@@ -102,7 +108,7 @@ class HomeController extends Controller
 				'activities.slug',
 				'countries.logo'
 			)
-			->where('id_action', $data['data']->id)
+			->where('action_activities.id_action', $data['data']->id)
 			->get();
 
 		
