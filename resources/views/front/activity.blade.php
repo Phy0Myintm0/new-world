@@ -10,7 +10,6 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('action').'/'.$data['data']->action_slug }}">{{ $data['data']->action_en }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $data['data']->title_en }}</li>
                 </ol>
             </nav>

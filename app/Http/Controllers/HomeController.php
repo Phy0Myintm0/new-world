@@ -189,8 +189,14 @@ class HomeController extends Controller
 				'countries.id'
 			)
 			->join(
+				'action_activities',
+				'activities.id',
+				'=',
+				'action_activities.id_activity'
+			)
+			->join(
 				'actions',
-				'activities.id_action',
+				'action_activities.id_action',
 				'=',
 				'actions.id'
 			)
@@ -360,8 +366,14 @@ class HomeController extends Controller
 
 		$data['activity'] = DB::table('activities')
 			->join(
+				'action_activities',
+				'activities.id',
+				'=',
+				'action_activities.id_activity'
+			)
+			->join(
 				'actions',
-				'activities.id_action',
+				'action_activities.id_action',
 				'=',
 				'actions.id'
 			)
