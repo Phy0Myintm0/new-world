@@ -26,6 +26,10 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 Route::get('/join-us', 'HomeController@joinus');
 
+// ------------------------------
+Route::get('/privacy-policy', 'HomeController@privacy');
+// ------------------------------
+
 Route::get('/activity/{slug}', 'HomeController@activity');
 Route::get('/action/{slug}', 'HomeController@action');
 Route::get('/keyword/{slug}', 'HomeController@keyword');

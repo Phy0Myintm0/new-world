@@ -19,33 +19,43 @@
 
 <div class="row">
     <div class="col-xs-12 text-tengah">
-        <h3 class="text-xs-center">
+        <h1 class="text-xs-center">
             <span>
             Contact us
             </span>
-        </h3>
+        </h1>
     </div>
-    <div class="col-md-6">
-        <form>
+    <div class="offset-md-3 col-md-6 mb-4">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Submit Form</h4>
+            <p>This form is used to register/applicate/contact regarding our activities and information on this website.</p>
+            <!-- <hr>
+            <p class="mb-0">CWB Community is not </p> -->
+        </div>
+        <form action=''>
             <div class="form-group">
                 <label for="inputAddress">Name</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Your Name">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address/Origin</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="Your Address/Origin">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">e-mail</label>
-                <input type="email" class="form-control" id="inputAddress2"
+                <input type="email" class="form-control" name="email" id="email"
                     placeholder="your@emailaddress">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Message</label>
                 <textarea class="form-control" name="" id="" rows="3"></textarea>
             </div>
+            <div class="alert alert-info" role="alert">
+                *Note: Make sure you check all the fields before submitting all data!
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
-    <div class="col-md-6">
-        <div id="map" style="width: 100%; height: 400px;"></div>
     </div>
 </div>
 <!-- .row .tm-services-row -->

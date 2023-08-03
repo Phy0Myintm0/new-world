@@ -33,7 +33,7 @@
                             <ul id="menu">
                                 <li class="parent"><a href="#!"><i class="fa fa-navicon"></i> Menu</a>
                                     <ul class="child this">
-                                        <li><a href="{{ url('about') }}">About Us</a></li>
+                                        <li><a href="{{ url('about') }}">Our Philosophy</a></li>
                                         <li class="parent"><a href="#">CWB Communities <span class="expand">»</span></a>
                                             <ul class="child">
                                                 @foreach($data['nav_footer']['nav_country'] as $item)

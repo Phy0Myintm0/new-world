@@ -52,7 +52,7 @@ First of all, economy means that we do not reject money itself, nor market syst
 
 	<!-- Copyright -->
 	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-	<small>Copyright © 2023 Community Work without Border</small>
+	<small>Copyright © 2023 Community Work without Border. <u><a href="{{ url('privacy-policy') }}">Privacy Policy</a></u></small>
 	</div>
 	<!-- Copyright -->
 </footer>

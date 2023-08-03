@@ -280,6 +280,19 @@ class HomeController extends Controller
 		->with('data', $data);
 	}
 
+	public function privacy()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Privacy Policy');
+		// --------------------------
+
+		return view('front.privacy-policy')
+		->with('data', $data);
+	}
+
 	public function joinus()
 	{
 		$data['test'] = 'test';
