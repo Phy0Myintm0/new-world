@@ -67,7 +67,11 @@
                 <div class="text-tengah">
                     <div class="section-header">
                         <h3><span>{{ $data['data']->title_en }}</span></h3>
-                        <p><span class="label label-default"><i class="fa fa-clock-o"></i> {{ date('F d, Y', strtotime($data['data']->created_at)) }}</span> <span class="label label-default"> {{ $data['data']->country_title }}</span></p>
+                        <p><span class="label label-default"><i class="fa fa-clock-o"></i> {{ date('F d, Y', strtotime($data['data']->created_at)) }}</span> <span class="label label-default"> <a href="{{ url('/countries/'.$data['data']->country_slug) }}">{{ $data['data']->country_title }}</a></span>
+                        @foreach($data['action'] as $item)
+                            <span class="label label-default"> <a href="{{ url('/action/'.$item->slug) }}">{{ $item->title_en  }}</a></span>
+                        @endforeach
+                        </p>
                     </div>
                 </div>
                 <hr>

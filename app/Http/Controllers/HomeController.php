@@ -48,10 +48,22 @@ class HomeController extends Controller
 			->get();
 
 		$data['gallery'] = DB::table('galleries')
-            ->select('img', 'title')
+			->leftJoin(
+				'activities',
+				'galleries.act_id',
+				'=',
+				'activities.id'
+			)
+			->join(
+				'countries',
+				'galleries.country_id',
+				'=',
+				'countries.id'
+			)
+            ->select('galleries.img', 'galleries.title', 'activities.slug')
             // ->limit(13)
 			->inRandomOrder()
-            ->orderBy('id', 'desc')
+            ->orderBy('galleries.id', 'desc')
             ->get();
 
 		$data['story'] = DB::table('stories')
@@ -68,7 +80,8 @@ class HomeController extends Controller
 				'img_header', 
 				'caption_desc', 
 				'stories.created_at', 
-				'countries.title as country_title'
+				'countries.title as country_title',
+				'countries.slug as country_slug'
 			)
 			->limit(3)
 			->orderBy('id', 'desc')
@@ -204,7 +217,8 @@ class HomeController extends Controller
 				'activities.*', 
 				'actions.slug as action_slug',
 				'actions.title_en as action_en',
-				'countries.title as country_title'
+				'countries.title as country_title',
+				'countries.slug as country_slug'
 			)
 			->where('activities.slug', $slug)
 			->first();
@@ -215,6 +229,17 @@ class HomeController extends Controller
 				'keywords.id',
 				'=',
 				'keyword_activities.id_keyword'
+			)
+			->select('title_en', 'slug')
+			->where('id_activity', $data['data']->id)
+			->get();
+		
+		$data['action'] = DB::table('actions')
+			->join(
+				'action_activities',
+				'actions.id',
+				'=',
+				'action_activities.id_action'
 			)
 			->select('title_en', 'slug')
 			->where('id_activity', $data['data']->id)
@@ -435,12 +460,24 @@ class HomeController extends Controller
 			->get();
 
 		$data['gallery'] = DB::table('galleries')
-            ->select('img', 'title')
-            ->limit(13)
+			->leftJoin(
+				'activities',
+				'galleries.act_id',
+				'=',
+				'activities.id'
+			)
+			->join(
+				'countries',
+				'galleries.country_id',
+				'=',
+				'countries.id'
+			)
+			->select('galleries.img', 'galleries.title', 'activities.slug')
+			// ->limit(13)
 			->where('country_id', $data['data']->id)
 			->inRandomOrder()
-            ->orderBy('id', 'desc')
-            ->get();
+			->orderBy('galleries.id', 'desc')
+			->get();
 
 		
 

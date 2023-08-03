@@ -124,12 +124,17 @@
     <div class="col-xs-12">
         <article class='gallery'>
             @foreach($data['gallery'] as $item)
+            @if(!empty($item->slug))
+            <a class='gallery-link' onclick="location.href='{{ url('activity').'/'.$item->slug }}';">
+            @else
             <a class='gallery-link' href='{{ asset($item->img) }}'>
+            @endif
                 <figure class='gallery-image'>
                     <img height='1000' src='{{ asset($item->img) }}' width='1400'>
                     <figcaption>{{ $item->title }}</figcaption>
                 </figure>
             </a>
+                
             @endforeach
         </article>
     </div>

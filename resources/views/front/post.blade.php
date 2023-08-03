@@ -115,7 +115,7 @@
 								<p class="card-text">{!! Str::limit(strip_tags($item->caption_desc), 150) !!}</p>
 							</div>
 							<img class="card-img-top"
-								alt="Photo of {{ $item->title }}" style="height: 225px; width: 100%; display: block;"
+								alt="Photo of {{ $item->title }}" style="width: 100%; display: block;"
 								src="{{ asset($item->img_header) }}" data-holder-rendered="true">
 						</div>
 					</a>

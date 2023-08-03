@@ -123,7 +123,11 @@
 			</div>
 		@endif
 		@foreach($data['gallery'] as $item)
-			<a class='gallery-link' href='{{ asset($item->img) }}'>
+			@if(!empty($item->slug))
+            <a class='gallery-link' onclick="location.href='{{ url('activity').'/'.$item->slug }}';">
+            @else
+            <a class='gallery-link' href='{{ asset($item->img) }}'>
+            @endif
 				<figure class='gallery-image'>
 					<img height='1000' src='{{ asset($item->img) }}' width='1400'>
 					<figcaption>{{ $item->title }}</figcaption>
