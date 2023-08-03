@@ -10,7 +10,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Join Us</li>
+				<li class="breadcrumb-item"><a href="{{ url('join-us') }}">Join Us</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Trust Member</li>
             </ol>
         </nav>
     </div>
@@ -20,55 +21,19 @@
     <div class="col-xs-12 text-tengah">
         <h1 class="text-xs-center">
             <span>
-            Join Us
+            Trust Member
             </span>
         </h1>
-        <h4 class="text-xs-center">Be a creative member for new society!</h4>
-        <p>There are several ways to join our activites. As we mentioned in <b><a href="{{ url('about') }}">Our Philosophy</a></b>, we emphasize
-mutual inspiration. Mere donation of money is the last thing we want. We ask you what you can do for each community. We offer you what each community wants. We ask you how eager you want to learn from others, even if you teach something to others. We offer you opportunities to be a creative member, create a new society with us!</p>
-        {!! CRUDBooster::getSetting('joinus') !!}
+        <p>Prepaid for 1 year, we deliver our products to you. These products need to improve more, even though they have a good quality and/or good taste. You can advise/suggest what you think to improve.When you really commit “Trust” products, have a skill, you enjoy creating new products for new society.</p>
+
+		<hr>
+		<h4><b>Interested?</b></h4>
+		<p>If you are interested with our activity and want to join or contribute, please go to the contact us page or click button below. Thank you!</p>
+		<a href="{{ url('/contact') }}" class="btn btn-primary">Contact Us</a>
     </div>
 </div>
 <!-- .row .tm-services-row -->
 
-<div class="row section">
-	<!-- <div class="col-xs-12 text-tengah">
-		<div class="section-header">
-			<h3><span>CWB 's Link</span></h3>
-			<p>All URL, SNS, Social Media link that related to CWB.</p>
-		</div>
-	</div> -->
-
-	<div class="col-xs-12">
-		<ul class="justify-content-md-center">
-			<li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
-					<i class="fa fa-user-secret tm-tab-icon"></i>
-					<span class="tm-tab-link-label">
-                        Community Tourism
-					</span>
-				</a>
-			</li>
-            <li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
-					<i class="fa fa-users tm-tab-icon"></i>
-					<span class="tm-tab-link-label">
-                        "Trust Member"
-					</span>
-				</a>
-			</li>
-            <li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
-					<i class="fa fa-support tm-tab-icon"></i>
-					<span class="tm-tab-link-label">
-                        Ticket for Future
-					</span>
-				</a>
-			</li>
-		</ul>
-	</div>
-
-</div>
 @endsection
 
 @push('scripts')

@@ -267,58 +267,6 @@ class HomeController extends Controller
 		->with('data', $data);
 	}
 
-	public function about()
-	{
-		$data['test'] = 'test';
-		$data['nav_footer'] = $this->navbar;
-
-		// --------- seo ------------
-		SEOTools::setTitle('About Us');
-		// --------------------------
-
-		return view('front.about')
-		->with('data', $data);
-	}
-
-	public function privacy()
-	{
-		$data['test'] = 'test';
-		$data['nav_footer'] = $this->navbar;
-
-		// --------- seo ------------
-		SEOTools::setTitle('Privacy Policy');
-		// --------------------------
-
-		return view('front.privacy-policy')
-		->with('data', $data);
-	}
-
-	public function joinus()
-	{
-		$data['test'] = 'test';
-		$data['nav_footer'] = $this->navbar;
-
-		// --------- seo ------------
-		SEOTools::setTitle('Join Us');
-		// --------------------------
-
-		return view('front.joinus')
-		->with('data', $data);
-	}
-
-	public function contact()
-	{
-		$data['test'] = 'test';
-		$data['nav_footer'] = $this->navbar;
-
-		// --------- seo ------------
-		SEOTools::setTitle('Contact Us');
-		// --------------------------
-
-		return view('front.contact')
-		->with('data', $data);
-	}
-
 	public function blog()
 	{
 		$data['test'] = 'test';
@@ -535,5 +483,98 @@ class HomeController extends Controller
 		// }
 
 		return response()->json($data);
+	}
+
+	public function about()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('About Us');
+		// --------------------------
+
+		return view('front.about')
+		->with('data', $data);
+	}
+
+	public function privacy()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Privacy Policy');
+		// --------------------------
+
+		return view('front.privacy-policy')
+		->with('data', $data);
+	}
+
+	// ---------------
+
+	public function joinus()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Join Us');
+		// --------------------------
+
+		return view('front.joinus')
+		->with('data', $data);
+	}
+
+	public function communityTourism()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Community Tourism');
+		// --------------------------
+
+		return view('front.community-tourism')
+		->with('data', $data);
+	}
+
+	public function trustMember()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Trust Member');
+		// --------------------------
+
+		return view('front.trust-member')
+		->with('data', $data);
+	}
+
+	public function ticket()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Ticket for Future');
+		// --------------------------
+
+		return view('front.ticket')
+		->with('data', $data);
+	}
+
+	public function contact()
+	{
+		$data['test'] = 'test';
+		$data['nav_footer'] = $this->navbar;
+
+		// --------- seo ------------
+		SEOTools::setTitle('Contact Us');
+		// --------------------------
+
+		return view('front.contact')
+		->with('data', $data);
 	}
 }

@@ -28,6 +28,9 @@ Route::get('/join-us', 'HomeController@joinus');
 
 // ------------------------------
 Route::get('/privacy-policy', 'HomeController@privacy');
+Route::get('/community-tourism', 'HomeController@communityTourism');
+Route::get('/trust-member', 'HomeController@trustMember');
+Route::get('/ticket', 'HomeController@ticket');
 // ------------------------------
 
 Route::get('/activity/{slug}', 'HomeController@activity');

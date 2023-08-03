@@ -42,7 +42,7 @@ mutual inspiration. Mere donation of money is the last thing we want. We ask you
 	<div class="col-xs-12">
 		<ul class="justify-content-md-center">
 			<li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
+				<a id="tab2" href="{{ url('community-tourism') }}" class="tm-tab-link">
 					<i class="fa fa-user-secret tm-tab-icon"></i>
 					<span class="tm-tab-link-label">
                         Community Tourism
@@ -50,7 +50,7 @@ mutual inspiration. Mere donation of money is the last thing we want. We ask you
 				</a>
 			</li>
             <li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
+				<a id="tab2" href="{{ url('trust-member') }}" class="tm-tab-link">
 					<i class="fa fa-users tm-tab-icon"></i>
 					<span class="tm-tab-link-label">
                         "Trust Member"
@@ -58,7 +58,7 @@ mutual inspiration. Mere donation of money is the last thing we want. We ask you
 				</a>
 			</li>
             <li class="tm-tab-link-item col-md-4">
-				<a id="tab2" href="#!" class="tm-tab-link">
+				<a id="tab2" href="{{ url('ticket') }}" class="tm-tab-link">
 					<i class="fa fa-support tm-tab-icon"></i>
 					<span class="tm-tab-link-label">
                         Ticket for Future
