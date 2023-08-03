@@ -49,10 +49,19 @@
                 @endforeach
             {{ form_end_combobox() }}
 
-            {{ form_start_combobox("Action", "id_action", 6, "", "required", "select2") }}
-                @foreach ($actions as $item)
-                <option value="{!! $item->id !!}" @if($row->id_action==$item->id) {{ "selected='selected'" }} @endif>{!! $item->val !!}</option>
-                @endforeach
+            
+
+            {{ form_start_combobox("Actions", "id_actions[]", 6, "", "required multiple='multiple'", "select2", false) }}
+                @php $actionnya = unserialize($row->id_actions) @endphp
+                @if(!empty($actionnya))
+                    @foreach ($actions as $key => $item)
+                        <option value="{!! $item->id !!}" @if(in_array($item->id, $actionnya)) {{ "selected='selected'" }} @endif>{!! $item->val !!}</option>
+                    @endforeach
+                @else
+                    @foreach ($actions as $key => $item)
+                        <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                    @endforeach
+                @endif
             {{ form_end_combobox() }}
 
             <hr>

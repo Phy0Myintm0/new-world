@@ -49,9 +49,11 @@
                 @endforeach
             {{ form_end_combobox() }}
 
-            {{ form_start_combobox("Action", "id_action", 6, "", "required", "select2") }}
+            
+
+            {{ form_start_combobox("Actions", "id_actions[]", 6, "", "required multiple='multiple'", "select2", false) }}
                 @foreach ($actions as $item)
-                <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                    <option value="{!! $item->id !!}">{!! $item->val !!}</option>
                 @endforeach
             {{ form_end_combobox() }}
 

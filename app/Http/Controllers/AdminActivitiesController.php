@@ -35,13 +35,12 @@
 			$this->col[] = ["label"=>"Title EN","name"=>"title_en"];
 			$this->col[] = ["label"=>"Title JP","name"=>"title_jp"];
 			$this->col[] = ["label"=>"Country","name"=>"id_country","join"=>"countries,title"];
-			$this->col[] = ["label"=>"Action","name"=>"id_action","join"=>"actions,title_jp"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Country','name'=>'id_country','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'countries,title'];
-			$this->form[] = ['label'=>'Action','name'=>'id_action','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'actions,title_jp'];
+			$this->form[] = ['label'=>'Action','name'=>'id_action','type'=>'select2','width'=>'col-sm-10','datatable'=>'actions,title_jp'];
 			$this->form[] = ['label'=>'Title EN','name'=>'title_en','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
@@ -53,6 +52,7 @@
 			$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
+			$this->form[] = ['label'=>'Actions','name'=>'id_actions','type'=>'select2','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -63,13 +63,14 @@
 			//$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc JP','name'=>'desc_jp','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Youtube','name'=>'youtube','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Youtube','name'=>'youtube','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','help'=>'Please add only the Youtube ID EX: https://www.youtube.com/watch?v=BswtqHoRmPk -> The ID is BswtqHoRmPk'];
 			//$this->form[] = ['label'=>'Photo Cover','name'=>'photo_cover','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo1','name'=>'photo1','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo2','name'=>'photo2','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo3','name'=>'photo3','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
+			//$this->form[] = ['label'=>'Actions','name'=>'id_actions','type'=>'select2','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -369,6 +370,7 @@
 			// dd($postdata);
 
 			$postdata['id_keyword'] = serialize($postdata['id_keyword']);
+			$postdata['id_actions'] = serialize($postdata['id_actions']);
 
 	    }
 
@@ -400,10 +402,13 @@
 				->first();
 
 			$datanya = unserialize($activity->id_keyword);
+			$datanya2 = unserialize($activity->id_actions);
 
 			$numItems = count($datanya);
+			$numItems2 = count($datanya2);
 			$i = 0;
 
+			// keyword
 			// dd($numItems);
 			foreach($datanya as $item) {
 				if(++$i<=$numItems){
@@ -444,7 +449,47 @@
 					}
 				}
 			}
-			
+
+			// action
+			foreach($datanya2 as $item) {
+				if(++$i<=$numItems2){
+					try {
+						$result = DB::table('action_activities')->insert(
+							[
+								'id_activity' => $activity->id, 
+								'id_action' => $item,
+								'created_at' => $activity->created_at
+							]
+						);
+					} catch (\Illuminate\Database\QueryException $e){
+						$errorCode = $e->errorInfo[1];
+
+						// dd($e->errorInfo);
+						if($errorCode == 1062){
+							// houston, we have a duplicate entry problem
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+							exit;
+						}else{
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+							exit;
+						}
+						// dd('test!');
+					}
+				}else{
+					$check = DB::table('action_activities')
+					->where([
+						'id_activity' => $activity->id,
+						'id_action' => $item,
+					])->count();
+
+					if($check==0){
+						$data = $item;
+					} else {
+						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+						exit();
+					}
+				}
+			}
 	    }
 
 	    /* 
@@ -459,9 +504,11 @@
 	        //Your code here
 			// insert serialized array to db 
 			$postdata['id_keyword'] = serialize($postdata['id_keyword']);
+			$postdata['id_actions'] = serialize($postdata['id_actions']);
 
 			// delete pivot data
 			DB::table('keyword_activities')->where('id_activity', $id)->delete();
+			DB::table('action_activities')->where('id_activity', $id)->delete();
 
 
 	    }
@@ -494,8 +541,12 @@
 				->first();
 
 			$datanya = unserialize($activity->id_keyword);
+			$datanya2 = unserialize($activity->id_actions);
+
+			// dd($activity->id_keyword);
 
 			$numItems = count($datanya);
+			$numItems2 = count($datanya2);
 			$i = 0;
 
 			// dd($numItems);
@@ -539,6 +590,47 @@
 				}
 			}
 
+			// action
+			foreach($datanya2 as $item) {
+				if(++$i<=$numItems2){
+					try {
+						$result = DB::table('action_activities')->insert(
+							[
+								'id_activity' => $activity->id, 
+								'id_action' => $item,
+								'created_at' => $activity->created_at
+							]
+						);
+					} catch (\Illuminate\Database\QueryException $e){
+						$errorCode = $e->errorInfo[1];
+
+						// dd($e->errorInfo);
+						if($errorCode == 1062){
+							// houston, we have a duplicate entry problem
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data1!', 'danger');
+							exit;
+						}else{
+							CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data2! ErrorCode: '.$errorCode, 'danger');
+							exit;
+						}
+						// dd('test!');
+					}
+				}else{
+					$check = DB::table('action_activities')
+					->where([
+						'id_activity' => $activity->id,
+						'id_action' => $item,
+					])->count();
+
+					if($check==0){
+						$data = $item;
+					} else {
+						CRUDBooster::redirect(CRUDBooster::adminPath('activities/add'), 'You have input a duplicate data3!', 'danger');
+						exit();
+					}
+				}
+			}
+
 	    }
 
 	    /* 
@@ -552,6 +644,7 @@
 	        //Your code here
 			// delete pivot data
 			DB::table('keyword_activities')->where('id_activity', $id)->delete();
+			DB::table('action_activities')->where('id_activity', $id)->delete();
 
 	    }
 
