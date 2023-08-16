@@ -43,11 +43,20 @@
 
             <hr>
 
-            {{ form_start_combobox("Country", "id_country", 6, "", "required", "select2") }}
-                @foreach ($countries as $item)
-                <option value="{!! $item->id !!}">{!! $item->val !!}</option>
-                @endforeach
-            {{ form_end_combobox() }}
+            @if(CRUDBooster::me()->id_cms_privileges!=3)
+                {{ form_start_combobox("Country", "id_country", 6, "", "required", "select2") }}
+                    @foreach ($countries as $item)
+                    <option value="{!! $item->id !!}">{!! $item->val !!}</option>
+                    @endforeach
+                {{ form_end_combobox() }}
+            @else
+                {{ form_start_combobox("Country", "id_country", 6, "", "readonly disabled", "select2") }}
+                    @foreach ($countries as $item)
+                    <option value="{!! $item->id !!}" @if(CRUDBooster::me()->country_id==$item->id) {{ "selected='selected'" }} @endif>{!! $item->val !!}</option>
+                    @endforeach
+                {{ form_end_combobox() }}
+                <input type="hidden" name="id_country" value="{!! CRUDBooster::me()->country_id !!}">
+            @endif
 
             
 

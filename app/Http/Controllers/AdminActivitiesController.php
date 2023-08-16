@@ -345,7 +345,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	            
+			if(CRUDBooster::me()->id_cms_privileges==3) {
+				$query->where('id_country', CRUDBooster::me()->country_id);
+			}
 	    }
 
 	    /*

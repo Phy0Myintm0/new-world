@@ -48,7 +48,12 @@
 			$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+
+			if(CRUDBooster::me()->id_cms_privileges!=3) {
+				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			} else {
+				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'hidden','validation'=>'','value'=>CRUDBooster::me()->country_id,'width'=>'col-sm-10','readonly'=>true];
+			}
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -250,6 +255,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+			if(CRUDBooster::me()->id_cms_privileges==3) {
+				$query->where('country_id', CRUDBooster::me()->country_id);
+			}
 	            
 	    }
 
