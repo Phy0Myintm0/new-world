@@ -416,7 +416,7 @@ class HomeController extends Controller
 				'cms_users.name'
 			)
 			->limit(3)
-			->where('country_id', $data['data']->id)
+			->where('stories.country_id', $data['data']->id)
 			->orderBy('id', 'desc')
 			->get();
 
