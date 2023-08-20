@@ -5,6 +5,15 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 <link rel="stylesheet" href="{{ asset('css/countries.css') }}">
+<style>
+	.col-md-8 img {
+		width: 100% !important;
+	}
+	.post-img img {
+		height: 225px !important;
+    	object-fit: cover !important;
+	}
+</style>
 @endpush
 
 @section('content')
