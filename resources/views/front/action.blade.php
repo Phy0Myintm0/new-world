@@ -13,6 +13,10 @@
     -o-background-size: cover;
     background-size: cover;
 }
+.action-image h2 {
+    font-size: 25px;
+    height: 70px;
+}
 </style>
 @endpush
 
@@ -34,11 +38,11 @@
     </div>
 </div>
 
-<div class="row justify-content-center tm-services-row">
+<div class="row justify-content-center">
 
 @if(!$data['activities']->isEmpty())
     @foreach($data['activities'] as $item)
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4">
             <img class="action-country" src="{{ asset($item->logo) }}">
             <div class="action-image">
                 <a href="{{ url('activity').'/'.$item->slug }}">

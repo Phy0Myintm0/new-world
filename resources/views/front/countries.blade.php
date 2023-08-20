@@ -95,11 +95,11 @@
 							<a href="{{ url('activity').'/'.$item->slug }}">
 								<h3 class="post-title">{{ $item->title_en }}</h3>
 							</a>
-							<ul class="icon-area">
+							<!-- <ul class="icon-area">
 								<li>
-								<span class="label label-default">{{ $item->actionnya }}</span>
+								<span class="label label-default"></span>
 								</li>
-							</ul>
+							</ul> -->
 							<p class="blog-text">
 							{!! Str::limit(strip_tags($item->desc_en), 150) !!}
 							</p>

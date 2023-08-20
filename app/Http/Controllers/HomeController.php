@@ -352,30 +352,12 @@ class HomeController extends Controller
 
 		$data['activity'] = DB::table('activities')
 			->join(
-				'action_activities',
-				'activities.id',
-				'=',
-				'action_activities.id_activity'
-			)
-			->join(
-				'actions',
-				'action_activities.id_action',
-				'=',
-				'actions.id'
-			)
-			->join(
 				'countries',
 				'activities.id_country',
 				'=',
 				'countries.id'
 			)
-			->join(
-				'keyword_activities',
-				'activities.id',
-				'=',
-				'keyword_activities.id_activity'
-			)
-			->select('activities.*', 'actions.title_en as actionnya', 'actions.slug as action_slug', 'countries.title as country')
+			->select('activities.*', 'countries.title as country')
 			->where('activities.id_country', $data['data']->id)
 			->get();
 
