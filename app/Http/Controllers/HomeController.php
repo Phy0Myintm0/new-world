@@ -61,7 +61,8 @@ class HomeController extends Controller
 				'countries.id'
 			)
             ->select('galleries.img', 'galleries.title', 'activities.slug')
-            // ->limit(13)
+			->where('galleries.status', 1)
+            ->limit(20)
 			->inRandomOrder()
             ->orderBy('galleries.id', 'desc')
             ->get();
@@ -83,6 +84,7 @@ class HomeController extends Controller
 				'countries.title as country_title',
 				'countries.slug as country_slug'
 			)
+			->where('stories.status', 1)
 			->limit(3)
 			->orderBy('id', 'desc')
 			->get();
@@ -121,6 +123,7 @@ class HomeController extends Controller
 				'activities.slug',
 				'countries.logo'
 			)
+			->where('activities.status', 1)
 			->where('action_activities.id_action', $data['data']->id)
 			->get();
 
@@ -220,6 +223,7 @@ class HomeController extends Controller
 				'countries.title as country_title',
 				'countries.slug as country_slug'
 			)
+			->where('activities.status', 1)
 			->where('activities.slug', $slug)
 			->first();
 		
@@ -254,6 +258,7 @@ class HomeController extends Controller
 		$data['gallery'] = DB::table('galleries')
             ->select('img', 'title')
             ->limit(3)
+			->where('status', 1)
 			->where('act_id', $data['data']->id)
 			->inRandomOrder()
             ->orderBy('id', 'desc')
@@ -358,6 +363,7 @@ class HomeController extends Controller
 				'countries.id'
 			)
 			->select('activities.*', 'countries.title as country')
+			->where('activities.status', 1)
 			->where('activities.id_country', $data['data']->id)
 			->get();
 
@@ -365,6 +371,7 @@ class HomeController extends Controller
 			->select('*')
 			// ->limit(4)
 			->orderBy('id', 'asc')
+			->where('sns.status', 1)
 			->where('country_id', $data['data']->id)
 			->get();
 
@@ -398,6 +405,7 @@ class HomeController extends Controller
 				'cms_users.name'
 			)
 			->limit(3)
+			->where('stories.status', 1)
 			->where('stories.country_id', $data['data']->id)
 			->orderBy('id', 'desc')
 			->get();
@@ -416,7 +424,8 @@ class HomeController extends Controller
 				'countries.id'
 			)
 			->select('galleries.img', 'galleries.title', 'activities.slug')
-			// ->limit(13)
+			->limit(13)
+			->where('galleries.status', 1)
 			->where('country_id', $data['data']->id)
 			->inRandomOrder()
 			->orderBy('galleries.id', 'desc')

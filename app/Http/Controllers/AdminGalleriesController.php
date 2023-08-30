@@ -34,6 +34,7 @@
 			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,title"];
 			$this->col[] = ["label"=>"Activity","name"=>"act_id","join"=>"activities,title_en"];
 			$this->col[] = ["label"=>"Img","name"=>"img","image"=>true];
+			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status == 1? "<span class=\"label label-success\">Show</span>" : "<span class=\"label label-danger\">Hide</span>")'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -41,16 +42,9 @@
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'textarea','validation'=>'max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img','name'=>'img','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-
-			if(CRUDBooster::me()->id_cms_privileges!=3) {
-				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
-				$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en'];
-			} else {
-				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'hidden','validation'=>'','value'=>CRUDBooster::me()->country_id,'width'=>'col-sm-10','readonly'=>true];
-				$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en','datatable_where'=>'id_country='.CRUDBooster::me()->country_id];
-			}
-			
-			
+			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-9','dataenum'=>'1|Show;0|Hide'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -58,8 +52,14 @@
 			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Desc','name'=>'desc','type'=>'textarea','validation'=>'max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Img','name'=>'img','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//
+			//if(CRUDBooster::me()->id_cms_privileges!=3) {
 			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
 			//$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en'];
+			//} else {
+			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'hidden','validation'=>'','value'=>CRUDBooster::me()->country_id,'width'=>'col-sm-10','readonly'=>true];
+			//$this->form[] = ['label'=>'Activity','name'=>'act_id','type'=>'select2','width'=>'col-sm-10','datatable'=>'activities,title_en','datatable_where'=>'id_country='.CRUDBooster::me()->country_id];
+			//}
 			# OLD END FORM
 
 			/* 

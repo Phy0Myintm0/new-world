@@ -34,6 +34,7 @@
 			$this->col[] = ["label"=>"Logo","name"=>"logo"];
 			$this->col[] = ["label"=>"Url","name"=>"url"];
 			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,title"];
+			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status == 1? "<span class=\"label label-success\">Show</span>" : "<span class=\"label label-danger\">Hide</span>")'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -42,6 +43,7 @@
 			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
 			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'1|Show;0|Hide'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -49,7 +51,7 @@
 			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
-			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'country,id'];
+			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
 			# OLD END FORM
 
 			/* 
