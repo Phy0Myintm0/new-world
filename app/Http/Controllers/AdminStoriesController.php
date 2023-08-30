@@ -35,6 +35,7 @@
 			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,title"];
 			$this->col[] = ["label"=>"Caption","name"=>"caption"];
 			$this->col[] = ["label"=>"Img Header","name"=>"img_header","image"=>true];
+			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status == 1? "<span class=\"label label-success\">Show</span>" : "<span class=\"label label-danger\">Hide</span>")'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -48,17 +49,13 @@
 			$this->form[] = ['label'=>'Img Header','name'=>'img_header','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','width'=>'col-sm-10'];
-
-			if(CRUDBooster::me()->id_cms_privileges!=3) {
-				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
-			} else {
-				$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'hidden','validation'=>'','value'=>CRUDBooster::me()->country_id,'width'=>'col-sm-10','readonly'=>true];
-			}
+			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'1|Show;0|Hide'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Caption','name'=>'caption','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Caption Desc','name'=>'caption_desc','type'=>'wysiwyg','validation'=>'string|required','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc Body','name'=>'desc_body','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
@@ -68,6 +65,7 @@
 			//$this->form[] = ['label'=>'Img Body','name'=>'img_body','type'=>'upload','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Img Footer','name'=>'img_footer','type'=>'upload','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'countries,title'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'1;0'];
 			# OLD END FORM
 
 			/* 

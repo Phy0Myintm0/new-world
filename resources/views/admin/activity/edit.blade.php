@@ -193,6 +193,8 @@
                 {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
             @endif
 
+            {{ form_radio("Status", "status", $row->status) }}
+
 
         </div>
         <div class="panel-footer">

@@ -35,6 +35,7 @@
 			$this->col[] = ["label"=>"Title EN","name"=>"title_en"];
 			$this->col[] = ["label"=>"Title JP","name"=>"title_jp"];
 			$this->col[] = ["label"=>"Country","name"=>"id_country","join"=>"countries,title"];
+			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status == 1? "<span class=\"label label-success\">Show</span>" : "<span class=\"label label-danger\">Hide</span>")'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -53,12 +54,13 @@
 			$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			$this->form[] = ['label'=>'Actions','name'=>'id_actions','type'=>'select2','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'1|Show;0|Hide'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Country','name'=>'id_country','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'countries,title'];
-			//$this->form[] = ['label'=>'Action','name'=>'id_action','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-10','datatable'=>'actions,title_jp'];
+			//$this->form[] = ['label'=>'Action','name'=>'id_action','type'=>'select2','width'=>'col-sm-10','datatable'=>'actions,title_jp'];
 			//$this->form[] = ['label'=>'Title EN','name'=>'title_en','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Title JP','name'=>'title_jp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Desc EN','name'=>'desc_en','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
@@ -71,6 +73,7 @@
 			//$this->form[] = ['label'=>'Photo4','name'=>'photo4','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Keywords','name'=>'id_keyword','type'=>'select2','width'=>'col-sm-10','datatable'=>'keywords,title_en'];
 			//$this->form[] = ['label'=>'Actions','name'=>'id_actions','type'=>'select2','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'1|Show;0|Hide'];
 			# OLD END FORM
 
 			/* 

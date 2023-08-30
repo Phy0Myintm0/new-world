@@ -211,6 +211,18 @@ function end_modal($save=true, $special="") {
     </div>
     ';
 }
+// label show
+function label_format($label) {
+    if($label==1) {
+        echo '
+        <span class="label label-success">Show</span>
+        ';
+    } elseif ($label==0) {
+        echo '
+        <span class="label label-danger">Hide</span>
+        ';
+    }
+}
 
 // kotak input
 function form_input($label, $name, $type="text", $width="5", $class="", $attr="", $belakang="", $helper="") {
@@ -290,21 +302,30 @@ function combobox_filter_end() {
         </div>
     ';
 }
-function form_radio($label, $nama) {
+function form_radio($label, $nama, $val=null) {
+    $val_show = "";
+    $val_hide = "";
+    
+    if($val==1) {
+        $val_show = "checked";
+    } else if($val==0) {
+        $val_hide = "checked";
+    }
+
     echo '
     <div class="form-group">
         <label class="col-lg-2 control-label">'.$label.'</label>
         <div class="col-lg-10">
             <div class="radio">
                 <label>
-                    <input type="radio" name="'.$nama.'" id="status1" value="1" checked="">
-                    Aktif
+                    <input type="radio" name="'.$nama.'" id="status1" value="1" '.$val_show.'>
+                    Show
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="'.$nama.'" id="status2" value="0" checked="">
-                    Tidak Aktif
+                    <input type="radio" name="'.$nama.'" id="status2" value="0" '.$val_hide.'>
+                    Hide
                 </label>
             </div>
         </div>

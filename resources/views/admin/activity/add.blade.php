@@ -100,6 +100,8 @@
 
             {{ form_mediapicker("Photo Cover", "photo_cover", 10, "", '') }}
 
+            {{ form_radio("Status", "status") }}
+
         </div>
         <div class="panel-footer">
             <input type="submit" name="submit" value="Save & Add More"
