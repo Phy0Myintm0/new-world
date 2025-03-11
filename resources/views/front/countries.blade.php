@@ -85,8 +85,7 @@
 				</div>
 			@endif
 			<div class="blog_slider_area owl-carousel">
-			@foreach($data['activity'] as $item)
-				<div class="box-area box-shadow">
+			@foreach($data['activity']->sortByDesc('created_at') as $item)				<div class="box-area box-shadow">
 					<div class="single-blog">
 						<div class="post-img">
 							<img src="{{ asset($item->photo_cover) }}" alt="{{ $item->title }}" />

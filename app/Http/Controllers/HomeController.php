@@ -24,74 +24,75 @@ class HomeController extends Controller
 	}
 
 	public function index()
-	{
-		$data['test'] = 'test';
-		$data['nav_footer'] = $this->navbar;
-		// --------- seo ------------
-		// SEOTools::setTitle('Home');
-		// SEOTools::setDescription('This is my page description');
-		SEOTools::opengraph()->setUrl('https://cwb-team.net');
-		SEOTools::setCanonical('https://cwb-team.net');
-		// SEOTools::opengraph()->addProperty('type', 'articles');
-		// --------------------------
+{
+    $data['test'] = 'test';
+    $data['nav_footer'] = $this->navbar;
 
-		$data['keywords'] = DB::table('keywords')
-			->select('title_en', 'title_jp', 'slug')
-			// ->limit(4)
-			->orderBy('id', 'asc')
-			->get();
+    // --------- SEO Settings ------------
+    SEOTools::opengraph()->setUrl('https://cwb-team.net');
+    SEOTools::setCanonical('https://cwb-team.net');
+    // -----------------------------------
 
-		$data['actions'] = DB::table('actions')
-			->select('title_en', 'desc_en', 'img', 'slug')
-			// ->limit(4)
-			->orderBy('id', 'asc')
-			->get();
+    // Fetch latest 3 activities for "Latest News"
+    $data['latest_news'] = DB::table('activities')
+        ->join('countries', 'activities.id_country', '=', 'countries.id')
+        ->select(
+            'activities.title_en',
+            'activities.desc_en',
+            'activities.photo_cover',
+            'activities.slug',
+            'activities.created_at',
+            'countries.title as country_title'
+        )
+        ->where('activities.status', 1)
+        ->orderBy('activities.created_at', 'desc')
+        ->limit(3)
+        ->get();
 
-		$data['gallery'] = DB::table('galleries')
-			->leftJoin(
-				'activities',
-				'galleries.act_id',
-				'=',
-				'activities.id'
-			)
-			->join(
-				'countries',
-				'galleries.country_id',
-				'=',
-				'countries.id'
-			)
-            ->select('galleries.img', 'galleries.title', 'activities.slug')
-			->where('galleries.status', 1)
-            ->limit(20)
-			->inRandomOrder()
-            ->orderBy('galleries.id', 'desc')
-            ->get();
+    // Keywords
+    $data['keywords'] = DB::table('keywords')
+        ->select('title_en', 'title_jp', 'slug')
+        ->orderBy('id', 'asc')
+        ->get();
 
-		$data['story'] = DB::table('stories')
-			->join(
-				'countries',
-				'stories.country_id',
-				'=',
-				'countries.id'
-			)
-			->select(
-				'stories.title', 
-				'stories.id', 
-				'stories.slug', 
-				'img_header', 
-				'caption_desc', 
-				'stories.created_at', 
-				'countries.title as country_title',
-				'countries.slug as country_slug'
-			)
-			->where('stories.status', 1)
-			->limit(3)
-			->orderBy('id', 'desc')
-			->get();
+    // Actions
+    $data['actions'] = DB::table('actions')
+        ->select('title_en', 'desc_en', 'img', 'slug')
+        ->orderBy('id', 'asc')
+        ->get();
 
-		return view('front.home')
-		->with('data', $data);
-	}
+    // Gallery
+    $data['gallery'] = DB::table('galleries')
+        ->leftJoin('activities', 'galleries.act_id', '=', 'activities.id')
+        ->join('countries', 'galleries.country_id', '=', 'countries.id')
+        ->select('galleries.img', 'galleries.title', 'activities.slug')
+        ->where('galleries.status', 1)
+        ->limit(20)
+        ->inRandomOrder()
+        ->orderBy('galleries.id', 'desc')
+        ->get();
+
+    // Stories
+    $data['story'] = DB::table('stories')
+        ->join('countries', 'stories.country_id', '=', 'countries.id')
+        ->select(
+            'stories.title',
+            'stories.id',
+            'stories.slug',
+            'img_header',
+            'caption_desc',
+            'stories.created_at',
+            'countries.title as country_title',
+            'countries.slug as country_slug'
+        )
+        ->where('stories.status', 1)
+        ->limit(3)
+        ->orderBy('id', 'desc')
+        ->get();
+
+    return view('front.home')->with('data', $data);
+}
+
 
 	public function action($slug)
 	{

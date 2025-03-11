@@ -1592,7 +1592,6 @@ http://stackoverflow.com/questions/11173106/apply-style-only-on-ie */
 	box-shadow: 0 3px 20px -2px rgb(71 75 78 / 15%)
 }
 .cwb-category {
-	background: url('../../img/bg-bubble.jpg') no-repeat center center;
 	-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

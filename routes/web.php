@@ -33,7 +33,7 @@ Route::get('/trust-member', 'HomeController@trustMember');
 Route::get('/ticket', 'HomeController@ticket');
 // ------------------------------
 
-Route::get('/activity/{slug}', 'HomeController@activity');
+Route::get('/activity/{slug}', 'HomeController@activity')->name('activity');
 Route::get('/action/{slug}', 'HomeController@action');
 Route::get('/keyword/{slug}', 'HomeController@keyword');
 

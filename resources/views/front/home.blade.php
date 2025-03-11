@@ -1,12 +1,11 @@
 @extends('front.layout')
 
 @push('styles')
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 <style>
-
+  
 </style>
 @endpush
 
@@ -22,8 +21,26 @@
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 img-logo">
     <img src="{{ asset('vendor/img/new-world.png') }}" alt="new-world-logo">
 </div>
-<div class="row">
-    <div class="card-body" id="map" style="width: 100%; height: 400px;"></div>
+<div id="map-container">
+    <img src="{{ asset('img/asia-map.jpg') }}" alt="Asia Map" id="asia-map">
+    
+    <!-- Red Dots for Each Country -->
+    <div class="country" data-slug="myanmar" style="position: absolute; top: 50%; left: 36%; width: 25px; height: 50px; background-color: transparent;
+; border-radius: 50%; cursor: pointer;"></div>
+    <div class="country" data-slug="cambodia" style="position: absolute; top: 65%; left: 45%; width: 20px; height: 20px; background-color: transparent;
+; border-radius: 50%; cursor: pointer;"></div>
+    <div class="country" data-slug="indonesia" style="position: absolute; top: 85%; left: 45%; width: 280px; height: 50px; background-color: transparent;
+; border-radius: 0%; cursor: pointer;"></div>
+    <div class="country" data-slug="japan" style="position: absolute; top: 25%; left: 80%; width: 80px; height: 20px; background-color: transparent;
+; border-radius: 0%; cursor: pointer;"></div>
+    <div class="country" data-slug="india" style="position: absolute; top: 45%; left: 15%; width: 80px; height: 80px; background-color: transparent;
+; border-radius: 50%; cursor: pointer;"></div>
+    <div class="country" data-slug="philippines" style="position: absolute; top: 65%; left: 65%; width: 20px; height: 20px; background-color: transparent;
+; border-radius: 50%; cursor: pointer;"></div>
+    <div class="country" data-slug="sri-lanka" style="position: absolute; top: 43%; left: 25%; width: 20px; height: 20px; background-color: transparent;
+; border-radius: 50%; cursor: pointer;"></div>
+    <!-- Tooltip -->
+   
 </div>
 
 <!-- 
@@ -53,10 +70,10 @@
     </div>
 </div>
 
-<div class="row story-page section">
+<!-- <div class="row story-page section">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
-            <h2><span>Success Story</span></h2>
+            <h2><span>Latest News</span></h2>
             <p>These articles below are our success story with the communities around the world.</p>
         </div>
     </div>
@@ -81,40 +98,107 @@
             </a>
         </div>
         @endforeach
-    </div>
+    </div> -->
     <!-- .row-fluid -->
+
+    <div class="row story-page section">
+    <div class="col-xs-12 text-tengah">
+        <div class="section-header">
+            <h2><span>Latest News</span></h2>
+            <p>These articles below are our success story with the communities around the world.</p>
+        </div>
+    </div>
+    <div class="container mt-4">
+        @if (!empty($data['latest_news']) && count($data['latest_news']) > 0)
+            <div class="row">
+                @foreach ($data['latest_news'] as $news)
+                    <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                        <div class="card mb-4 box-shadow w-100">
+                            <!-- Cover Image -->
+                            <img class="card-img-top" alt="Photo of {{ $item->title }}"
+                                style="height: 225px; width: 100%; display: block;" src="{{ asset($news->photo_cover) }}"
+                                data-holder-rendered="true">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="label label-default"><i class="fa fa-clock-o"></i>
+                                        {{ date('F d, Y', strtotime($news->created_at)) }}
+                                    </span>
+                                    <span class="label label-default"> {{ $news->country_title }}</span>
+                                </div>
+                                <!-- Title -->
+                                <h5 class="card-title">{{ $news->title_en }}</h5>
+                                <p class="card-text flex-grow-1">{!! Str::limit(strip_tags($news->desc_en), 150) !!}</p>
+
+                                <!-- Read More Button -->
+                                <a href="{{ route('activity', ['slug' => $news->slug]) }}" class="btn btn-primary mt-auto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p>No latest news available.</p>
+        @endif
+    </div>
 </div>
 
 <div class="row section cwb-category">
-    <div class="col-xs-12 text-tengah">
+    <div class="col-12 text-center"> <!-- Center align text and ensure proper column usage -->
         <div class="section-header">
-            <h2><span>CWB Category</span></h2>
-            <p>These are our comunity work, these community work divided into some category.</p>
+            <h2><span>Grass Roots Expo</span></h2>
+            <p>These are our community work, divided into different categories.</p>
         </div>
     </div>
 
-    <div class="col-xs-12 cards">
-	@php $i = 1; @endphp
-	@foreach($data['actions'] as $item)
-		@if($i==8) @php $i = 1; @endphp @endif
-        <div class="card card-{{ $i++ }}">
-            <div class="card__icon">
-				<img src="{{ asset($item->img) }}">
-			</div>
-            <h4 class="card__title">{{ $item->title_en }}</h4>
-			<div class="card__body">
-			{!! Str::limit(strip_tags($item->desc_en), 100) !!}
-			</div>
-            <p class="card__apply">
-                <a class="card__link" href="{{ url('action').'/'.$item->slug }}">Read More <i class="fa fa-chevron-right"></i></a>
-            </p>
-        </div>
-	@endforeach
-        
+    <div class="row cards"> <!-- Cards container -->
+        @php $i = 1; @endphp
+        @foreach($data['actions'] as $item)
+            @if($i == 8) @php $i = 1; @endphp @endif
+            <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- Responsive grid layout -->
+                <div class="card card-{{ $i++ }}">
+                    <div class="card__icon">
+                        <img src="{{ asset($item->img) }}" alt="Card Image">
+                    </div>
+                    <h4 class="card__title">{{ $item->title_en }}</h4>
+                    <div class="card__body">
+                        {!! Str::limit(strip_tags($item->desc_en), 100) !!}
+                    </div>
+                    <p class="card__apply">
+                        <a class="card__link" href="{{ url('action').'/'.$item->slug }}">Read More <i class="fa fa-chevron-right"></i></a>
+                    </p>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 
-<div class="row story-page section">
+<div class="conceptual-arguments">
+    <div class="section-header">
+        <h2><span>Our Conceptual Arguments</span></h2>
+    </div>
+
+    <a href="https://cwb-team.net/newcivil/" target="_blank" class="gallery-link">
+        <div class="gallery-container">
+            <img src="{{ asset('img/cwb.png') }}" alt="CWB News" class="gallery-img">
+            <div class="overlay">
+                <span class="overlay-subtitle">CWB news in English</span>
+            </div>
+        </div>
+    </a>
+     <div class="col-12">
+        <div class="insight-section">
+            <h3 class="text-center">Insight by Bohemian Vayu</h3>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="row story-page section">
     <div class="col-xs-12 text-tengah">
         <div class="section-header">
             <h2><span>Our Galleries</span></h2>
@@ -138,7 +222,7 @@
             @endforeach
         </article>
     </div>
-</div>
+</div> -->
 
 <!-- <div class="row section">
     <div class="col-xs-12 text-tengah">
@@ -164,94 +248,23 @@
 @endsection
 
 @push('scripts')
-<!-- Make sure you put this AFTER Leaflet's CSS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+document.querySelectorAll('.country').forEach(country => {
+    country.addEventListener('click', function () {
+        let countrySlug = this.getAttribute('data-slug'); // Get slug from data attribute
+        if (countrySlug) {
+            window.location.href = '/countries/' + countrySlug; // Redirect to country page
+        }
+    });
+});
 
-<script>
-    // konfigurasi peta
-    $(function () {
-        setLocation = [17.8852266, 100.7893092];
-        var map = L.map('map', null, {
-            zoomControl: false
-        }).setView(setLocation, 14);
-        map.removeControl(map.zoomControl);
-        // 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-            // L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg', {
-            maxZoom: 4,
-            minZoom: 4,
-        }).addTo(map);
-        map.attributionControl.setPrefix(false);
-        // var marker = new L.marker(setLocation, {
-        //     draggable: false
-        // });
-        // map.addLayer(marker);
-
-        const LeafIcon = L.Icon.extend({
-            options: {
-                iconSize: [45, 45],
-                iconAnchor: [15, 15],
-                shadowAnchor: [4, 62],
-                popupAnchor: [10, -10]
-            }
-        });
-
-        var dynamicIcon = [];
-        var mapMarker = [];
-
-        $.getJSON(window.location.origin + '/api-countries',
-            function (data) {
-                // console.log(data.list);
-                // exit();
-                for (var i = 0; i < data.list.length; i++) {
-                    dynamicIcon[i] = new LeafIcon({
-                        iconUrl: window.location.origin + '/' + data.list[i].logo
-                    })
-
-                    mapMarker[i] = L.marker([data.list[i].cord_lat, data.list[i].cord_long], {
-                        icon: dynamicIcon[i]
-                    }).bindPopup('<a href="' + window.location.origin + '/countries/' + data.list[i]
-                        .slug + '">CWB ' + data.list[i].title + '</a>').addTo(map);
-                }
-            });
-
-    })
 
 </script>
 
 <script src="{{ asset('js/magnific-popup.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function ($) {
-        $('.gallery-link').magnificPopup({
-            type: 'image',
-            closeOnContentClick: true,
-            closeBtnInside: false,
-            mainClass: 'mfp-with-zoom mfp-img-mobile',
-            image: {
-                verticalFit: true,
-                titleSrc: function (item) {
-                    return item.el.find('figcaption').text() || item.el.attr('title');
-                }
-            },
-            zoom: {
-                enabled: true
-            },
-            // duration: 300
-            gallery: {
-                enabled: true,
-                navigateByImgClick: false,
-                tCounter: ''
-            },
-            disableOn: function () {
-                return $(window).width() > 640;
-            }
-        });
 
-    });
 
-    //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiPGFub255bW91cz4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBQSxDQUFBLENBQUUsZUFBRixDQUFrQixDQUFDLGFBQW5CLENBQ0U7SUFBQSxJQUFBLEVBQU0sT0FBTjtJQUNBLG1CQUFBLEVBQXFCLElBRHJCO0lBRUEsY0FBQSxFQUFnQixLQUZoQjtJQUdBLFNBQUEsRUFBVyw4QkFIWDtJQUlBLEtBQUEsRUFDRTtNQUFBLFdBQUEsRUFBYSxJQUFiO01BQ0EsUUFBQSxFQUFVLFFBQUEsQ0FBQyxJQUFELENBQUE7ZUFDUixJQUFJLENBQUMsRUFBRSxDQUFDLElBQVIsQ0FBYSxZQUFiLENBQTBCLENBQUMsSUFBM0IsQ0FBQSxDQUFBLElBQXFDLElBQUksQ0FBQyxFQUFFLENBQUMsSUFBUixDQUFhLE9BQWI7TUFEN0I7SUFEVixDQUxGO0lBUUEsSUFBQSxFQUNFO01BQUEsT0FBQSxFQUFTO0lBQVQsQ0FURjs7SUFXQSxPQUFBLEVBQ0U7TUFBQSxPQUFBLEVBQVMsSUFBVDtNQUNBLGtCQUFBLEVBQW9CLEtBRHBCO01BRUEsUUFBQSxFQUFVO0lBRlYsQ0FaRjtJQWVBLFNBQUEsRUFBVyxRQUFBLENBQUEsQ0FBQTthQUNULENBQUEsQ0FBRSxNQUFGLENBQVMsQ0FBQyxLQUFWLENBQUEsQ0FBQSxHQUFvQjtJQURYO0VBZlgsQ0FERjtBQUFBIiwic291cmNlc0NvbnRlbnQiOlsiJCgnLmdhbGxlcnktbGluaycpLm1hZ25pZmljUG9wdXBcbiAgdHlwZTogJ2ltYWdlJ1xuICBjbG9zZU9uQ29udGVudENsaWNrOiB0cnVlXG4gIGNsb3NlQnRuSW5zaWRlOiBmYWxzZVxuICBtYWluQ2xhc3M6ICdtZnAtd2l0aC16b29tIG1mcC1pbWctbW9iaWxlJ1xuICBpbWFnZTogXG4gICAgdmVydGljYWxGaXQ6IHRydWVcbiAgICB0aXRsZVNyYzogKGl0ZW0pIC0+XG4gICAgICBpdGVtLmVsLmZpbmQoJ2ZpZ2NhcHRpb24nKS50ZXh0KCkgfHwgaXRlbS5lbC5hdHRyKCd0aXRsZScpXG4gIHpvb206XG4gICAgZW5hYmxlZDogdHJ1ZVxuICAgICMgZHVyYXRpb246IDMwMFxuICBnYWxsZXJ5OlxuICAgIGVuYWJsZWQ6IHRydWVcbiAgICBuYXZpZ2F0ZUJ5SW1nQ2xpY2s6IGZhbHNlXG4gICAgdENvdW50ZXI6ICcnXG4gIGRpc2FibGVPbjogLT5cbiAgICAkKHdpbmRvdykud2lkdGgoKSA+IDY0MCAiXX0=
-    //# sourceURL=coffeescript
+   
 
 </script>
 @endpush
